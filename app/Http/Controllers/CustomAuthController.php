@@ -17,4 +17,9 @@ class CustomAuthController extends Controller
         return view('auth.login');
     }
 
+    public function create()
+    {
+        return view('auth.registration');
+    }
+
 }
