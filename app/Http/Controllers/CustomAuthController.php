@@ -11,12 +11,12 @@ use App\Models\Etudiant;
 
 class CustomAuthController extends Controller
 {
-
+    // la page d'inscription
     public function index()
     {
         return view('auth.login');
     }
-
+    // la page de login
     public function create()
     {
         return view('auth.registration');
