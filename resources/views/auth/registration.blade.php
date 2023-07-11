@@ -8,9 +8,6 @@
 </section>
 <section>
     <div class="formulaire-container">
-        <section>
-            <p>Veuillez vous enregistrer</p>
-        </section>
         <div class="formulaire_connexion"> 
             <form action="/register" method="post">
                 @csrf
@@ -70,8 +67,12 @@
 
                     <!-- Submit Button-->
                     <button id="Login" type="submit" class="bouton">S'enregistrer</button>
-            </form>
+            </form> 
         </div>
+        <section>
+            <a href="{{ route('login') }}">J'ai déja un compte</a>
+        </section>
     </div>     
 </section>
+
 @endsection
