@@ -16,4 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/bouteilles', [BouteilleController::class, 'index'])->name('bouteilles.index');
+// la page d'accueil
+Route::get('/home', function () {
+    return view('welcomee');
+})->name('home');
+
+// la page de login
+Route::get('/login', [CustomAuthController::class, 'index'])->name('login');
+Route::post('/login', [CustomAuthController::class, 'authentication'])->name('login.authentication');
+// la page d'inscription
+Route::get('/register', [CustomAuthController::class, 'create'])->name('register');
+Route::post('/register', [CustomAuthController::class, 'store'])->name('register.store');
+// logout
+Route::get('/logout', [CustomAuthController::class, 'logout'])->name('logout');
