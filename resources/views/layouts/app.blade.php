@@ -13,6 +13,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <!-- <link href="{{ asset('css/styles.css') }}" rel="stylesheet" /> -->
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </head>
     <body>
     @php $locale = session('locale') @endphp
@@ -27,14 +28,14 @@
                 </label>
                 <div id="navbarSupportedContent">
                     <ul>
-                        <li><a href="#!">Home</a></li>
-                        <li><a href="#!">About</a></li>
+                        <li><a href="#!">Accueil</a></li>
+                        <li><a href="#!">À propos</a></li>
                         @if (auth()->check())
-                        <li><a href="">Welcome, {{ Auth::user()->nom }} <i class="bi bi-person-circle"></i></a></li>
-                        <li><a href="{{ route('logout') }}">Logout</a></li>
+                        <li><a href="">Bienvenu, {{ Auth::user()->nom }} <i class="bi bi-person-circle"></i></a></li>
+                        <li><a href="{{ route('logout') }}">Se déconnecter</a></li>
                         @else
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
+                        <li><a href="{{ route('login') }}">Se connecter</a></li>
+                        <li><a href="{{ route('register') }}">S'enregistrer</a></li>
                         @endif
                     </ul>
                 </div>

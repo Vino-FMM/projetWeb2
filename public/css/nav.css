@@ -1,7 +1,7 @@
 nav {
     display:flex;
     justify-content: flex-start;
-    padding-left:8px;
+    padding:8px;
 }
 
 nav a {
@@ -12,7 +12,7 @@ nav a {
 
 nav ul {
     list-style-type: none;
-    padding: 0;
+    padding: 10px;
     text-align: center;
     position: absolute;
     top: 50%;
@@ -20,13 +20,17 @@ nav ul {
     transform: translate(-50%, -50%);
     width: 100%;
 }
+nav ul li{
+    padding: 7px;
+}
 
 .toggler-label {
     cursor: pointer;
     display: inline-block;
-    width: 30px;
+    width: 26px;
     height: 22px;
     position: relative;
+    z-index: 2;
 }
 
 .toggler-label span {
@@ -44,22 +48,22 @@ nav ul {
 
 .toggler-label span:nth-child(1) {
     top: 0px;
-    transform-origin: left center;
+    transform-origin: center center;
 }
 
 .toggler-label span:nth-child(2) {
     top: 9px;
-    transform-origin: left center;
+    transform-origin: center center;
 }
 
 .toggler-label span:nth-child(3) {
     top: 18px;
-    transform-origin: left center;
+    transform-origin: center center;
 }
 
 #toggler:checked ~ .toggler-label span:nth-child(1) {
     transform: rotate(45deg);
-    top: -3px;
+    top: 9px;
 }
 
 #toggler:checked ~ .toggler-label span:nth-child(2) {
@@ -69,7 +73,7 @@ nav ul {
 
 #toggler:checked ~ .toggler-label span:nth-child(3) {
     transform: rotate(-45deg);
-    top: 23px;
+    top: 9px;
 }
 
 #navbarSupportedContent {

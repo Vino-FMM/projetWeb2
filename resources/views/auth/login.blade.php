@@ -9,8 +9,9 @@
 </section> -->
 <!-- logo -->
 <section class="logo">
-    <img src="https://s2.svgbox.net/materialui.svg?ic=wine_bar&color=000" width="32" height="32">
-    <span>vino</span>
+    <!-- <img src="https://s2.svgbox.net/materialui.svg?ic=wine_bar&color=000" width="32" height="32"> -->
+    <span><i class="fas fa-wine-bottle"></i>Vino</span>
+
 </section>
 
 <section>
@@ -44,7 +45,9 @@
                     </div>
 
                     <!-- Submit Button-->
-                    <button id="Login" type="submit" class="bouton">Se connecter</button>
+                    <button id="Login" type="submit" class="bouton">
+                        Se connecter <i class="fas fa-lock"></i>
+                    </button>
                 </form>
             </div>
             <div>
