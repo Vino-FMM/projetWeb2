@@ -15,11 +15,13 @@ return new class extends Migration
             $table->id();
             $table->morphs('tokenable');
             $table->string('name');
-            $table->string('token', 64)->unique();
+            $table->string('token', 100);
             $table->text('abilities')->nullable();
             $table->timestamp('last_used_at')->nullable();
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();
+
+            $table->index(['tokenable_type', 'tokenable_id'], 'personal_access_tokens_tokenable_index', ['length' => ['tokenable_type' => 191, 'tokenable_id' => 191]]);
         });
     }
 
@@ -31,3 +33,4 @@ return new class extends Migration
         Schema::dropIfExists('personal_access_tokens');
     }
 };
+
