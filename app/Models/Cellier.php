@@ -8,7 +8,7 @@ class Cellier extends Model
 {
     protected $fillable = ['nom_cellier', 'user_id'];
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }
