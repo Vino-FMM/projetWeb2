@@ -1,0 +1,19 @@
+.formulaire-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    gap:30px;
+    min-height: 400px;
+}
+.formulaire_connexion form input[type="text"],
+.formulaire_connexion form input[type="date"],
+.formulaire_connexion form input[type="email"],
+.formulaire_connexion form input[type="password"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    min-width: 300px;
+}
+.formulaire-container div a {
+    color: rgb(54, 7, 7);
+}

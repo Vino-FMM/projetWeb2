@@ -9,44 +9,48 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" /> -->
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+        <!-- <link href="{{ asset('css/styles.css') }}" rel="stylesheet" /> -->
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     </head>
     <body>
     @php $locale = session('locale') @endphp
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container px-5">
-                <a class="navbar-brand" href="#!">Vino</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+        <nav>
+            <div>
+                <input type="checkbox" id="toggler" hidden>
+                <label for="toggler" class="toggler-label">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <div id="navbarSupportedContent">
+                    <ul>
+                        <li><a href="#!">Home</a></li>
+                        <li><a href="#!">About</a></li>
                         @if (auth()->check())
-                        <li class="nav-item"><a class="nav-link" href="">Welcome, {{ Auth::user()->nom }} <i class="bi bi-person-circle"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Logout</a></li>
+                        <li><a href="">Welcome, {{ Auth::user()->nom }} <i class="bi bi-person-circle"></i></a></li>
+                        <li><a href="{{ route('logout') }}">Logout</a></li>
                         @else
-                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+                        <li><a href="{{ route('login') }}">Login</a></li>
+                        <li><a href="{{ route('register') }}">Register</a></li>
                         @endif
-
                     </ul>
                 </div>
             </div>
         </nav>
         @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    @endif
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <!-- Header-->
         @yield('content')
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
+        <!-- <footer class="py-5 bg-dark">
             <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>
+        </footer> -->
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
