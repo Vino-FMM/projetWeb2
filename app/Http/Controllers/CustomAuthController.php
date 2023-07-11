@@ -11,20 +11,36 @@ use App\Models\Etudiant;
 
 class CustomAuthController extends Controller
 {
-    // la page d'inscription
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         return view('auth.login');
     }
-    // la page de login
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('auth.registration');
     }
 
-    // fonction store pour enregistrer un user
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
+
+        //  dd($request);
         $request->validate([
             'nom' => 'required',
             'prenom' => 'required',
@@ -43,7 +59,6 @@ class CustomAuthController extends Controller
        return redirect(route('login'))->withSuccess('User enregistré');
     }
 
-    // finction Authentification pour se connecter
     public function authentication(Request $request)
     {
         $request->validate([
@@ -52,7 +67,9 @@ class CustomAuthController extends Controller
         ]);
     
         $credentials = $request->only('email', 'password');
-        
+        // dd($credentials);
+    // dd(Auth::validate($credentials)
+    // );
         if (!Auth::validate($credentials)) {
             return redirect('login')
                 ->withErrors([
@@ -69,12 +86,57 @@ class CustomAuthController extends Controller
             return redirect()->route('home')->with('success', 'Signed in successfully')->with('name', $user->nom);
             
     }
+    
 
-    // fonction logout pour se deconnecter
     public function logout(){
         Auth::logout();
         Session::flush();
         return redirect(route('login'))->withSuccess('Logged out');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function show(User $user)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(User $user)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, User $user)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(User $user)
+    {
+        //
     }
 
 }

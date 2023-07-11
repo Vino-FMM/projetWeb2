@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,18 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcomee');
 });
-// la page d'accueil
+// Route::get('/home', function () {
+//     return view('welcomee')->name('home');
+// });
 Route::get('/home', function () {
     return view('welcomee');
 })->name('home');
 
-// la page de login
+// for login
 Route::get('/login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('/login', [CustomAuthController::class, 'authentication'])->name('login.authentication');
-// la page d'inscription
+// for register
 Route::get('/register', [CustomAuthController::class, 'create'])->name('register');
 Route::post('/register', [CustomAuthController::class, 'store'])->name('register.store');
-// logout
+// for logout
 Route::get('/logout', [CustomAuthController::class, 'logout'])->name('logout');
