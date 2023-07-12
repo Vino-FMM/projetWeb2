@@ -28,10 +28,10 @@
                 </label>
                 <div id="navbarSupportedContent">
                     <ul>
-                        <li><a href="#!">Accueil</a></li>
+                        <li><a href="{{ route('home') }}">Accueil</a></li>
                         <li><a href="#!">À propos</a></li>
                         @if (auth()->check())
-                        <li><a href="">Bienvenu, {{ Auth::user()->nom }} <i class="bi bi-person-circle"></i></a></li>
+                        <li><a href="">Bienvenu, {{ Auth::user()->nom }}</a></li>
                         <li><a href="{{ route('logout') }}">Se déconnecter</a></li>
                         @else
                         <li><a href="{{ route('login') }}">Se connecter</a></li>
