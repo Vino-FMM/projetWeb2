@@ -35,4 +35,11 @@ Route::post('/register', [CustomAuthController::class, 'store'])->name('register
 Route::get('/logout', [CustomAuthController::class, 'logout'])->name('logout');
 //for cellier
 Route::get('AjouterCellier', [CellierController::class, 'create'])->name('cellier.create');
+//for modify cellier
+Route::get('ModifierCellier/{id}', [CellierController::class, 'edit'])->name('cellier.edit');
+//for update cellier
+Route::put('ModifierCellier/{id}', [CellierController::class, 'update'])->name('cellier.update');
+//for delete cellier
+Route::delete('AjouterCellier/{id}', [CellierController::class, 'destroy'])->name('cellier.destroy');
 Route::post('AjouterCellier', [CellierController::class, 'store'])->name('cellier.store');
+
