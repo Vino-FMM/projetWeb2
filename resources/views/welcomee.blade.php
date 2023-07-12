@@ -54,7 +54,24 @@
         <button id="confirmBtn" class="confirm-button">Supprimer</button>
     </div>
 </div>
-
+<footer>
+    <div>
+        <img src="https://s2.svgbox.net/octicons.svg?ic=home&color=000" width="32" height="32">
+        <span>Acueil</span>
+    </div>
+    <div>
+        <img src="https://s2.svgbox.net/octicons.svg?ic=home&color=000" width="32" height="32">
+        <span>Acueil</span>
+    </div>
+    <div>
+        <img src="https://s2.svgbox.net/octicons.svg?ic=home&color=000" width="32" height="32">
+        <span>Acueil</span>
+    </div>
+    <div>
+        <img src="https://s2.svgbox.net/octicons.svg?ic=home&color=000" width="32" height="32">
+        <span>Acueil</span>
+    </div>
+</footer>
 <script>
 let deleteModal = document.getElementById("deleteModal");
 let closeBtn = document.getElementById("closeBtn");

@@ -1,7 +1,12 @@
 nav {
+    background-color: white;
     display:flex;
     justify-content: flex-start;
     padding:8px;
+    position: fixed;
+    top: 0;
+    width: 100%; 
+    z-index: 3;
 }
 
 nav a {

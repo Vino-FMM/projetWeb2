@@ -17,7 +17,6 @@
     </head>
     <body>
     @php $locale = session('locale') @endphp
-        <!-- Responsive navbar-->
         <nav>
             <div>
                 <input type="checkbox" id="toggler" hidden>

@@ -42,18 +42,23 @@ a{
 footer{
     display: flex;
     padding:5px;
-    justify-content: space-between;
+    justify-content: space-around;
     background-color: rgb(211, 211, 211);
+    position: fixed; 
+    bottom: 0; 
+    width: 100%;
+    z-index: 2;
 }
 footer div{
     display: flex;
     flex-direction: column;
-
+    align-items: center;
 }
 footer div a {
     text-decoration: none;
     color:black;
 }
+
 .header{
     display: flex;
     justify-content: space-between;
