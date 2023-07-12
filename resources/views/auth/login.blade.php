@@ -2,44 +2,58 @@
 @section('title', 'Login')
 @section('titleHeader', 'Login')
 @section('content')
-<section class="bg-light py-5">
-            <div class="container px-5 my-5 px-5">
-                <div class="text-center mb-5">
-                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-globe2"></i></div>
-                    <h2 class="fw-bolder">Login</h2>
-                    <p class="lead mb-0">entter your infos</p>
-                </div>
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-6">
-                    <form action="{{route('login.authentication')}}" method="post">
-                                @csrf
 
-                            <!-- Email address input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" name="email" placeholder="name@example.com" value="{{old('email')}}" />
-                                <label for="email">Email address</label>
-                                @if ($errors->has('email'))
-                                        <div class="text-danger mt-2">
-                                            {{$errors->first('email')}}
-                                        </div>
-                                @endif
+<!-- svg -->
+<!-- <section class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 2400 800" opacity="1"><g fill="hsla(353, 92%, 12%, 1.00)" transform="matrix(1,0,0,1,7.6488037109375,289.73519134521484)"><path d="M-10,10C54.58333333333333,15.416666666666666,172.91666666666666,48.08333333333333,300,36C427.08333333333337,23.916666666666668,475,-51.75,600,-48C725,-44.25,775,54.208333333333336,900,54C1025,53.791666666666664,1075,-41.916666666666664,1200,-49C1325,-56.083333333333336,1375,19.166666666666668,1500,20C1625,20.833333333333332,1675,-55.625,1800,-45C1925,-34.375,1975,60.79166666666667,2100,71C2225,81.20833333333333,2285.4166666666665,-64.54166666666667,2400,4C2514.5833333333335,72.54166666666667,3254.1666666666665,213.33333333333331,2650,400C2045.8333333333335,586.6666666666667,156.25,795.8333333333334,-500,900" transform="matrix(1,0,0,1,0,34)" opacity="0.05"></path><path d="M-10,10C54.58333333333333,15.416666666666666,172.91666666666666,48.08333333333333,300,36C427.08333333333337,23.916666666666668,475,-51.75,600,-48C725,-44.25,775,54.208333333333336,900,54C1025,53.791666666666664,1075,-41.916666666666664,1200,-49C1325,-56.083333333333336,1375,19.166666666666668,1500,20C1625,20.833333333333332,1675,-55.625,1800,-45C1925,-34.375,1975,60.79166666666667,2100,71C2225,81.20833333333333,2285.4166666666665,-64.54166666666667,2400,4C2514.5833333333335,72.54166666666667,3254.1666666666665,213.33333333333331,2650,400C2045.8333333333335,586.6666666666667,156.25,795.8333333333334,-500,900" transform="matrix(1,0,0,1,0,68)" opacity="0.37"></path><path d="M-10,10C54.58333333333333,15.416666666666666,172.91666666666666,48.08333333333333,300,36C427.08333333333337,23.916666666666668,475,-51.75,600,-48C725,-44.25,775,54.208333333333336,900,54C1025,53.791666666666664,1075,-41.916666666666664,1200,-49C1325,-56.083333333333336,1375,19.166666666666668,1500,20C1625,20.833333333333332,1675,-55.625,1800,-45C1925,-34.375,1975,60.79166666666667,2100,71C2225,81.20833333333333,2285.4166666666665,-64.54166666666667,2400,4C2514.5833333333335,72.54166666666667,3254.1666666666665,213.33333333333331,2650,400C2045.8333333333335,586.6666666666667,156.25,795.8333333333334,-500,900" transform="matrix(1,0,0,1,0,102)" opacity="0.68"></path><path d="M-10,10C54.58333333333333,15.416666666666666,172.91666666666666,48.08333333333333,300,36C427.08333333333337,23.916666666666668,475,-51.75,600,-48C725,-44.25,775,54.208333333333336,900,54C1025,53.791666666666664,1075,-41.916666666666664,1200,-49C1325,-56.083333333333336,1375,19.166666666666668,1500,20C1625,20.833333333333332,1675,-55.625,1800,-45C1925,-34.375,1975,60.79166666666667,2100,71C2225,81.20833333333333,2285.4166666666665,-64.54166666666667,2400,4C2514.5833333333335,72.54166666666667,3254.1666666666665,213.33333333333331,2650,400C2045.8333333333335,586.6666666666667,156.25,795.8333333333334,-500,900" transform="matrix(1,0,0,1,0,136)" opacity="1.00"></path></g></svg>
+</section> -->
+<!-- logo -->
+<section class="logo">
+    <!-- <img src="https://s2.svgbox.net/materialui.svg?ic=wine_bar&color=000" width="32" height="32"> -->
+    <span><i class="fas fa-wine-bottle"></i>Vino</span>
+
+</section>
+
+<section>
+        <div class="formulaire-container">
+            <section>
+                <p>Bonjour</p>
+            </section>
+            <div class="formulaire_connexion">
+                <form action="{{route('login.authentication')}}" method="post">
+                    @csrf
+                    <!-- Email address input-->
+                    <div>
+                        <input id="email" type="email" name="email" placeholder="courriel" value="{{old('email')}}" />
+                        <!-- <label for="email">Email address</label> -->
+                        @if ($errors->has('email'))
+                            <div>
+                                {{$errors->first('email')}}
                             </div>
-
-                            <!-- Password input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="password" type="password" name="password" placeholder="Enter your password" />
-                                <label for="password">Password</label>
-                                @if ($errors->has('password'))
-                                        <div class="text-danger mt-2">
-                                            {{$errors->first('password')}}
-                                        </div>
-                                @endif
-    
-                            <!-- Submit Button-->
-                            <button class="btn btn-primary btn-lg" id="Login" type="submit">Login</button>
-                        </form>
+                        @endif
                     </div>
-                </div>
+
+                    <!-- Password input-->
+                    <div>
+                        <input id="password" type="password" name="password" placeholder="mot de passe" />
+                        <!-- <label for="password">Password</label> -->
+                        @if ($errors->has('password'))
+                            <div>
+                                {{$errors->first('password')}}
+                            </div>
+                        @endif
+                    </div>
+
+                    <!-- Submit Button-->
+                    <button id="Login" type="submit" class="bouton">
+                        Se connecter <i class="fas fa-lock"></i>
+                    </button>
+                </form>
             </div>
-        </section>
-        @endsection
+            <div>
+                <a href="{{ route('register') }}">Créer mon compte</a>
+            </div> 
+        </div>
+</section>
+
+@endsection
