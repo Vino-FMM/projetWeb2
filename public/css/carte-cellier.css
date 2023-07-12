@@ -1,5 +1,5 @@
 .carte-cellier, .carte-ajout{
-    border: 1px solid black;
+    border: 1px solid rgb(189, 187, 187);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -12,6 +12,7 @@
 .carte-cellier>a {
     font-size: 24px;
     font-weight: bold;
+    text-decoration: none;
 }
 .carte-cellier>div{
     display: flex;
