@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\CellierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,6 @@ Route::get('/register', [CustomAuthController::class, 'create'])->name('register
 Route::post('/register', [CustomAuthController::class, 'store'])->name('register.store');
 // for logout
 Route::get('/logout', [CustomAuthController::class, 'logout'])->name('logout');
+//for cellier
+Route::get('AjouterCellier', [CellierController::class, 'create'])->name('cellier.create');
+Route::post('AjouterCellier', [CellierController::class, 'store'])->name('cellier.store');

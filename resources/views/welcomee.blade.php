@@ -20,6 +20,9 @@
             </div>
             @endforeach
         </div>
+        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{{route('cellier.create')}}">Ajouter un cellier</a>
+                    </div>
     </div>
 @else
     <div class="container px-5">
@@ -29,8 +32,7 @@
                     <h1 class="display-5 fw-bolder text-white mb-2">welcome to Vino</h1>
                     <p class="lead text-white-50 mb-4">pas de cellier</p>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
-                        <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{{route('cellier.create')}}">Ajouter un cellier</a>
                     </div>
                 </div>
             </div>
