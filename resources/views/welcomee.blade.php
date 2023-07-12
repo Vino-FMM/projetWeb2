@@ -13,19 +13,21 @@
                         {{ $cellier->nom_cellier }}
                     </div>
                     <div class="card-body">
-                        <p class="card-text">Ajouter bouteille</p>
-                        <a href="#" class="btn btn-primary">Ajouter</a>
+                        <a href="{{ route('cellier.edit', ['id' => $cellier->id]) }}" class="btn btn-primary">Modifier nom cellier</a>
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-primary">Ajouter bouteille</a>
+                    </div>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        <a class="btn btn-danger btn-lg px-4 me-sm-3" href="{{ route('cellier.destroy', ['id' => $cellier->id]) }}" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $cellier->id }}').submit();">
+                            Supprimer
+                        </a>
+                        <form id="delete-form-{{ $cellier->id }}" action="{{ route('cellier.destroy', ['id' => $cellier->id]) }}" method="POST" style="display: none;">
+                            @csrf
+                            @method('DELETE')
+                        </form>
                     </div>
                 </div>
-                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-    <a class="btn btn-danger btn-lg px-4 me-sm-3" href="{{ route('cellier.destroy', ['id' => $cellier->id]) }}" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $cellier->id }}').submit();">
-        Supprimer
-    </a>
-    <form id="delete-form-{{ $cellier->id }}" action="{{ route('cellier.destroy', ['id' => $cellier->id]) }}" method="POST" style="display: none;">
-        @csrf
-        @method('DELETE')
-    </form>
-</div>
             </div>
             @endforeach
         </div>

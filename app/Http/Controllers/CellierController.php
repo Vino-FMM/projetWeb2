@@ -60,16 +60,37 @@ class CellierController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        //
-    }
+        
+        {
+            // Retrieve the Cellier object with the given id
+            $cellier = Cellier::findOrFail($id);
+        
+            // Pass the Cellier object to the view for editing
+            return view('cellier.modifyCellier', compact('cellier'));
+        }
+    
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Retrieve the Cellier object with the given id
+        $cellier = Cellier::findOrFail($id);
+    
+        // Validate the form data
+        $request->validate([
+            'nom_cellier' => 'required',
+        ], [
+            'nom_cellier.required' => 'Le champ nom_cellier est requis.',
+        ]);
+    
+        // Update the Cellier object with the new values from the form
+        $cellier->nom_cellier = $request->input('nom_cellier');
+        $cellier->save();
+    
+        // Redirect to the home page with a success message
+        return redirect()->route('home')->withSuccess('Cellier modifié.');
     }
 
     /**
