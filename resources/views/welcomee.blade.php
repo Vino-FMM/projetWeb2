@@ -3,13 +3,14 @@
 @section('titleHeader', 'welcome')
 @section('content')
 <header class="bg-dark py-5">
-@if(Auth::check() && Auth::user()->celliers()->count() > 0)
+@if(Auth::check() && Auth::user()->celliers->count() > 0)
     <div class="container mt-5">
         <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <div class="card">
+            @foreach(Auth::user()->celliers as $cellier)
+            <div class="col-md-4">
+                <div class="card mb-4">
                     <div class="card-header">
-                        {{ Auth::user()->celliers()->first()->nom_cellier }}
+                        {{ $cellier->nom_cellier }}
                     </div>
                     <div class="card-body">
                         <p class="card-text">Ajouter bouteille</p>
@@ -17,6 +18,7 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 @else
