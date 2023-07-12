@@ -3,13 +3,13 @@
 @section('titleHeader', 'welcome')
 @section('content')
 <header class="bg-dark py-5">
-@if(Auth::check() && Auth::user()->celliers)
+@if(Auth::check() && Auth::user()->celliers()->count() > 0)
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="card">
                     <div class="card-header">
-                        {{ Auth::user()->celliers[0]->nom_cellier }}
+                        {{ Auth::user()->celliers()->first()->nom_cellier }}
                     </div>
                     <div class="card-body">
                         <p class="card-text">Ajouter bouteille</p>
