@@ -4,6 +4,9 @@
 @section('content')
 
 <main>
+@if (auth()->check())
+    <h3>Bienvenu, {{ Auth::user()->prenom }}</h3>
+@endif
 @if(Auth::check() && Auth::user()->celliers->count() > 0)
     <div>
         <div class="header">
