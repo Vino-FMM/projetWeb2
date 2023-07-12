@@ -17,6 +17,15 @@
                         <a href="#" class="btn btn-primary">Ajouter</a>
                     </div>
                 </div>
+                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+    <a class="btn btn-danger btn-lg px-4 me-sm-3" href="{{ route('cellier.destroy', ['id' => $cellier->id]) }}" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $cellier->id }}').submit();">
+        Supprimer
+    </a>
+    <form id="delete-form-{{ $cellier->id }}" action="{{ route('cellier.destroy', ['id' => $cellier->id]) }}" method="POST" style="display: none;">
+        @csrf
+        @method('DELETE')
+    </form>
+</div>
             </div>
             @endforeach
         </div>

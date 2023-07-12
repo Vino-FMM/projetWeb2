@@ -35,4 +35,7 @@ Route::post('/register', [CustomAuthController::class, 'store'])->name('register
 Route::get('/logout', [CustomAuthController::class, 'logout'])->name('logout');
 //for cellier
 Route::get('AjouterCellier', [CellierController::class, 'create'])->name('cellier.create');
+//for delete cellier
+Route::delete('AjouterCellier/{id}', [CellierController::class, 'destroy'])->name('cellier.destroy');
 Route::post('AjouterCellier', [CellierController::class, 'store'])->name('cellier.store');
+
