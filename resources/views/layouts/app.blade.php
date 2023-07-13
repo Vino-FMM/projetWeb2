@@ -18,6 +18,7 @@
     <body>
     @php $locale = session('locale') @endphp
         <nav>
+        <span>VINO</span>
             <div>
                 <input type="checkbox" id="toggler" hidden>
                 <label for="toggler" class="toggler-label">
@@ -37,8 +38,10 @@
                         @endif
                     </ul>
                 </div>
-            </div>
+            </div>   
         </nav>
+        <section class="nav-second-bg"></section>
+
         @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
