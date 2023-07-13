@@ -2,31 +2,47 @@
 @section('title', 'Ajouter un cellier')
 @section('titleHeader', 'Ajouter un cellier')
 @section('content')
-<section class="bg-light py-5">
-            <div class="container px-5 my-5 px-5">
-                <div class="text-center mb-5">
-                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-bag-plus"></i></div>
-                    <h2 class="fw-bolder">Ajouter un cellier</h2>
-                    <p class="lead mb-0">infos</p>
-                </div>
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-6">
-                    <form action="{{route('cellier.store')}}" method="post">
-                                @csrf
-                                 <div class="form-floating mb-3">
-                                <input class="form-control" id="nom_cellier" type="text" name="nom_cellier" placeholder="Nom Cellier" value="{{old('nom_cellier')}}" />
-                                <label for="nom_cellier">nom_cellier</label>
-                                @if ($errors->has('nom_cellier'))
-                                        <div class="text-danger mt-2">
-                                            {{$errors->first('nom_cellier')}}
-                                        </div>
-                                @endif
+
+<main>
+    <div class="header">
+        <h2>Ajouter un cellier</h2>
+    </div>        
+    <div class="carte-ajout">
+        <div class="formulaire_connexion">
+            <form action="{{route('cellier.store')}}" method="post" >
+                @csrf
+                    <div>
+                        <input id="nom_cellier" type="text" name="nom_cellier" placeholder="Nom du cellier" value="{{old('nom_cellier')}}" />
+                        <!-- <label for="nom_cellier">nom_cellier</label> -->
+                        @if ($errors->has('nom_cellier'))
+                            <div>
+                                {{$errors->first('nom_cellier')}}
                             </div>
-                                                        <!-- Submit Button-->
-                            <button class="btn btn-primary btn-lg" id="Login" type="submit">Ajouter</button>
-                        </form>
+                        @endif
                     </div>
-                </div>
+                    <!-- Submit Button-->
+                    <button id="Login" type="submit" class="bouton">Ajouter</button>
+                </form>
             </div>
-        </section>
+        </div>
+    </div>
+</main>
+<footer>
+    <div>
+        <a href="{{ route('home') }}"><img src="https://s2.svgbox.net/octicons.svg?ic=home&color=000" width="32" height="32"></a>
+        <span>Acueil</span>
+    </div>
+    <div>
+    <img src="https://s2.svgbox.net/hero-outline.svg?ic=plus-sm&color=000000" width="32" height="32">
+        <span>Ajout</span>
+    </div>
+    <div>
+    <img src="https://s2.svgbox.net/octicons.svg?ic=search&color=000" width="32" height="32">
+        <span>Recherche</span>
+    </div>
+    <div>
+    <img src="https://s2.svgbox.net/materialui.svg?ic=list&color=000" width="32" height="32">
+        <span>Liste</span>
+    </div>
+</footer>
 @endsection

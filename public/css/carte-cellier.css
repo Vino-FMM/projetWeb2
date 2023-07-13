@@ -1,0 +1,50 @@
+.carte-cellier, .carte-ajout{
+    /* border: 1px solid rgb(189, 187, 187); */
+    background-color: rgb(247, 247, 247);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 10px;
+    min-height: 160px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+.carte-ajout{
+    justify-content: center;
+}
+.carte-cellier>div>img {
+    width:40px;
+    height: 40px;
+    padding:7px;
+    border-radius: 50%;
+    /* border: 1px solid grey; */
+    background-color: rgb(242, 166, 157);
+
+}
+.carte-cellier div:first-child a{
+    font-size: 24px;
+    padding-left: 15px;
+}
+.carte-cellier>div>a{
+    
+    text-decoration: none;
+    font-size: 18px;
+}
+.carte-cellier div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.carte-cellier div:nth-child(2){
+    justify-content: space-around;
+}
+.carte-cellier div:nth-child(2) a img{
+    padding-left: 5px;
+}
+.carte-cellier>small {
+    color: grey;
+    text-align: left;
+}

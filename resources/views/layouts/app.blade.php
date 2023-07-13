@@ -17,8 +17,8 @@
     </head>
     <body>
     @php $locale = session('locale') @endphp
-        <!-- Responsive navbar-->
         <nav>
+        <span>VINO</span>
             <div>
                 <input type="checkbox" id="toggler" hidden>
                 <label for="toggler" class="toggler-label">
@@ -28,10 +28,9 @@
                 </label>
                 <div id="navbarSupportedContent">
                     <ul>
-                        <li><a href="#!">Accueil</a></li>
+                        <li><a href="{{ route('home') }}">Accueil</a></li>
                         <li><a href="#!">À propos</a></li>
                         @if (auth()->check())
-                        <li><a href="">Bienvenu, {{ Auth::user()->nom }} <i class="bi bi-person-circle"></i></a></li>
                         <li><a href="{{ route('logout') }}">Se déconnecter</a></li>
                         @else
                         <li><a href="{{ route('login') }}">Se connecter</a></li>
@@ -39,8 +38,10 @@
                         @endif
                     </ul>
                 </div>
-            </div>
+            </div>   
         </nav>
+        <section class="nav-second-bg"></section>
+
         @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
