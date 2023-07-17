@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cellier;
+use App\Models\Bouteille;
+use App\Models\BouteilleCellier;
 use Illuminate\Http\Request;
 
 class CellierController extends Controller
@@ -105,4 +107,37 @@ class CellierController extends Controller
         // return redirect(route('accueil'))->withSuccess('Cellier supprimé.');
         return redirect()->route('home')->withSuccess('Cellier supprimé.');
     }
+
+    public function addBouteille(Request $request, $id)
+    {
+        //find cellier with id of connected user
+        $url = url()->previous();
+        $queryParams = parse_url($url, PHP_URL_QUERY);
+        parse_str($queryParams, $params);
+        $cellierId = isset($params['cellier_id']) ? intval($params['cellier_id']) : null;
+        // dd($cellierId);
+    
+        $userId = auth()->user()->id;
+        // dd($id, $userId);
+       
+        
+        // $cellier = Cellier::where('id', $id)
+        // ->where('user_id', $userId)
+        // ->firstOrFail();
+
+        //find bouteille with id of bouteille selected
+        $bouteille = Bouteille::findOrFail($id);
+       
+        // Create a new BouteilleCellier record in the database with quantity set to 1
+        $bouteilleCellier = new BouteilleCellier;
+        $bouteilleCellier->user_id = auth()->user()->id;
+        $bouteilleCellier->bouteille_id = $bouteille->id;
+        $bouteilleCellier->quantite = 1; // Set quantity to 1
+    
+        $bouteilleCellier->save();
+
+        return redirect()->route('home')->with('success', 'Bouteille ajoutée au cellier.');
+
+    }
+
 }
