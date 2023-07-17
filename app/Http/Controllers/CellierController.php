@@ -14,7 +14,12 @@ class CellierController extends Controller
      */
     public function index()
     {
-        //
+    
+    $url = url()->current();
+    $queryParams = parse_url($url, PHP_URL_QUERY);
+    parse_str($queryParams, $params);
+    $cellierId = isset($params['cellier_id']) ? intval($params['cellier_id']) : null;
+    dd($cellierId);
     }
 
     /**

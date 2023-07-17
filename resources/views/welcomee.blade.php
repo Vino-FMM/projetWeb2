@@ -20,7 +20,7 @@
                 <div class="carte-cellier">
                     <div>
                         <img src="https://s2.svgbox.net/materialui.svg?ic=wine_bar&color=000" width="40" height="40">    
-                        <a href="#">{{ $cellier->nom_cellier }}</a>
+                        <a href="{{ route('mon-cellier', ['cellier_id' => $cellier->id]) }}">{{ $cellier->nom_cellier }}</a>
                     </div>
                    
                     <div>
