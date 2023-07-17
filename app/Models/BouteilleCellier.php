@@ -14,8 +14,17 @@ class BouteilleCellier extends Model
 
     protected $fillable = [
         'user_id',
-        'bouteille_id',
+        'cellier_id',
         'quantite',
+        'nom_bouteille',
+        'format_bouteille',
+        'prix_bouteille',
+        'pays_bouteille',
+        'code_saq_bouteille',
+        'url_saq_bouteille',
+        'url_img_bouteille',
+        'millesime_bouteille',
+        'type_bouteille',
     ];
 
     public function user()
