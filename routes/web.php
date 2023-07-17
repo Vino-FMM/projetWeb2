@@ -43,3 +43,4 @@ Route::put('ModifierCellier/{id}', [CellierController::class, 'update'])->name('
 Route::delete('AjouterCellier/{id}', [CellierController::class, 'destroy'])->name('cellier.destroy');
 Route::post('AjouterCellier', [CellierController::class, 'store'])->name('cellier.store');
 
+Route::get('/import', 'App\Http\Controllers\SAQController@import');
