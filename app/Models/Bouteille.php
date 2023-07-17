@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Cellier;
+// use App\Models\Cellier;
 
 
 class Bouteille extends Model
@@ -24,23 +24,21 @@ class Bouteille extends Model
         'nom',
         'format',
         'prix',
-        'pays_id',
+        'pays',
         'code_saq',
         'url_saq',
         'url_img',
-        'date_achat',
-        'garde_jusqua',
-        'notes',
-        'quantite',
         'millesime',
-        'cellier_id',
+        'type',
     ];
 
     /**
      * Get the cellier that owns the bouteille.
      */
-    public function cellier()
-    {
-        return $this->belongsTo(Cellier::class);
-    }
+    // public function cellier()
+    // {
+    //     return $this->belongsTo(Cellier::class);
+    // }
 }
+
+
