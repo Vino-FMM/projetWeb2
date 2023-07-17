@@ -40,5 +40,3 @@ class Bouteille extends Model
     //     return $this->belongsTo(Cellier::class);
     // }
 }
-
-
