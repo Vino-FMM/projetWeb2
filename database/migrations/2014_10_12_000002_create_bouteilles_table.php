@@ -13,17 +13,20 @@ class CreateBouteillesTable extends Migration
             $table->string('nom');
             $table->string('format');
             $table->decimal('prix', 8, 2);
-            $table->unsignedBigInteger('pays_id');
+            $table->string('pays');
+            // $table->unsignedBigInteger('pays_id');
             $table->string('code_saq');
             $table->string('url_saq');
             $table->string('url_img');
-            $table->date('date_achat');
-            $table->date('garde_jusqua');
-            $table->text('notes');
-            $table->integer('quantite');
+            
+            // $table->date('date_achat');
+            // $table->date('garde_jusqua');
+            // $table->text('notes');
+            // $table->integer('quantite');
             $table->integer('millesime');
-            $table->unsignedBigInteger('cellier_id');
-            $table->foreign('cellier_id')->references('id')->on('celliers');
+            $table->string('type');
+            // $table->unsignedBigInteger('cellier_id');
+            // $table->foreign('cellier_id')->references('id')->on('celliers');
             $table->timestamps();
         });
     }
