@@ -1,0 +1,30 @@
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    gap:30px;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.pagination-link {
+    text-decoration: none;
+    color: #000000;
+    padding: 5px 10px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.pagination-link:hover {
+    background-color: #000000;
+    color: #fff;
+}
+
+.disabled {
+    color: #ccc;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
