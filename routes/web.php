@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\CellierController;
+use App\Http\Controllers\SAQController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,5 @@ Route::get('/import', 'App\Http\Controllers\SAQController@import');
 
 Route::get('/Ajouter-bouteilles', [SAQController::class, 'index'])->name('Ajouter-bouteilles');
 Route::post('/bouteilles/addBouteille/{id}', [CellierController::class, 'addBouteille'])->name('bouteilles.addBouteille');
+
+Route::get('/mon-cellier', [CellierController::class, 'index'])->name('mon-cellier');
