@@ -131,12 +131,15 @@ class CellierController extends Controller
         
         // Find bouteille with id of bouteille selected
         $bouteille = Bouteille::findOrFail($id);
+
+         // Get the quantity from the form input
+        $quantite = $request->input('quantite');
     
         // Create a new BouteilleCellier record in the database with quantity set to 1
         $bouteilleCellier = new BouteilleCellier;
         $bouteilleCellier->user_id = auth()->user()->id;
         $bouteilleCellier->cellier_id = $cellierId;
-       $bouteilleCellier->quantite = 1;
+       $bouteilleCellier->quantite = $quantite;
         $bouteilleCellier->nom_bouteille = $bouteille->nom;
         $bouteilleCellier->format_bouteille = $bouteille->format;
         $bouteilleCellier->prix_bouteille = $bouteille->prix;
