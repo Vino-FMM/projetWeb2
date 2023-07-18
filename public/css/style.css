@@ -77,8 +77,11 @@ footer span {
     align-items: center;
     padding: 30px 15px;
 }
-.header h3{
+.header h3,.header small{
     font-weight: bold;
+}
+.header small{
+    color:rgb(53, 53, 53);
 }
 .svg-container {
     position: fixed;

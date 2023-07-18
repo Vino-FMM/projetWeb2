@@ -3,19 +3,20 @@
 @section('content')
     <main>
         <div class="header">
-            <h2>Liste des bouteilles</h2>
-            <small>nom du cellier : {{ $mon_cellier->nom_cellier }}</small>
-
-      
+            <h4>Liste des bouteilles</h4>
+            <small>cellier: {{ $mon_cellier->nom_cellier }}</small>
         </div> 
         <div class="container-bouteilles">
             @foreach($bottles as $bottle)
                 <div class="carte-bouteille">
-                    <img src="{{ $bottle->url_img }}" alt="{{ $bottle->nom }}" style="max-width: 100%; height: auto;">
+                    <div>
+                        <div class="cercle {{ $bottle->type === 'Vin rouge' ? 'cercle-rouge' : ($bottle->type === 'Vin blanc' ? 'cercle-doré' : '') }}"></div>
+                        <img src="{{ $bottle->url_img }}" alt="{{ $bottle->nom }}" style="max-width: 100%; height: auto;">
+                    </div>  
                         <div class="carte-details">
                             <h4>{{ $bottle->nom }}</h4>
                             <small>{{ $bottle->type }} | {{ $bottle->format }} | {{ $bottle->pays }}</small>
-                            <p> prix: {{ $bottle->prix }} $</p>
+                            <small> prix: {{ $bottle->prix }} $</small>
                             <small>code SAQ: {{ $bottle->code_saq }}</small>
                             <div>
                                 @if(in_array($bottle->code_saq, $owned_bottles))
@@ -41,7 +42,22 @@
         </div>
     </main>
 
-<footer>
-    <!-- Footer content here -->
+    <footer>
+    <div>
+        <a href="{{ route('home') }}"><img src="https://s2.svgbox.net/octicons.svg?ic=home&color=000" width="32" height="32"></a>
+        <span>Acueil</span>
+    </div>
+    <div>
+        <img src="https://s2.svgbox.net/hero-outline.svg?ic=plus-sm&color=000000" width="32" height="32">
+        <span>Ajout</span>
+    </div>
+    <div>
+        <img src="https://s2.svgbox.net/octicons.svg?ic=search&color=000" width="32" height="32">
+        <span>Recherche</span>
+    </div>
+    <div>
+        <img src="https://s2.svgbox.net/materialui.svg?ic=list&color=000" width="32" height="32">
+        <span>Liste</span>
+    </div>
 </footer>
 @endsection
