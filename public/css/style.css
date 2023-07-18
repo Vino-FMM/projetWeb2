@@ -55,7 +55,7 @@ footer{
     bottom: 0; 
     /* width: 100%; */
     z-index: 2;
-    border-top: 3px solid rgb(193, 174, 133);
+    border-top: 3px solid rgb(153, 0, 0);
 }
 footer div{
     display: flex;

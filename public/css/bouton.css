@@ -18,3 +18,11 @@
     color: rgb(167, 167, 167);
     font-size: 12px;
 }
+.bouton-outline{
+    color:black;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 14px;
+}

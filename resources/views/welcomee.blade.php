@@ -16,11 +16,18 @@
 
             @foreach(Auth::user()->celliers as $cellier)
         <div class="carte-cellier">
-            <img src="{{ asset('assets/img/cellier1.png') }}" alt="cellier-photo">
+        <div class="bottle-wrapper">
+        <img src="{{ asset('assets/img/cellier1.png') }}" alt="cellier-photo">
+    </div>
             <div>
                 <a id="nom-cellier" href="{{ route('mon-cellier', ['id' => $cellier->id]) }}">{{ $cellier->nom_cellier }} <small class="bouton-click">cliquez ici</small></a>
-                <a href="{{ route('cellier.edit', ['id' => $cellier->id]) }}">Modifier<img src="https://s2.svgbox.net/hero-outline.svg?ic=pencil&color=000000" width="22" height="22"></a>
-                <a href="#" data-cellier-id="{{ $cellier->id }}">Supprimer<img src="https://s2.svgbox.net/materialui.svg?ic=delete&color=000" width="22" height="22"></a>
+                <div>
+                <!-- <a href="{{ route('cellier.edit', ['id' => $cellier->id]) }}">Modifier<img src="https://s2.svgbox.net/hero-outline.svg?ic=pencil&color=000000" width="22" height="22"></a> -->
+                    <a href="{{ route('cellier.edit', ['id' => $cellier->id]) }}" class="bouton-outline">Modifier</a>
+                <!-- <a href="#" data-cellier-id="{{ $cellier->id }}">Supprimer<img src="https://s2.svgbox.net/materialui.svg?ic=delete&color=000" width="22" height="22"></a> -->
+                    <a href="#" data-cellier-id="{{ $cellier->id }}" class="bouton-outline">Supprimer</a>
+                </div>
+                
                 <form id="delete-form-{{ $cellier->id }}" action="{{ route('cellier.destroy', ['id' => $cellier->id]) }}" method="POST" style="display: none;">
                         @csrf
                         @method('DELETE')
