@@ -14,19 +14,11 @@ class CellierController extends Controller
      */
     public function index()
     {
-    // dd('sdasasd');
-    // $url = url()->current();
-    // $cellierId = basename($url);
-    $cellierId = request('id');
-    // dd($cellierId);
-
-    
-    //using findOrFail to get the cellier with the given cellier_id
-    $cellier = Cellier::findOrFail($cellierId);
-    $bouteilleCelliers = BouteilleCellier::where('cellier_id', $cellierId)->get();
-    // dd($bouteilleCelliers);
-    //return to monCellier.blade on cellier folder with BouteilleCellier
-    return view('cellier.monCellier', compact('bouteilleCelliers', 'cellier'));
+        $cellierId = request('id');
+        $cellier = Cellier::findOrFail($cellierId);
+        $bouteilleCelliers = BouteilleCellier::where('cellier_id', $cellierId)->get();
+        //return to monCellier.blade on cellier folder with BouteilleCellier
+        return view('cellier.monCellier', compact('bouteilleCelliers', 'cellier'));
     }
 
     /**
@@ -81,6 +73,39 @@ class CellierController extends Controller
         
             // Pass the Cellier object to the view for editing
             return view('cellier.modifyCellier', compact('cellier'));
+        }
+
+        //modifier la quantité de bouteille dans le cellier (vue)
+
+        public function modifierBouteille(Request $request, $id)
+        {
+            // trouver la bouteille avec l'id de la bouteille sélectionnée dans BouteilleCellier
+            $bouteilleCellier = BouteilleCellier::findOrFail($id);
+            //retour vers la vue modifyQte
+            return view('bouteilles.modifyQte', compact('bouteilleCellier'));
+        }
+
+        public function modifierQteBouteille(Request $request, $bouteille_id)
+        {
+            
+            // Find the BouteilleCellier record with the given ID
+            $bouteilleCellier = BouteilleCellier::findOrFail($bouteille_id);
+            // dd($bouteilleCellier);
+            // Update the quantity of the BouteilleCellier record with the input value
+            $bouteilleCellier->quantite = $request->input('quantite');
+            $bouteilleCellier->save();
+
+            // Get the ID of the cellier that the BouteilleCellier record belongs to
+            $cellierId = $bouteilleCellier->cellier_id;
+
+            // Get all the BouteilleCellier records for the cellier
+            $bouteilleCelliers = BouteilleCellier::where('cellier_id', $cellierId)->get();
+
+            // Get the Cellier record for the cellier
+            $cellier = Cellier::findOrFail($cellierId);
+
+            // Return the monCellier view with the updated BouteilleCellier records and Cellier record
+            return view('cellier.monCellier', compact('bouteilleCelliers', 'cellier'))->with('success', 'Quantité modifiée.');
         }
     
 
