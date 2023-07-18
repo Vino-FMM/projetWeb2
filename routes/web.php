@@ -49,6 +49,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/Ajouter-bouteilles/{cellier_id}', [BouteilleController::class, 'index'])->name('Ajouter-bouteilles');
     Route::post('/bouteilles/addBouteille/{id}', [BouteilleController::class, 'addBouteille'])->name('bouteilles.addBouteille');
 
+    //pour supprimer une bouteille dans un cellier
+    Route::delete('bouteilles/{id}', [BouteilleController::class, 'destroy'])->name('bouteilles.destroy');
+
+
     // pour voir les bouteilles d'un cellier
     Route::get('/mon-cellier', [CellierController::class, 'index'])->name('mon-cellier');
 
