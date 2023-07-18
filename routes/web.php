@@ -51,3 +51,7 @@ Route::post('/bouteilles/addBouteille/{id}', [CellierController::class, 'addBout
 
 // for mon cellier
 Route::get('/mon-cellier', [CellierController::class, 'index'])->name('mon-cellier');
+
+//for modify qte bouteille
+Route::get('modifierQte/{bouteille_id}', [CellierController::class, 'modifierBouteille'])->name('modifier-Qte');
+Route::post('modifierQte/{bouteille_id}', [CellierController::class, 'modifierQteBouteille'])->name('modifier-Qte');
