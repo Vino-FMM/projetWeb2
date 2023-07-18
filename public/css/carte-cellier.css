@@ -76,7 +76,7 @@
 .carte-bouteille > div:nth-child(1){
     position: relative;
     z-index: 10;
-    min-width: 90px;
+    min-width: 75px;
 }
 
 
@@ -97,6 +97,40 @@
 
 .cercle-doré {
     background-color: rgb(211, 197, 117);
+}
+.carte-details .container-incrementation{
+    display: flex;
+     align-items: center;
+}
+.quantite {
+    text-align: center;
+}
+.container-incrementation {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.container-incrementation button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    color: #454545;
+    background-color: #f8f8f8;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.quantite {
+    border: none;
+    text-align: center;
+    padding: 5px;
+    width: 40px;
 }
 
 
