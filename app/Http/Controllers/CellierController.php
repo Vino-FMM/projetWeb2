@@ -14,9 +14,10 @@ class CellierController extends Controller
      */
     public function index()
     {
-    
-    $url = url()->current();
-    $cellierId = basename($url);
+    // dd('sdasasd');
+    // $url = url()->current();
+    // $cellierId = basename($url);
+    $cellierId = request('id');
     // dd($cellierId);
 
     
@@ -120,13 +121,12 @@ class CellierController extends Controller
     }
         public function addBouteille(Request $request, $id)
     {
-        // Find cellier with id of connected user
-        $url = url()->previous();
-        $queryParams = parse_url($url, PHP_URL_QUERY);
-        parse_str($queryParams, $params);
-        $cellierId = isset($params['cellier_id']) ? intval($params['cellier_id']) : null;
-        // dd($cellierId);
-    
+        $previousUrl = url()->previous();
+        $queryParameters = parse_url($previousUrl, PHP_URL_QUERY);
+        parse_str($queryParameters, $queryData);
+        
+        $cellierId = $queryData['cellier_id'];
+        
         // Find bouteille with id of bouteille selected
         $bouteille = Bouteille::findOrFail($id);
     
@@ -145,8 +145,13 @@ class CellierController extends Controller
         $bouteilleCellier->millesime_bouteille = $bouteille->millesime;
         $bouteilleCellier->type_bouteille = $bouteille->type;
         $bouteilleCellier->save();
+        $bouteilleCelliers = BouteilleCellier::where('cellier_id', $cellierId)->get();
+        
+        
+        $cellier = Cellier::findOrFail($cellierId);
     
-        return redirect()->route('home')->with('success', 'Bouteille ajoutée au cellier.');
+        return view('cellier.monCellier', compact( 'bouteilleCelliers','cellier'))->with('success', 'Bouteille ajoutée au cellier.');
+        
     }
 
 }
