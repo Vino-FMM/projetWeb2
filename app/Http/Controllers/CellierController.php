@@ -17,6 +17,7 @@ class CellierController extends Controller
     {
         // stocker l'id de l'utilisateur connecté
         $cellierId = request("id");
+       
         // récupérer les bouteilles du cellier de l'utilisateur connecté
         $cellier = Cellier::findOrFail($cellierId);
         // récupérer les bouteilles du cellier de l'utilisateur connecté
@@ -24,10 +25,11 @@ class CellierController extends Controller
             "cellier_id",
             $cellierId,
         )->get();
+        // dd($cellierId);
         // retourner la vue monCellier avec les bouteilles du cellier de l'utilisateur connecté
         return view(
             "cellier.monCellier",
-            compact("bouteilleCelliers", "cellier"),
+            compact("bouteilleCelliers", "cellier", "cellierId"),
         );
     }
 
@@ -123,50 +125,5 @@ class CellierController extends Controller
             ->route("home")
             ->withSuccess("Cellier supprimé.");
     }
-    /**
-     * ajouter une bouteille au cellier
-     * @param Request $request
-     * @param string $id
-     */
-    public function addBouteille(Request $request, $id)
-    {
-        // stocker l'url précédente
-        $previousUrl = url()->previous();
-        $queryParameters = parse_url($previousUrl, PHP_URL_QUERY);
-        parse_str($queryParameters, $queryData);
-        // stocker l'id du cellier
-        $cellierId = $queryData["cellier_id"];
-
-        // trouver la bouteille avec l'id de la bouteille sélectionnée dans Bouteille
-        $bouteille = Bouteille::findOrFail($id);
-        // stocker la quantité de bouteille
-        $quantite = $request->input("quantite");
-        // ajouter une nouvelle bouteille dans le cellier
-        $bouteilleCellier = new BouteilleCellier();
-        $bouteilleCellier->user_id = auth()->user()->id;
-        $bouteilleCellier->cellier_id = $cellierId;
-        $bouteilleCellier->quantite = $quantite;
-        $bouteilleCellier->nom_bouteille = $bouteille->nom;
-        $bouteilleCellier->format_bouteille = $bouteille->format;
-        $bouteilleCellier->prix_bouteille = $bouteille->prix;
-        $bouteilleCellier->pays_bouteille = $bouteille->pays;
-        $bouteilleCellier->code_saq_bouteille = $bouteille->code_saq;
-        $bouteilleCellier->url_saq_bouteille = $bouteille->url_saq;
-        $bouteilleCellier->url_img_bouteille = $bouteille->url_img;
-        $bouteilleCellier->millesime_bouteille = $bouteille->millesime;
-        $bouteilleCellier->type_bouteille = $bouteille->type;
-        $bouteilleCellier->save();
-        $bouteilleCelliers = BouteilleCellier::where(
-            "cellier_id",
-            $cellierId,
-        )->get();
-
-        // trouver le cellier avec l'id du cellier sélectionné
-        $cellier = Cellier::findOrFail($cellierId);
-        // retourner vers la vue monCellier
-        return view(
-            "cellier.monCellier",
-            compact("bouteilleCelliers", "cellier"),
-        )->with("success", "Bouteille ajoutée au cellier.");
-    }
+    
 }
