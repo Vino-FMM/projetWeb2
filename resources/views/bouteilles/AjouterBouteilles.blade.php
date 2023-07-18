@@ -4,6 +4,7 @@
     <main>
         <div class="header">
             <h2>Liste des bouteilles</h2>
+            <h3>cellier id : {{ request()->query('cellier_id') }}</h3>
         </div> 
         <div class="container-bouteilles">
             @foreach($bottles as $bottle)
@@ -24,7 +25,7 @@
                 </div>
             @endforeach
 
-            {{ $bottles->links('vendor.pagination.custom') }}
+            {{ $bottles->appends(request()->query())->links('vendor.pagination.custom') }}
         </div>
     </main>
 

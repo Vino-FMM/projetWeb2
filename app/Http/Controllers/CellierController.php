@@ -14,12 +14,19 @@ class CellierController extends Controller
      */
     public function index()
     {
+    // dd('sdasasd');
+    // $url = url()->current();
+    // $cellierId = basename($url);
+    $cellierId = request('id');
+    // dd($cellierId);
+
     
-    $url = url()->current();
-    $queryParams = parse_url($url, PHP_URL_QUERY);
-    parse_str($queryParams, $params);
-    $cellierId = isset($params['cellier_id']) ? intval($params['cellier_id']) : null;
-    dd($cellierId);
+    //using findOrFail to get the cellier with the given cellier_id
+    $cellier = Cellier::findOrFail($cellierId);
+    $bouteilleCelliers = BouteilleCellier::where('cellier_id', $cellierId)->get();
+    // dd($bouteilleCelliers);
+    //return to monCellier.blade on cellier folder with BouteilleCellier
+    return view('cellier.monCellier', compact('bouteilleCelliers', 'cellier'));
     }
 
     /**
@@ -112,37 +119,39 @@ class CellierController extends Controller
         // return redirect(route('accueil'))->withSuccess('Cellier supprimé.');
         return redirect()->route('home')->withSuccess('Cellier supprimé.');
     }
-
-    public function addBouteille(Request $request, $id)
+        public function addBouteille(Request $request, $id)
     {
-        //find cellier with id of connected user
-        $url = url()->previous();
-        $queryParams = parse_url($url, PHP_URL_QUERY);
-        parse_str($queryParams, $params);
-        $cellierId = isset($params['cellier_id']) ? intval($params['cellier_id']) : null;
-        // dd($cellierId);
-    
-        $userId = auth()->user()->id;
-        // dd($id, $userId);
-       
+        $previousUrl = url()->previous();
+        $queryParameters = parse_url($previousUrl, PHP_URL_QUERY);
+        parse_str($queryParameters, $queryData);
         
-        // $cellier = Cellier::where('id', $id)
-        // ->where('user_id', $userId)
-        // ->firstOrFail();
-
-        //find bouteille with id of bouteille selected
+        $cellierId = $queryData['cellier_id'];
+        
+        // Find bouteille with id of bouteille selected
         $bouteille = Bouteille::findOrFail($id);
-       
+    
         // Create a new BouteilleCellier record in the database with quantity set to 1
         $bouteilleCellier = new BouteilleCellier;
         $bouteilleCellier->user_id = auth()->user()->id;
-        $bouteilleCellier->bouteille_id = $bouteille->id;
-        $bouteilleCellier->quantite = 1; // Set quantity to 1
-    
+        $bouteilleCellier->cellier_id = $cellierId;
+       $bouteilleCellier->quantite = 1;
+        $bouteilleCellier->nom_bouteille = $bouteille->nom;
+        $bouteilleCellier->format_bouteille = $bouteille->format;
+        $bouteilleCellier->prix_bouteille = $bouteille->prix;
+        $bouteilleCellier->pays_bouteille = $bouteille->pays;
+        $bouteilleCellier->code_saq_bouteille = $bouteille->code_saq;
+        $bouteilleCellier->url_saq_bouteille = $bouteille->url_saq;
+        $bouteilleCellier->url_img_bouteille = $bouteille->url_img;
+        $bouteilleCellier->millesime_bouteille = $bouteille->millesime;
+        $bouteilleCellier->type_bouteille = $bouteille->type;
         $bouteilleCellier->save();
-
-        return redirect()->route('home')->with('success', 'Bouteille ajoutée au cellier.');
-
+        $bouteilleCelliers = BouteilleCellier::where('cellier_id', $cellierId)->get();
+        
+        
+        $cellier = Cellier::findOrFail($cellierId);
+    
+        return view('cellier.monCellier', compact( 'bouteilleCelliers','cellier'))->with('success', 'Bouteille ajoutée au cellier.');
+        
     }
 
 }
