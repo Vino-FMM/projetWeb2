@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\CellierController;
 use App\Http\Controllers\SAQController;
+use App\Http\Controllers\BouteilleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,5 +54,5 @@ Route::post('/bouteilles/addBouteille/{id}', [CellierController::class, 'addBout
 Route::get('/mon-cellier', [CellierController::class, 'index'])->name('mon-cellier');
 
 //for modify qte bouteille
-Route::get('modifierQte/{bouteille_id}', [CellierController::class, 'modifierBouteille'])->name('modifier-Qte');
-Route::post('modifierQte/{bouteille_id}', [CellierController::class, 'modifierQteBouteille'])->name('modifier-Qte');
+Route::get('modifierQte/{bouteille_id}', [BouteilleController::class, 'modifierBouteille'])->name('modifier-Qte');
+Route::post('modifierQte/{bouteille_id}', [BouteilleController::class, 'modifierQteBouteille'])->name('modifier-Qte');
