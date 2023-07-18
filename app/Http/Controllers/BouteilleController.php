@@ -19,12 +19,14 @@ class BouteilleController extends Controller
         $owned_bottles = BouteilleCellier::where('cellier_id', $cellier_id)
         ->pluck('code_saq_bouteille')
         ->toArray();
-        // dd($owned_bottles);
+        //trouver mon cellier
+        $mon_cellier = Cellier::findorFail($cellier_id);
+
 
         //faire la pagination par 10
         $bottles = Bouteille::paginate(10);
         // retourner la vue index avec les bouteilles
-        return view('bouteilles.AjouterBouteilles', ['bottles' => $bottles, 'owned_bottles' => $owned_bottles, 'cellier_id' => $cellier_id]);
+        return view('bouteilles.AjouterBouteilles', ['bottles' => $bottles, 'owned_bottles' => $owned_bottles, 'cellier_id' => $cellier_id, 'mon_cellier' => $mon_cellier]);
     }
     //modifier la quantité de bouteille dans le cellier (vue)
 
@@ -94,5 +96,20 @@ class BouteilleController extends Controller
             "cellier.monCellier",
             compact("bouteilleCelliers", "cellier"),
         )->with("success", "Bouteille ajoutée au cellier.");
+    }
+
+        public function destroy(Request $request,string $id)
+    {
+        
+        // Supprimer la bouteille du cellier de la base de données
+        BouteilleCellier::destroy($id);
+        // stocker l'id du cellier
+        $cellierId = $request->input('cellier_id');
+        // Trouver les bouteilles du cellier
+        $bouteilleCelliers = BouteilleCellier::where('cellier_id', $cellierId)->get();
+        // Trouver le cellier avec l'id du cellier sélectionné
+        $cellier = Cellier::findOrFail($cellierId);
+        // Rediriger vers la page du cellier avec un message de succès
+        return view('cellier.monCellier', compact('bouteilleCelliers', 'cellier'))->with('success', 'Boutelle supprimée du cellier.');
     }
 }
