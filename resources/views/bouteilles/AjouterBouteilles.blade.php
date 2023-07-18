@@ -4,8 +4,7 @@
     <main>
         <div class="header">
             <h2>Liste des bouteilles</h2>
-            <small>cellier id: {{ request()->query('cellier_id') }}</small>
-            <small>cellier id: {{ $cellier_id }}</small>
+            <small>nom du cellier : {{ $mon_cellier->nom_cellier }}</small>
 
       
         </div> 
