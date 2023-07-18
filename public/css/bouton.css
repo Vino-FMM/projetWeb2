@@ -14,3 +14,7 @@
 .bouton.ajout-bouteille {
     width: 160px;
 }
+.bouton-click{
+    color: rgb(167, 167, 167);
+    font-size: 12px;
+}

@@ -18,6 +18,12 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.carte-action img{
+    padding: 8px;
+    border-radius: 50%;
+    background-color: rgb(204, 195, 174);
+
+}
 .container-bouteilles{
     display: flex;
     flex-direction: column;

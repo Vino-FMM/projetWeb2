@@ -27,14 +27,14 @@
                   
             </div> 
             <div class="carte-action">
-                    <a href="#"><img src="https://s2.svgbox.net/hero-outline.svg?ic=pencil&color=000000" width="22" height="22"></a>
-                    <a href="#" data-cellier-id="{{ $bouteilleCellier->id }}"><img src="https://s2.svgbox.net/materialui.svg?ic=delete&color=000" width="22" height="22"></a>
-                    <form id="delete-form-{{ $bouteilleCellier->id }}" action="#" method="POST" style="display: none;">
-                        @csrf
-                        @method('DELETE')
-                    </form>
-                </div> 
-        </div>  
+                <a href="#"><img src="https://s2.svgbox.net/hero-outline.svg?ic=pencil&color=000000" width="22" height="22"></a>
+                <a href="#" data-cellier-id="{{ $bouteilleCellier->id }}"><img src="https://s2.svgbox.net/materialui.svg?ic=delete&color=000" width="22" height="22"></a>
+                <form id="delete-form-{{ $bouteilleCellier->id }}" action="#" method="POST" style="display: none;">
+                    @csrf
+                    @method('DELETE')
+                </form>
+            </div> 
+          
     </div>
     @endforeach
     @else
