@@ -27,9 +27,10 @@
                                     <form method="POST" action="{{ route('bouteilles.addBouteille', ['id' => $bottle->id]) }}">
                                         @csrf
                                         <input type="hidden" name="cellier_id" value="{{ $cellier_id }}">
+                                        <label for="quantite"><small>Qté: </small></label>
                                         <input type="number" name="quantite" value="1" min="1" max="99" class="quantite">
                                         <button type="submit" class="bouton ajout-bouteille">
-                                            <i class="bi bi-patch-plus"></i>Ajouter au cellier
+                                            <i class="bi bi-patch-plus"></i>Ajouter
                                         </button>
                                     </form>
                                 @endif
