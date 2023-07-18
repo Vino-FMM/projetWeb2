@@ -47,8 +47,8 @@ Route::post('AjouterCellier', [CellierController::class, 'store'])->name('cellie
 
 Route::get('/import', 'App\Http\Controllers\SAQController@import');
 
-Route::get('/Ajouter-bouteilles', [SAQController::class, 'index'])->name('Ajouter-bouteilles');
-Route::post('/bouteilles/addBouteille/{id}', [CellierController::class, 'addBouteille'])->name('bouteilles.addBouteille');
+Route::get('/Ajouter-bouteilles/{cellier_id}', [BouteilleController::class, 'index'])->name('Ajouter-bouteilles');
+Route::post('/bouteilles/addBouteille/{id}', [BouteilleController::class, 'addBouteille'])->name('bouteilles.addBouteille');
 
 // for mon cellier
 Route::get('/mon-cellier', [CellierController::class, 'index'])->name('mon-cellier');
