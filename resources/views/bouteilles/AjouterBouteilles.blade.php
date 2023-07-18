@@ -4,7 +4,9 @@
     <main>
         <div class="header">
             <h2>Liste des bouteilles</h2>
-            <small>cellier id: {{ request()->query('cellier_id') }}</small>
+            <small>nom du cellier : {{ $mon_cellier->nom_cellier }}</small>
+
+      
         </div> 
         <div class="container-bouteilles">
             @foreach($bottles as $bottle)
@@ -16,10 +18,20 @@
                             <p>{{ $bottle->prix }} $</p>
                             <!-- <small>{{ $bottle->code_saq }}</small> -->
                             <div>
-                                <form method="POST" action="{{ route('bouteilles.addBouteille', ['id' => $bottle->id]) }}">
-                                    @csrf
-                                    <button type="submit" class="bouton ajout-bouteille"><i class="bi bi-patch-plus"></i>Ajouter au cellier</button>
-                                </form>  
+                                @if(in_array($bottle->code_saq, $owned_bottles))
+                                    <button type="button" class="bouton ajout-bouteille" disabled style="background-color: #ccc; color: red;">
+                                        <i class="bi bi-patch-plus"></i>Bouteille déjà dans le cellier
+                                    </button>
+                                @else
+                                    <form method="POST" action="{{ route('bouteilles.addBouteille', ['id' => $bottle->id]) }}">
+                                        @csrf
+                                        <input type="hidden" name="cellier_id" value="{{ $cellier_id }}">
+                                        <input type="number" name="quantite" value="1" min="1" max="99" class="quantite">
+                                        <button type="submit" class="bouton ajout-bouteille">
+                                            <i class="bi bi-patch-plus"></i>Ajouter au cellier
+                                        </button>
+                                    </form>
+                                @endif
                             </div>
                         </div>
                 </div>
@@ -30,21 +42,6 @@
     </main>
 
 <footer>
-    <div>
-        <a href="{{ route('home') }}"><img src="https://s2.svgbox.net/octicons.svg?ic=home&color=000" width="32" height="32"></a>
-        <span>Acueil</span>
-    </div>
-    <div>
-    <img src="https://s2.svgbox.net/hero-outline.svg?ic=plus-sm&color=000000" width="32" height="32">
-        <span>Ajout</span>
-    </div>
-    <div>
-    <img src="https://s2.svgbox.net/octicons.svg?ic=search&color=000" width="32" height="32">
-        <span>Recherche</span>
-    </div>
-    <div>
-    <img src="https://s2.svgbox.net/materialui.svg?ic=list&color=000" width="32" height="32">
-        <span>Liste</span>
-    </div>
+    <!-- Footer content here -->
 </footer>
 @endsection

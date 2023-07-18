@@ -27,12 +27,14 @@
                   
             </div> 
             <div class="carte-action">
-                <a href="#"><img src="https://s2.svgbox.net/hero-outline.svg?ic=pencil&color=000000" width="28" height="28"></a>
-                <a href="#" data-cellier-id="{{ $bouteilleCellier->id }}"><img src="https://s2.svgbox.net/materialui.svg?ic=delete&color=000" width="28" height="28"></a>
-                <form id="delete-form-{{ $bouteilleCellier->id }}" action="#" method="POST" style="display: none;">
-                    @csrf
-                    @method('DELETE')
-                </form>
+                <a href="{{ route('modifier-Qte', ['bouteille_id' => $bouteilleCellier->id]) }}"><img src="https://s2.svgbox.net/hero-outline.svg?ic=pencil&color=000000" width="28" height="28"></a>
+                    <a href="#" data-cellier-id="{{ $bouteilleCellier->id }}" data-cellier="{{ $cellier->id }}"><img src="https://s2.svgbox.net/materialui.svg?ic=delete&color=000" width="28" height="28"></a>
+                    <form id="delete-form-{{ $bouteilleCellier->id }}" action="{{ route('bouteilles.destroy', ['id' => $bouteilleCellier->id, 'cellier_id' => $cellier->id]) }}" method="POST" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+
+
             </div> 
           
     </div>

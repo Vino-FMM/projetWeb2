@@ -10,57 +10,62 @@ use Illuminate\Http\Request;
 class CellierController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * afficher la liste des celliers
      */
+
     public function index()
     {
-    // dd('sdasasd');
-    // $url = url()->current();
-    // $cellierId = basename($url);
-    $cellierId = request('id');
-    // dd($cellierId);
-
-    
-    //using findOrFail to get the cellier with the given cellier_id
-    $cellier = Cellier::findOrFail($cellierId);
-    $bouteilleCelliers = BouteilleCellier::where('cellier_id', $cellierId)->get();
-    // dd($bouteilleCelliers);
-    //return to monCellier.blade on cellier folder with BouteilleCellier
-    return view('cellier.monCellier', compact('bouteilleCelliers', 'cellier'));
+        // stocker l'id de l'utilisateur connecté
+        $cellierId = request("id");
+       
+        // récupérer les bouteilles du cellier de l'utilisateur connecté
+        $cellier = Cellier::findOrFail($cellierId);
+        // récupérer les bouteilles du cellier de l'utilisateur connecté
+        $bouteilleCelliers = BouteilleCellier::where(
+            "cellier_id",
+            $cellierId,
+        )->get();
+        // dd($cellierId);
+        // retourner la vue monCellier avec les bouteilles du cellier de l'utilisateur connecté
+        return view(
+            "cellier.monCellier",
+            compact("bouteilleCelliers", "cellier", "cellierId"),
+        );
     }
 
     /**
-     * Show the form for creating a new resource.
+     * afficher la page pour créer un nouveau cellier
      */
     public function create()
     {
-        return view('cellier.addCellier');
+        return view("cellier.addCellier");
     }
 
     /**
-     * Store a newly created resource in storage.
+     * fonction pour stocker un nouveau cellier dans la base de données
      */
     public function store(Request $request)
     {
         // Validation des données du formulaire
-        $request->validate([
-            'nom_cellier' => 'required',
-        ], [
-            'nom_cellier.required' => 'Le champ nom_cellier est requis.',
-        ]);
-    
+        $request->validate(
+            [
+                "nom_cellier" => "required",
+            ],
+            [
+                "nom_cellier.required" => "Le champ nom_cellier est requis.",
+            ],
+        );
+
         // Créer un nouveau cellier dans la base de données
-        $cellier = new Cellier;
-        $cellier->nom_cellier = $request->input('nom_cellier');
+        $cellier = new Cellier();
+        $cellier->nom_cellier = $request->input("nom_cellier");
         $cellier->user_id = auth()->user()->id;
         $cellier->save();
-    
         // Rediriger vers la page d'accueil avec un message de succès
-        // return redirect(route('accueil'))->withSuccess('Cellier enregistré.');
-        return redirect()->route('home')->withSuccess('Cellier enregistré.');
-
+        return redirect()
+            ->route("home")
+            ->withSuccess("Cellier enregistré.");
     }
-    
 
     /**
      * Display the specified resource.
@@ -74,84 +79,51 @@ class CellierController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-        
-        {
-            // Retrieve the Cellier object with the given id
-            $cellier = Cellier::findOrFail($id);
-        
-            // Pass the Cellier object to the view for editing
-            return view('cellier.modifyCellier', compact('cellier'));
-        }
-    
-
+    {
+        // trouver le cellier avec l'id du cellier sélectionné
+        $cellier = Cellier::findOrFail($id);
+        // retourner vers la vue modifyCellier
+        return view("cellier.modifyCellier", compact("cellier"));
+    }
     /**
-     * Update the specified resource in storage.
+     * mettre à jour le cellier sélectionné
      */
     public function update(Request $request, string $id)
     {
-        // Retrieve the Cellier object with the given id
+        // trouver le cellier avec l'id du cellier sélectionné
         $cellier = Cellier::findOrFail($id);
-    
-        // Validate the form data
-        $request->validate([
-            'nom_cellier' => 'required',
-        ], [
-            'nom_cellier.required' => 'Le champ nom_cellier est requis.',
-        ]);
-    
-        // Update the Cellier object with the new values from the form
-        $cellier->nom_cellier = $request->input('nom_cellier');
+        // validation des données du formulaire
+        $request->validate(
+            [
+                "nom_cellier" => "required",
+            ],
+            [
+                "nom_cellier.required" => "Le champ nom_cellier est requis.",
+            ],
+        );
+
+        // mettre à jour le cellier dans la base de données
+        $cellier->nom_cellier = $request->input("nom_cellier");
         $cellier->save();
-    
-        // Redirect to the home page with a success message
-        return redirect()->route('home')->withSuccess('Cellier modifié.');
+        // redirection vers la page d'accueil avec un message de succès
+        return redirect()
+            ->route("home")
+            ->withSuccess("Cellier modifié.");
     }
 
     /**
-     * Remove the specified resource from storage.
+     * suppression du cellier sélectionné
      */
     public function destroy(string $id)
     {
+        // Supprimer les bouteilles du cellier de la base de données
+        BouteilleCellier::where("cellier_id", $id)->delete();
         // Supprimer le cellier de la base de données
         Cellier::destroy($id);
-    
         // Rediriger vers la page d'accueil avec un message de succès
-        // return redirect(route('accueil'))->withSuccess('Cellier supprimé.');
-        return redirect()->route('home')->withSuccess('Cellier supprimé.');
+        return redirect()
+            ->route("home")
+            ->withSuccess("Cellier supprimé.");
     }
-        public function addBouteille(Request $request, $id)
-    {
-        $previousUrl = url()->previous();
-        $queryParameters = parse_url($previousUrl, PHP_URL_QUERY);
-        parse_str($queryParameters, $queryData);
-        
-        $cellierId = $queryData['cellier_id'];
-        
-        // Find bouteille with id of bouteille selected
-        $bouteille = Bouteille::findOrFail($id);
     
-        // Create a new BouteilleCellier record in the database with quantity set to 1
-        $bouteilleCellier = new BouteilleCellier;
-        $bouteilleCellier->user_id = auth()->user()->id;
-        $bouteilleCellier->cellier_id = $cellierId;
-       $bouteilleCellier->quantite = 1;
-        $bouteilleCellier->nom_bouteille = $bouteille->nom;
-        $bouteilleCellier->format_bouteille = $bouteille->format;
-        $bouteilleCellier->prix_bouteille = $bouteille->prix;
-        $bouteilleCellier->pays_bouteille = $bouteille->pays;
-        $bouteilleCellier->code_saq_bouteille = $bouteille->code_saq;
-        $bouteilleCellier->url_saq_bouteille = $bouteille->url_saq;
-        $bouteilleCellier->url_img_bouteille = $bouteille->url_img;
-        $bouteilleCellier->millesime_bouteille = $bouteille->millesime;
-        $bouteilleCellier->type_bouteille = $bouteille->type;
-        $bouteilleCellier->save();
-        $bouteilleCelliers = BouteilleCellier::where('cellier_id', $cellierId)->get();
-        
-        
-        $cellier = Cellier::findOrFail($cellierId);
-    
-        return view('cellier.monCellier', compact( 'bouteilleCelliers','cellier'))->with('success', 'Bouteille ajoutée au cellier.');
-        
-    }
-
 }

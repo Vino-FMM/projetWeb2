@@ -78,11 +78,5 @@ class SAQController extends Controller
         return response()->json(['message' => 'Toutes les bouteilles ont été importé']);
     }
 
-    public function index()
-    {
-        $bottles = Bouteille::all();
-        //on va faire la pagination
-        $bottles = Bouteille::paginate(10);
-        return view('bouteilles.AjouterBouteilles', ['bottles' => $bottles]);
-    }
+
 }
