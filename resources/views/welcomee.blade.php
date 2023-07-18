@@ -5,7 +5,7 @@
 
 <main>
 @if (auth()->check())
-    <h3>Bienvenu, {{ Auth::user()->prenom }}!</h3>
+    <h3>Bienvenue, {{ Auth::user()->prenom }}!</h3>
 @endif
 @if(Auth::check() && Auth::user()->celliers->count() > 0)
     <div>
@@ -43,11 +43,10 @@
     <div>
         <div>
             <div>
-                <div>
-                    <h1>welcome to Vino</h1>
-                    <p>pas de cellier</p>
+                <div class="carte-vide">
+                    <p>Vous n'avez aucun cellier!</p>
                     <div>
-                        <a href="{{route('cellier.create')}}">Ajouter un cellier</a>
+                        <a href="{{route('cellier.create')}}" class="bouton">Ajouter un cellier</a>
                     </div>
                 </div>
             </div>

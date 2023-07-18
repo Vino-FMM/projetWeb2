@@ -13,6 +13,11 @@
     flex-direction: column;
     gap:8px;
 }
+.carte-action{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .container-bouteilles{
     display: flex;
     flex-direction: column;

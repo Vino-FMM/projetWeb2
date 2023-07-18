@@ -11,7 +11,7 @@
                 <div class="carte-bouteille">
                     <img src="{{ $bottle->url_img }}" alt="{{ $bottle->nom }}" style="max-width: 100%; height: auto;">
                         <div class="carte-details">
-                            <h5>{{ $bottle->nom }}</h5>
+                            <h4>{{ $bottle->nom }}</h4>
                             <p>{{ $bottle->type }} | {{ $bottle->format }} | {{ $bottle->pays }}</p>
                             <p>{{ $bottle->prix }} $</p>
                             <!-- <small>{{ $bottle->code_saq }}</small> -->
