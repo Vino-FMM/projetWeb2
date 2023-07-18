@@ -4,7 +4,7 @@
 .carte-cellier{
     align-items: center;
     justify-content: space-around;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     text-align: center;
 }
 .bottle-wrapper {
@@ -38,7 +38,7 @@
 }
 .carte-cellier > div:nth-child(2) div {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .carte-cellier>small {

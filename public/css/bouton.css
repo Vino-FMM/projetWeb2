@@ -20,9 +20,9 @@
 }
 .bouton-outline{
     color:black;
-    background-color: white;
+    background-color: rgb(244, 244, 244);
     padding: 5px;
-    border: 1px solid black;
+    border: 1px solid rgb(199, 199, 199);
     border-radius: 5px;
     font-size: 14px;
 }
