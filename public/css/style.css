@@ -5,6 +5,8 @@
 @import "carte-ajout.css";
 @import "carte-cellier.css";
 @import "carte-bouteille.css";
+@import "carte-vide.css";
+@import "carte-bouteille-cellier.css";
 @import "modal.css";
 @import "pagination.css";
 
@@ -26,7 +28,7 @@ body {
 main{
     background-color: white;
     z-index: 1;
-    /* height: 100vh; */
+    min-height: 100vh;
     text-align: start;
     display: flex;
     flex-direction: column;
@@ -41,17 +43,19 @@ h1{
 a{
     text-align: center;
     color: rgb(0, 0, 0);
+    text-decoration: none;
 }
 footer{
     display: flex;
     padding:5px;
     justify-content: space-around;
+    align-items: center;
     background-color: rgb(240, 240, 240);
     position: sticky; 
     bottom: 0; 
     /* width: 100%; */
     z-index: 2;
-    border-top: 3px solid rgb(120, 42, 42);
+    border-top: 3px solid rgb(153, 0, 0);
 }
 footer div{
     display: flex;
@@ -82,7 +86,9 @@ footer div a {
     z-index: -1;
 }
 
-
+.alert-succes{
+    color: rgb(8, 87, 61);
+}
 
 
 
