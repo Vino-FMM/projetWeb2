@@ -14,14 +14,14 @@
                     <img src="{{ $bottle->url_img }}" alt="{{ $bottle->nom }}" style="max-width: 100%; height: auto;">
                         <div class="carte-details">
                             <h4>{{ $bottle->nom }}</h4>
-                            <p>{{ $bottle->type }} | {{ $bottle->format }} | {{ $bottle->pays }}</p>
-                            <p>{{ $bottle->prix }} $</p>
-                            <!-- <small>{{ $bottle->code_saq }}</small> -->
+                            <small>{{ $bottle->type }} | {{ $bottle->format }} | {{ $bottle->pays }}</small>
+                            <p> prix: {{ $bottle->prix }} $</p>
+                            <small>code SAQ: {{ $bottle->code_saq }}</small>
                             <div>
                                 @if(in_array($bottle->code_saq, $owned_bottles))
-                                    <button type="button" class="bouton ajout-bouteille" disabled style="background-color: #ccc; color: red;">
-                                        <i class="bi bi-patch-plus"></i>Bouteille déjà dans le cellier
-                                    </button>
+                                    <p type="button" class="bouton-disabled" disabled>
+                                    <img src="https://s2.svgbox.net/octicons.svg?ic=check&color=000" width="15" height="15">vous avez déja cette bouteille!
+                                    </p>
                                 @else
                                     <form method="POST" action="{{ route('bouteilles.addBouteille', ['id' => $bottle->id]) }}">
                                         @csrf

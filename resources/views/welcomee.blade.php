@@ -17,7 +17,7 @@
             @foreach(Auth::user()->celliers as $cellier)
         <div class="carte-cellier">
         <div class="bottle-wrapper">
-        <img src="{{ asset('assets/img/cellier1.png') }}" alt="cellier-photo">
+        <img src="{{ asset('assets/img/cellier.png') }}" alt="cellier-photo">
     </div>
             <div>
                 <a id="nom-cellier" href="{{ route('mon-cellier', ['id' => $cellier->id]) }}">{{ $cellier->nom_cellier }} <small class="bouton-click">cliquez ici</small></a>

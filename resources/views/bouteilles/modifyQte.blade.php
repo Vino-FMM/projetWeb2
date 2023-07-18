@@ -4,8 +4,7 @@
 @section('content')
     <main>
         <div class="header">
-            <h2>modification bouteille</h2>
-            
+            <h2>modification bouteille</h2>  
         </div> 
         <div class="container-bouteilles">
             
