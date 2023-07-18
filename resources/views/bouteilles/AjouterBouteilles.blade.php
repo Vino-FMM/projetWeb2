@@ -4,7 +4,7 @@
     <main>
         <div class="header">
             <h2>Liste des bouteilles</h2>
-            <h3>cellier id : {{ request()->query('cellier_id') }}</h3>
+            <small>cellier id: {{ request()->query('cellier_id') }}</small>
         </div> 
         <div class="container-bouteilles">
             @foreach($bottles as $bottle)

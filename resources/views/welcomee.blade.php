@@ -69,7 +69,7 @@
         <span>Acueil</span>
     </div>
     <div>
-    <img src="https://s2.svgbox.net/hero-outline.svg?ic=plus-sm&color=000000" width="32" height="32">
+    <a href="{{route('cellier.create')}}"><img src="https://s2.svgbox.net/hero-outline.svg?ic=plus-sm&color=000000" width="32" height="32"></a>
         <span>Ajout</span>
     </div>
     <div>
