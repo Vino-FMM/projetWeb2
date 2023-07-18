@@ -112,11 +112,13 @@ class CellierController extends Controller
      */
     public function destroy(string $id)
     {
+        // Supprimer les bouteilles du cellier de la base de données
+        BouteilleCellier::where('cellier_id', $id)->delete();
+    
         // Supprimer le cellier de la base de données
         Cellier::destroy($id);
     
         // Rediriger vers la page d'accueil avec un message de succès
-        // return redirect(route('accueil'))->withSuccess('Cellier supprimé.');
         return redirect()->route('home')->withSuccess('Cellier supprimé.');
     }
         public function addBouteille(Request $request, $id)
