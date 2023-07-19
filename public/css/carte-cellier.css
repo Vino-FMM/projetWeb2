@@ -56,7 +56,7 @@
 .carte-bouteille .carte-details{
     gap:5px;
 }
-.carte-cellier > div:nth-child(2) div {
+.carte-cellier > div:nth-child(2) div, .carte-action {
     display: flex;
     gap: 30px;
 }
@@ -133,5 +133,11 @@
     width: 40px;
 }
 
+.carte-bouteille.carte-modification {
+    background-color: rgb(244, 245, 245);
+}
+.carte-bouteille.carte-modification .bouton{
+    margin-left: 30px;
+}
 
 

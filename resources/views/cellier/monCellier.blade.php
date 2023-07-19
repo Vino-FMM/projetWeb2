@@ -17,24 +17,23 @@
     <div class="container-bouteilles">
         @foreach($bouteilleCelliers as $bouteilleCellier)
         <div class="carte-bouteille">
-            <img src="{{ $bouteilleCellier->url_img_bouteille }}" alt="{{ $bouteilleCellier->nom_bouteille }}" style="max-width: 100%; height: auto;">
+            <div>
+                <img src="{{ $bouteilleCellier->url_img_bouteille }}" alt="{{ $bouteilleCellier->nom_bouteille }}" style="max-width: 100%; height: auto;">
+            </div>
             <div class="carte-details">
                 <h4>{{ $bouteilleCellier->nom_bouteille }}</h4> 
                 <small>{{ $bouteilleCellier->type_bouteille }} | {{ $bouteilleCellier->format_bouteille }} | {{ $bouteilleCellier->pays_bouteille }}</small>
                 <small>Qté: {{ $bouteilleCellier->quantite }}</small>
-                <!-- <small>Date d'ajout: {{ $bouteilleCellier->created_at->format('d-m-Y') }}</small> -->
-                  
-            </div> 
-            <div class="carte-action">
-                <a href="{{ route('modifier-Qte', ['bouteille_id' => $bouteilleCellier->id]) }}"><img src="https://s2.svgbox.net/hero-outline.svg?ic=pencil&color=000000" width="28" height="28"></a>
-                    <a href="#" data-cellier-id="{{ $bouteilleCellier->id }}" data-cellier="{{ $cellier->id }}"><img src="https://s2.svgbox.net/materialui.svg?ic=delete&color=000" width="28" height="28"></a>
+                <div class="carte-action">
+                    <a href="{{ route('modifier-Qte', ['bouteille_id' => $bouteilleCellier->id]) }}" class="bouton-outline">Modifier</a>
+                    <a href="#" data-cellier-id="{{ $bouteilleCellier->id }}" data-cellier="{{ $cellier->id }}" class="bouton-outline">Supprimer</a>
                     <form id="delete-form-{{ $bouteilleCellier->id }}" action="{{ route('bouteilles.destroy', ['id' => $bouteilleCellier->id, 'cellier_id' => $cellier->id]) }}" method="POST" style="display: none;">
                         @csrf
                         @method('DELETE')
                     </form>
-
-
+                </div> 
             </div> 
+            
           
     </div>
     @endforeach
@@ -59,21 +58,21 @@
 
 <footer>
     <div>
-        <a href="{{ route('home') }}"><img src="https://s2.svgbox.net/octicons.svg?ic=home&color=000" width="32" height="32"></a>
+        <a href="{{ route('home') }}"><img src="https://s2.svgbox.net/octicons.svg?ic=home&color=000" width="22" height="22"></a>
         <span>Acueil</span>
     </div>
     <div>
-        <a href="{{route('cellier.create')}}"><img src="https://s2.svgbox.net/hero-outline.svg?ic=plus-sm&color=000000" width="32" height="32"></a>
+    <a href="{{route('cellier.create')}}"><img src="https://s2.svgbox.net/hero-outline.svg?ic=plus-sm&color=000000" width="22" height="22"></a>
         <span>Ajout</span>
     </div>
-    <div>
+    <!-- <div>
         <img src="https://s2.svgbox.net/octicons.svg?ic=search&color=000" width="32" height="32">
         <span>Recherche</span>
     </div>
     <div>
         <img src="https://s2.svgbox.net/materialui.svg?ic=list&color=000" width="32" height="32">
         <span>Liste</span>
-    </div>
+    </div> -->
 </footer>
 
 <script>

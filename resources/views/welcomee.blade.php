@@ -22,7 +22,7 @@
             <div>
                 <a id="nom-cellier" href="{{ route('mon-cellier', ['id' => $cellier->id]) }}">{{ $cellier->nom_cellier }} <small class="bouton-click">cliquez ici</small></a>
                 <div>
-                <!-- <a href="{{ route('cellier.edit', ['id' => $cellier->id]) }}">Modifier<img src="https://s2.svgbox.net/hero-outline.svg?ic=pencil&color=000000" width="22" height="22"></a> -->
+                
                     <a href="{{ route('cellier.edit', ['id' => $cellier->id]) }}" class="bouton-outline">Modifier</a>
                 <!-- <a href="#" data-cellier-id="{{ $cellier->id }}">Supprimer<img src="https://s2.svgbox.net/materialui.svg?ic=delete&color=000" width="22" height="22"></a> -->
                     <a href="#" data-cellier-id="{{ $cellier->id }}" class="bouton-outline">Supprimer</a>
@@ -64,21 +64,21 @@
 </div>
 <footer>
     <div>
-        <a href="{{ route('home') }}"><img src="https://s2.svgbox.net/octicons.svg?ic=home&color=000" width="32" height="32"></a>
+        <a href="{{ route('home') }}"><img src="https://s2.svgbox.net/octicons.svg?ic=home&color=000" width="22" height="22"></a>
         <span>Acueil</span>
     </div>
     <div>
-    <a href="{{route('cellier.create')}}"><img src="https://s2.svgbox.net/hero-outline.svg?ic=plus-sm&color=000000" width="32" height="32"></a>
+    <a href="{{route('cellier.create')}}"><img src="https://s2.svgbox.net/hero-outline.svg?ic=plus-sm&color=000000" width="22" height="22"></a>
         <span>Ajout</span>
     </div>
-    <div>
+    <!-- <div>
     <img src="https://s2.svgbox.net/octicons.svg?ic=search&color=000" width="32" height="32">
         <span>Recherche</span>
     </div>
     <div>
     <img src="https://s2.svgbox.net/materialui.svg?ic=list&color=000" width="32" height="32">
         <span>Liste</span>
-    </div>
+    </div> -->
 </footer>
 <script>
 let deleteModal = document.getElementById("deleteModal");

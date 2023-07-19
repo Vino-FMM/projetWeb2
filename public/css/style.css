@@ -47,13 +47,12 @@ a{
 }
 footer{
     display: flex;
-    padding:5px;
+    padding:10px;
     justify-content: space-around;
     align-items: center;
     background-color: rgb(255, 255, 255);
     position: sticky; 
     bottom: 0; 
-    /* width: 100%; */
     z-index: 2;
     border-top: 1px solid rgb(0, 0, 0);
 }
