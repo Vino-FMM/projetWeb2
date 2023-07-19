@@ -39,7 +39,7 @@
     @endforeach
     @else
         <div class='carte-vide'>
-            <h3>Aucune bouteille dans ce cellier</h3>
+            <h4>Aucune bouteille dans ce cellier</h4>
             <div>
                 <a href="{{ route('Ajouter-bouteilles', ['cellier_id' => $cellier->id]) }}" class="bouton">Ajouter une bouteille</a>
             </div>

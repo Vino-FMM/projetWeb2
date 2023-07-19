@@ -2,11 +2,11 @@
 @section('title', 'Login')
 @section('titleHeader', 'Login')
 @section('content')
-<section class="logo">
-    <!-- <img src="https://s2.svgbox.net/materialui.svg?ic=wine_bar&color=000" width="32" height="32"> -->
-    <span><i class="fas fa-wine-bottle"></i>Vino</span>
-</section>
+
 <section>
+    <div class="header">
+        <h4>S'enregistrer</h4>
+    </div>
     <div class="formulaire-container">
         <div class="formulaire_connexion"> 
             <form action="/register" method="post">

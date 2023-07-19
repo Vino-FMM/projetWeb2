@@ -5,7 +5,7 @@
 
 <main>
     <div class="header">
-        <h2>Ajouter un cellier</h2>
+        <h4>Ajouter un cellier</h4>
     </div>        
     <div class="carte-ajout">
         <div class="formulaire_connexion">
