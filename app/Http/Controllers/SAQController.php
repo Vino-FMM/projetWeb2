@@ -26,7 +26,7 @@ class SAQController extends Controller
         for($page = 1; $page <= 86; $page++) {
         
 
-            $crawler = $client->request('GET', "https://www.saq.com/fr/produits/vin/vin-rouge?p=".$page."&product_list_limit=".$nombre."&product_list_order=name_asc");
+            $crawler = $client->request('GET', "https://www.saq.com/fr/produits/vin?p=".$page."&product_list_limit=".$nombre."&product_list_order=name_asc");
 
             $crawler->filter('li.product-item')->each(function (Crawler $node) {
                 $info = new \stdClass();

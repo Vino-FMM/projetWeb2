@@ -98,6 +98,18 @@
 .cercle-doré {
     background-color: rgb(211, 197, 117);
 }
+
+.cercle-rose {
+    background-color: rgb(154,81,87);
+}
+
+.cercle-tomate {
+    background-color: #ff6347
+}
+
+.cercle-bleu {
+    background-color: #779ecb;
+}
 .carte-details .container-incrementation{
     display: flex;
      align-items: center;

@@ -10,7 +10,10 @@
             @foreach($bottles as $bottle)
                 <div class="carte-bouteille">
                     <div>
-                        <div class="cercle {{ $bottle->type === 'Vin rouge' ? 'cercle-rouge' : ($bottle->type === 'Vin blanc' ? 'cercle-doré' : '') }}"></div>
+                        <!-- <div class="cercle {{ $bottle->type === 'Vin rouge' ? 'cercle-rouge' : ($bottle->type === 'Vin blanc' ? 'cercle-doré' : '') }}"></div> -->
+                        <div class="cercle
+                            {{ $bottle->type === 'Vin rouge' ? 'cercle-rouge' : ($bottle->type === 'Vin blanc' ? 'cercle-doré' : ($bottle->type === 'Vin rosé' ? 'cercle-rose' : ($bottle->type === 'Vin de tomate' ? 'cercle-tomate' : ($bottle->type === 'Vin de dessert' ? 'cercle-bleu' : '')))) }}">
+                        </div>
                         <img src="{{ $bottle->url_img }}" alt="{{ $bottle->nom }}" style="max-width: 100%; height: auto;">
                     </div>  
                     <div class="carte-details">
