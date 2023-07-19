@@ -1,11 +1,15 @@
 .pagination-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap:30px;
     margin: 20px 0;
     padding: 10px;
     background-color: #ffffff;
     border-radius: 5px;
+}
+.pagination-container li {
+    list-style-type: none; 
 }
 
 .pagination-link {
@@ -17,14 +21,8 @@
     transition: all 0.3s ease;
 }
 
-.pagination-link:hover {
-    background-color: #000000;
-    color: #fff;
-}
 
 .disabled {
-    color: #ccc;
-    border: 1px solid #ccc;
-    padding: 5px 10px;
+    color: #e6e6e6;
     border-radius: 3px;
-}
+} 

@@ -1,11 +1,16 @@
-.carte-cellier,.carte-cellier div{
+.carte-cellier,.carte-cellier div, .carte-bouteille,.carte-bouteille div{
     display: flex;
+    align-items: center;
 }
-.carte-cellier{
+.carte-cellier,.carte-bouteille{
     align-items: center;
     justify-content: space-around;
-    margin-bottom: 25px;
-    text-align: center;
+    border-top: 1px solid rgb(243, 243, 243);
+    padding: 25px;
+}
+.carte-bouteille{
+    padding: 15px;
+    gap:30px;
 }
 .bottle-wrapper {
     position: relative;
@@ -17,7 +22,7 @@
     position: absolute;
     width: 45px;
     height: 45px;
-    background: linear-gradient(to right, rgb(102, 0, 0), rgb(153, 0, 0), rgb(204, 0, 0));
+    background-color: rgb(206, 181, 181);
     border-radius: 50%;
     z-index: -1;
     bottom: -5%;
@@ -28,27 +33,111 @@
     width: 30px;
     padding: 8px;
 }
+.carte-bouteille > div:nth-child(1)> img{
+    object-fit: cover;
+    width: 80px;
+    height: 80px;
+    padding: 0;
+    margin: 0;
+}
 
 .carte-cellier > div:nth-child(2) {
     min-height: 120px;
-    min-width:250px;
     flex-direction: column;
     justify-content: space-around;
-    
+    align-items: flex-start;   
 }
-.carte-cellier > div:nth-child(2) div {
-    display: flex;
+
+.carte-bouteille > div:nth-child(2){
+    flex-direction: column;
     justify-content: space-around;
+    align-items: flex-start; 
+}
+.carte-bouteille .carte-details{
+    gap:5px;
+}
+.carte-cellier > div:nth-child(2) div, .carte-action {
+    display: flex;
+    gap: 30px;
 }
 
 .carte-cellier>small {
-    color: grey;
+    color: rgb(149, 149, 149);
     text-align: left;
 }
 #nom-cellier{
-    font-weight: bold;
-    font-size: 20px;
+    /* font-weight: bold; */
+    font-size: 24px;
 }
 .carte-ajout{
     text-align: center;
 }
+
+.carte-bouteille > div:nth-child(1){
+    position: relative;
+    z-index: 10;
+    min-width: 75px;
+}
+
+
+.cercle {
+    z-index: 4;
+    width: 10px; 
+    height: 10px;
+    border-radius: 50%;
+    position: absolute; 
+    top: -5px; 
+    left: -5px;
+}
+
+
+.cercle-rouge {
+    background-color: rgb(114, 7, 7);
+}
+
+.cercle-doré {
+    background-color: rgb(211, 197, 117);
+}
+.carte-details .container-incrementation{
+    display: flex;
+     align-items: center;
+}
+.quantite {
+    text-align: center;
+}
+.container-incrementation {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.container-incrementation button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    color: #454545;
+    background-color: #f8f8f8;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.quantite {
+    border: none;
+    text-align: center;
+    padding: 5px;
+    width: 40px;
+}
+
+.carte-bouteille.carte-modification {
+    background-color: rgb(244, 245, 245);
+}
+.carte-bouteille.carte-modification .bouton{
+    margin-left: 30px;
+}
+
+

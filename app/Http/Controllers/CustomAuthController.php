@@ -56,7 +56,7 @@ class CustomAuthController extends Controller
         $user->password = Hash::make($request->input('password'));
         $user->date_naissance = $request->input('date_naissance');
         $user->save();
-       return redirect(route('login'))->withSuccess('User enregistré');
+       return redirect(route('login'))->withSuccess('utilisateur enregistré');
     }
 
     public function authentication(Request $request)
@@ -83,7 +83,7 @@ class CustomAuthController extends Controller
         Auth::login($user, $request->get('remember'));
     
 
-            return redirect()->route('home')->with('success', 'Signed in successfully')->with('name', $user->nom);
+            return redirect()->route('home')->with('success', 'Vous êtes connectés')->with('name', $user->nom);
             
     }
     
@@ -91,7 +91,7 @@ class CustomAuthController extends Controller
     public function logout(){
         Auth::logout();
         Session::flush();
-        return redirect(route('login'))->withSuccess('Logged out');
+        return redirect(route('login'))->withSuccess('Vous êtes déconnectés');
     }
 
     /**

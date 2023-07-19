@@ -38,6 +38,8 @@
 .confirm-button {
     background-color: #eeecec;
     color: rgb(174, 29, 29);
+    border:none;
+    border-radius: 30px;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;

@@ -3,16 +3,13 @@
 @section('titleHeader', 'Login')
 @section('content')
 
-<!-- logo -->
-<section class="logo">
-    <span><i class="fas fa-wine-bottle"></i>Vino</span>
-</section>
 
 <section>
+        <div class="header">
+            <h4 id="connexion">Se connecter</h4>
+        </div>
         <div class="formulaire-container">
-            <section>
-                <p>Bonjour</p>
-            </section>
+            
             <div class="formulaire_connexion">
                 <form action="{{route('login.authentication')}}" method="post">
                     @csrf

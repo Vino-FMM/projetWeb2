@@ -5,7 +5,7 @@
 
 <main>
     <div class="header">
-        <h2>Ajouter un cellier</h2>
+        <h4>Ajouter un cellier</h4>
     </div>        
     <div class="carte-ajout">
         <div class="formulaire_connexion">
@@ -29,20 +29,20 @@
 </main>
 <footer>
     <div>
-        <a href="{{ route('home') }}"><img src="https://s2.svgbox.net/octicons.svg?ic=home&color=000" width="32" height="32"></a>
+        <a href="{{ route('home') }}"><img src="https://s2.svgbox.net/octicons.svg?ic=home&color=000" width="22" height="22"></a>
         <span>Acueil</span>
     </div>
     <div>
-    <img src="https://s2.svgbox.net/hero-outline.svg?ic=plus-sm&color=000000" width="32" height="32">
+    <a href="{{route('cellier.create')}}"><img src="https://s2.svgbox.net/hero-outline.svg?ic=plus-sm&color=000000" width="22" height="22"></a>
         <span>Ajout</span>
     </div>
-    <div>
+    <!-- <div>
     <img src="https://s2.svgbox.net/octicons.svg?ic=search&color=000" width="32" height="32">
         <span>Recherche</span>
     </div>
     <div>
     <img src="https://s2.svgbox.net/materialui.svg?ic=list&color=000" width="32" height="32">
         <span>Liste</span>
-    </div>
+    </div> -->
 </footer>
 @endsection
