@@ -54,7 +54,7 @@ footer{
     position: sticky; 
     bottom: 0; 
     z-index: 2;
-    border-top: 1px solid rgb(0, 0, 0);
+    border-top: 2px solid rgb(112, 111, 111);
 }
 footer div{
     display: flex;
@@ -90,9 +90,11 @@ footer span {
     height: auto;
     z-index: -1;
 }
-
-.alert-succes{
-    color: rgb(8, 87, 61);
+.alert-success {
+    margin-top: 20px;
+}
+#connexion{
+    margin: 0 auto;
 }
 
 

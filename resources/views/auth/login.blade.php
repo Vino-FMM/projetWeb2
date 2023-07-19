@@ -6,7 +6,7 @@
 
 <section>
         <div class="header">
-            <h4>Se connecter</h4>
+            <h4 id="connexion">Se connecter</h4>
         </div>
         <div class="formulaire-container">
             

@@ -5,7 +5,7 @@
 
 <section>
     <div class="header">
-        <h4>S'enregistrer</h4>
+        <h4 id="connexion">S'enregistrer</h4>
     </div>
     <div class="formulaire-container">
         <div class="formulaire_connexion"> 

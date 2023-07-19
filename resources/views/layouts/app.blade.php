@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Business Frontpage - Start Bootstrap Template</title>
-        <!-- Favicon-->
+        <title>Vino | cellier</title>
+    
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" /> -->
@@ -18,7 +18,7 @@
     <body>
     @php $locale = session('locale') @endphp
         <nav>
-        <span>VINO</span>
+        <span><img src="https://s2.svgbox.net/materialui.svg?ic=wine_bar&color=000" width="32" height="32">VINO</span>
             <div>
                 <input type="checkbox" id="toggler" hidden>
                 <label for="toggler" class="toggler-label">
