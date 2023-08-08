@@ -72,3 +72,8 @@ Route::post('/register', [CustomAuthController::class, 'store'])->name('register
 
 // pour faire un fetch des bouteille de la SAQ
 Route::get('/import', 'App\Http\Controllers\SAQController@import');
+// Route::get('/bouteilles/search', 'BouteilleController@search')->name('bouteilles.search');
+Route::get('/bouteilles/search', [BouteilleController::class, 'search'])->name('bouteilles.search');
+
+
+Route::get('/bouteilles/addBouteilleSearch/{id}', [BouteilleController::class, 'addBouteilleSearch'])->name('bouteilles.addBouteilleSearch');

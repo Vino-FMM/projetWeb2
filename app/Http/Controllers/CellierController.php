@@ -20,6 +20,9 @@ class CellierController extends Controller
        
         // récupérer les bouteilles du cellier de l'utilisateur connecté
         $cellier = Cellier::findOrFail($cellierId);
+        //recuperer le nom du cellier
+        $nomCellier = $cellier->nom_cellier;
+        
         // récupérer les bouteilles du cellier de l'utilisateur connecté
         $bouteilleCelliers = BouteilleCellier::where(
             "cellier_id",
@@ -29,7 +32,7 @@ class CellierController extends Controller
         // retourner la vue monCellier avec les bouteilles du cellier de l'utilisateur connecté
         return view(
             "cellier.monCellier",
-            compact("bouteilleCelliers", "cellier", "cellierId"),
+            compact("bouteilleCelliers", "cellier", "cellierId", "nomCellier"),
         );
     }
 
