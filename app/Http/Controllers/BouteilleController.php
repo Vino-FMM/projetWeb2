@@ -6,6 +6,8 @@ use App\Models\Cellier;
 use App\Models\Bouteille;
 use App\Models\BouteilleCellier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 
 class BouteilleController extends Controller
 {
@@ -52,8 +54,10 @@ class BouteilleController extends Controller
         $bouteilleCelliers = BouteilleCellier::where('cellier_id', $cellierId)->get();
         // trouver le cellier avec l'id du cellier sélectionné
         $cellier = Cellier::findOrFail($cellierId);
+        // nom du cellier
+        $nomCellier = $cellier->nom_cellier;
         //retour vers la vue monCellier
-        return view('cellier.monCellier', compact('bouteilleCelliers', 'cellier'))->with('success', 'Quantité modifiée.');
+        return view('cellier.monCellier', compact('bouteilleCelliers', 'cellier', 'nomCellier'))->with('success', 'Quantité modifiée.');
     }
 
     /**
@@ -81,6 +85,7 @@ class BouteilleController extends Controller
         $bouteilleCellier->code_saq_bouteille = $bouteille->code_saq;
         $bouteilleCellier->url_saq_bouteille = $bouteille->url_saq;
         $bouteilleCellier->url_img_bouteille = $bouteille->url_img;
+        $bouteilleCellier->url_img_small_bouteille = $bouteille->url_img_small;
         $bouteilleCellier->millesime_bouteille = $bouteille->millesime;
         $bouteilleCellier->type_bouteille = $bouteille->type;
         $bouteilleCellier->save();
@@ -91,10 +96,12 @@ class BouteilleController extends Controller
 
         // trouver le cellier avec l'id du cellier sélectionné
         $cellier = Cellier::findOrFail($cellierId);
+        // nom du cellier
+        $nomCellier = $cellier->nom_cellier;
         // retourner vers la vue monCellier
         return view(
             "cellier.monCellier",
-            compact("bouteilleCelliers", "cellier"),
+            compact("bouteilleCelliers", "cellier", "nomCellier"),
         )->with("success", "Bouteille ajoutée au cellier.");
     }
 
@@ -112,4 +119,41 @@ class BouteilleController extends Controller
         // Rediriger vers la page du cellier avec un message de succès
         return view('cellier.monCellier', compact('bouteilleCelliers', 'cellier'))->with('success', 'Boutelle supprimée du cellier.');
     }
+
+    public function search(Request $request)
+    {
+        // dd('test');
+        $query = $request->input('query');
+        // $query = $request->input('query');
+
+    // Log::info('Search Query: ' . $query);
+
+        $bottles = Bouteille::where('nom', 'LIKE', "%$query%")
+            // ->orWhere('type', 'LIKE', "%$query%")
+            // ->orWhere('format', 'LIKE', "%$query%")
+            // ->orWhere('pays', 'LIKE', "%$query%")
+            // ->orWhere('code_saq', 'LIKE', "%$query%")
+            ->get();
+
+        return response()->json($bottles);
+    }
+
+    public function addBouteilleSearch($id, Request $request)
+{
+    // dd($request->input('cellier_id'));
+    $bottle = Bouteille::findOrFail($id);
+    // dd($bottle);
+    $cellier_id = $request->input('cellier_id');
+    // dd($bottle, $cellier_id);
+    // Retrieve the bottle with the given ID from the database
+    $bottle = Bouteille::findOrFail($id);
+
+    // Retrieve the cellier_id from the request
+    $cellierId = $request->query('cellier_id');
+
+    // Additional data retrieval if needed (e.g., cellier details)
+
+    // Return the view with the bottle details and cellier_id
+    return view('bouteilles.addBouteilleSearch', ['bouteille' => $bottle, 'cellier_id' => $cellierId]);
+}
 }
