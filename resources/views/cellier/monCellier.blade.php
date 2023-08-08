@@ -4,6 +4,10 @@
 @section('content')
 
 <main>
+<div class="header">
+           
+<small>nom cellier: {{ $nomCellier}}</small>
+        </div> 
     @if(session('success'))
         <div class="alert-success">
             {{ session('success') }}
