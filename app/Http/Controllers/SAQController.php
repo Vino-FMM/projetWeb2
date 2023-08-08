@@ -35,11 +35,12 @@ class SAQController extends Controller
                 $imgUrls = explode(',', $imgSrcset);
                 $largestImgUrl = trim(end($imgUrls));
                 $info->img = substr($largestImgUrl, 0, strpos($largestImgUrl, ' '));
+                $info->img_small = $node->filter('img.product-image-photo')->attr('src');
                 $info->url = $node->filter('a')->first()->attr('href');
                 $info->titre = $node->filter('span.show-for-sr')->text();
                 // $info->price = $node->filter('.price')->text();
                 // $info->price = (float) str_replace(['$', ' ', ','], '', $node->filter('.price')->text());
-
+               
                 //le format du prix 
                 
                 $price = (float) str_replace(['$', ' ', ','], '', $node->filter('.price')->text());
@@ -67,6 +68,7 @@ class SAQController extends Controller
                 $bouteille->code_saq = $info->saqCode;
                 $bouteille->url_saq = $info->url;
                 $bouteille->url_img = $info->img;
+                $bouteille->url_img_small = $info->img_small;
                 $bouteille->millesime = $millesime; // Set the initial millesime to null
                 $bouteille->type = $info->type;
                 
