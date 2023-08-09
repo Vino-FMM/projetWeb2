@@ -59,7 +59,7 @@
     <body>
     @php $locale = session('locale') @endphp
         <nav>
-        <span><img src="https://s2.svgbox.net/materialui.svg?ic=wine_bar&color=000" width="32" height="32">VINO</span>
+        <span><img src="https://s2.svgbox.net/materialui.svg?ic=wine_bar&color=fff" width="32" height="32">VINO</span>
             <div>
                 <input type="checkbox" id="toggler" hidden>
                 <label for="toggler" class="toggler-label">

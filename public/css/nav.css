@@ -1,6 +1,6 @@
 nav {
-    background-color: rgb(246, 216, 216);
-    color:black;
+    background-color: rgb(87, 5, 5);
+    color:rgb(255, 254, 254);
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -13,7 +13,7 @@ nav {
 }
 
 nav a {
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     margin-right: 1em;
 }
@@ -34,7 +34,7 @@ nav ul li{
 nav span{
     display: flex;
     align-items: center;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 252, 252);
     font-size: 30px;
 }
 
@@ -52,7 +52,7 @@ nav span{
     position: absolute;
     height: 3px;
     width: 100%;
-    background: rgb(0, 0, 0);
+    background: rgb(254, 254, 254);
     border-radius: 9px;
     opacity: 1;
     left: 0;
@@ -97,7 +97,7 @@ nav span{
     height: 100vh;
     top: 0;
     left: 0;
-    background: rgba(243, 243, 243, 0.9);
+    background: rgba(39, 39, 39, 0.9);
     z-index: 2;
 }
 
