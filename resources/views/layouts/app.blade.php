@@ -6,7 +6,6 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Vino | cellier</title>
-    
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

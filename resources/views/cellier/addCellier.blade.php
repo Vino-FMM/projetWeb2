@@ -34,7 +34,7 @@
     </div>
     <div>
     <a href="{{route('cellier.create')}}"><img src="https://s2.svgbox.net/hero-outline.svg?ic=plus-sm&color=000000" width="22" height="22"></a>
-        <span>Ajout</span>
+        <span>Ajout cellier</span>
     </div>
    
    <div>
