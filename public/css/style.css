@@ -97,6 +97,25 @@ footer span {
     margin: 0 auto;
 }
 
+.container-recherche{
+    padding: 0 15px;
+    margin-bottom: 10px;
+}
+.container-recherche input{ 
+    box-sizing: border-box;
+    padding:5px;
+    border-radius: 8px;
+    border:1px solid grey;
+    min-width: 240px;
+    min-height: 40px;
+}
+/* #searchResults{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+} */
+
 
 
 

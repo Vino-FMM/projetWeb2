@@ -7,11 +7,11 @@
             <h4>Liste des bouteilles</h4>
             <small>cellier: {{ $mon_cellier->nom_cellier }}</small>
         </div> 
-            <div class="container-bouteilles">
+            <div class="container-recherche">
                 <input type="text" id="searchInput" placeholder="Rechercher une bouteille...">
                 <div id="searchResults"></div>
             </div>
-            <div class="filter-container">
+            <!-- <div class="filter-container">
                 <form class="filter">
                     <div class="form-group">
                         <label for="price">Price:</label>
@@ -51,7 +51,7 @@
                     <button type="submit">appliquer le filtre</button>
                 </form>
                 <a class="toggle-filter" href="#"><img src='https://s2.svgbox.net/materialui.svg?ic=filter_alt'></a>
-            </div>
+            </div> -->
         <div class="container-bouteilles">
             @foreach($bottles as $bottle)
                 <div class="carte-bouteille">
