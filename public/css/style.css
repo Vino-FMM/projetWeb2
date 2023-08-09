@@ -69,7 +69,9 @@ footer div a {
 footer span {
     font-size: 10px;
 }
-
+body input {
+    font-size: 16px;
+}
 .header{
     display: flex;
     justify-content: space-between;
