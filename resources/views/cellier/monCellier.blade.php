@@ -4,10 +4,10 @@
 @section('content')
 
 <main>
-<div class="header">
-           
-<small>nom cellier: {{ $nomCellier}}</small>
-        </div> 
+    <div class="header"> 
+        <h4>Ajouter des bouteilles</h4>   
+        <small>nom cellier: {{ $nomCellier}}</small>
+    </div> 
     @if(session('success'))
         <div class="alert-success">
             {{ session('success') }}
@@ -43,7 +43,7 @@
     @endforeach
     @else
         <div class='carte-vide'>
-            <h4>Aucune bouteille dans ce cellier</h4>
+            <h5>Aucune bouteille dans ce cellier</h5>
             <div>
                 <a href="{{ route('Ajouter-bouteilles', ['cellier_id' => $cellier->id]) }}" class="bouton">Ajouter une bouteille</a>
             </div>
@@ -66,17 +66,13 @@
         <span>Acueil</span>
     </div>
     <div>
-    <a href="{{route('cellier.create')}}"><img src="https://s2.svgbox.net/hero-outline.svg?ic=plus-sm&color=000000" width="22" height="22"></a>
-        <span>Ajout</span>
-    </div>
-    <!-- <div>
-        <img src="https://s2.svgbox.net/octicons.svg?ic=search&color=000" width="32" height="32">
-        <span>Recherche</span>
+        <a href="{{route('cellier.create')}}"><img src="https://s2.svgbox.net/hero-outline.svg?ic=plus-sm&color=000000" width="22" height="22"></a>
+        <span>Ajout cellier</span>
     </div>
     <div>
-        <img src="https://s2.svgbox.net/materialui.svg?ic=list&color=000" width="32" height="32">
-        <span>Liste</span>
-    </div> -->
+        <a href=""><img src="https://s2.svgbox.net/octicons.svg?ic=search&color=000" width="22" height="22"></a>
+        <span>Recherche</span>
+    </div>
 </footer>
 
 <script>

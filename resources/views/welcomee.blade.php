@@ -13,18 +13,15 @@
             <h3>Mes celliers</h3>
             <a href="{{route('cellier.create')}}"><img src="https://s2.svgbox.net/hero-solid.svg?ic=plus-circle&color=000000" width="40" height="40"></a>
         </div>
-
             @foreach(Auth::user()->celliers as $cellier)
         <div class="carte-cellier">
         <div class="bottle-wrapper">
             <img src="{{ asset('assets/img/cellier.png') }}" alt="cellier-photo">
         </div>
             <div>
-                <a id="nom-cellier" href="{{ route('mon-cellier', ['id' => $cellier->id]) }}">{{ $cellier->nom_cellier }} <small class="bouton-click">cliquez ici</small></a>
+                <a id="nom-cellier" href="{{ route('mon-cellier', ['id' => $cellier->id]) }}">{{ $cellier->nom_cellier }} <small class="bouton-click">Voir détails</small></a>
                 <div>
-                
                     <a href="{{ route('cellier.edit', ['id' => $cellier->id]) }}" class="bouton-outline">Modifier</a>
-                <!-- <a href="#" data-cellier-id="{{ $cellier->id }}">Supprimer<img src="https://s2.svgbox.net/materialui.svg?ic=delete&color=000" width="22" height="22"></a> -->
                     <a href="#" data-cellier-id="{{ $cellier->id }}" class="bouton-outline">Supprimer</a>
                 </div>
                 
@@ -69,12 +66,13 @@
     </div>
     <div>
     <a href="{{route('cellier.create')}}"><img src="https://s2.svgbox.net/hero-outline.svg?ic=plus-sm&color=000000" width="22" height="22"></a>
-        <span>Ajout</span>
+        <span>Ajout cellier</span>
     </div>
-    <!-- <div>
-    <img src="https://s2.svgbox.net/octicons.svg?ic=search&color=000" width="32" height="32">
+    <div>
+        <a href=""><img src="https://s2.svgbox.net/octicons.svg?ic=search&color=000" width="22" height="22"></a>
         <span>Recherche</span>
     </div>
+    <!-- <div>
     <div>
     <img src="https://s2.svgbox.net/materialui.svg?ic=list&color=000" width="32" height="32">
         <span>Liste</span>

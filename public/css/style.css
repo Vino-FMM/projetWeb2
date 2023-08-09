@@ -69,18 +69,20 @@ footer div a {
 footer span {
     font-size: 10px;
 }
-
+body input {
+    font-size: 16px;
+}
 .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 15px;
+    padding: 15px 15px;
 }
 .header h3,.header small{
     font-weight: bold;
 }
 .header small{
-    color:rgb(53, 53, 53);
+    color:rgb(103, 103, 103);
 }
 .svg-container {
     position: fixed;
@@ -96,6 +98,27 @@ footer span {
 #connexion{
     margin: 0 auto;
 }
+
+.container-recherche{
+    padding: 0 15px;
+    margin-bottom: 10px;
+}
+.container-recherche input{ 
+    background-color: rgb(240, 240, 240);
+    box-sizing: border-box;
+    padding:5px;
+    border-radius: 25px;
+    border:none;
+    min-width: 100%;
+    min-height: 50px;
+
+    background-image: url('https://s2.svgbox.net/octicons.svg?ic=search&color=000');
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 15px center;
+    padding-left: 50px;
+}
+
 
 
 
