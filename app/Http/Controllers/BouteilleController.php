@@ -116,6 +116,13 @@ class BouteilleController extends Controller
         )->with("success", "Bouteille ajoutée au cellier.");
     }
 
+    public function AjouterbouteilleManuellement(Request $request, $cellier_id)
+    {
+        // dd($cellier_id);
+        // renvoyer vers la vue addBouteilleManuellement
+        return view('bouteilles.addBouteilleManuellement', compact('cellier_id'));
+    }
+
         public function destroy(Request $request,string $id)
     {
         
