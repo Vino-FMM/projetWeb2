@@ -20,11 +20,9 @@
             <img src="{{ asset('assets/img/cellier.png') }}" alt="cellier-photo">
         </div>
             <div>
-                <a id="nom-cellier" href="{{ route('mon-cellier', ['id' => $cellier->id]) }}">{{ $cellier->nom_cellier }} <small class="bouton-click">cliquez ici</small></a>
+                <a id="nom-cellier" href="{{ route('mon-cellier', ['id' => $cellier->id]) }}">{{ $cellier->nom_cellier }} <small class="bouton-click">Voir détails</small></a>
                 <div>
-                
                     <a href="{{ route('cellier.edit', ['id' => $cellier->id]) }}" class="bouton-outline">Modifier</a>
-                <!-- <a href="#" data-cellier-id="{{ $cellier->id }}">Supprimer<img src="https://s2.svgbox.net/materialui.svg?ic=delete&color=000" width="22" height="22"></a> -->
                     <a href="#" data-cellier-id="{{ $cellier->id }}" class="bouton-outline">Supprimer</a>
                 </div>
                 
