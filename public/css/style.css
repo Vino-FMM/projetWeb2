@@ -120,9 +120,12 @@ body input {
 }
 
 .img-accueil1{
-    bottom:10;
+    position: relative;
+    object-fit: cover;
+    /* bottom:0; */
     max-width:100%;
-    /* max-height: 300px; */
+    height: 360px;
+    /* z-index: 3; */
 }
 
 
