@@ -4,10 +4,10 @@
 @section('content')
 
 <main>
-<div class="header">
-           
-<small>nom cellier: {{ $nomCellier}}</small>
-        </div> 
+    <div class="header"> 
+        <h4>Ajouter des bouteilles</h4>   
+        <small>nom cellier: {{ $nomCellier}}</small>
+    </div> 
     @if(session('success'))
         <div class="alert-success">
             {{ session('success') }}
@@ -43,7 +43,7 @@
     @endforeach
     @else
         <div class='carte-vide'>
-            <h4>Aucune bouteille dans ce cellier</h4>
+            <h5>Aucune bouteille dans ce cellier</h5>
             <div>
                 <a href="{{ route('Ajouter-bouteilles', ['cellier_id' => $cellier->id]) }}" class="bouton">Ajouter une bouteille</a>
             </div>

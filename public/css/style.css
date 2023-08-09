@@ -76,13 +76,13 @@ body input {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 15px;
+    padding: 15px 15px;
 }
 .header h3,.header small{
     font-weight: bold;
 }
 .header small{
-    color:rgb(53, 53, 53);
+    color:rgb(103, 103, 103);
 }
 .svg-container {
     position: fixed;

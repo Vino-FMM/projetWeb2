@@ -13,7 +13,6 @@
             <h3>Mes celliers</h3>
             <a href="{{route('cellier.create')}}"><img src="https://s2.svgbox.net/hero-solid.svg?ic=plus-circle&color=000000" width="40" height="40"></a>
         </div>
-
             @foreach(Auth::user()->celliers as $cellier)
         <div class="carte-cellier">
         <div class="bottle-wrapper">
