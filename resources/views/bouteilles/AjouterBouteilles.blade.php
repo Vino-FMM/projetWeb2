@@ -8,7 +8,7 @@
             <small>cellier: {{ $mon_cellier->nom_cellier }}</small>
         </div> 
             <div class="container-recherche">
-                <input type="text" id="searchInput" placeholder="Rechercher une bouteille...">
+                <input type="text" id="searchInput" placeholder="Rechercher une bouteille" >
                 <div id="searchResults"></div>
             </div>
             <!-- <div class="filter-container">
