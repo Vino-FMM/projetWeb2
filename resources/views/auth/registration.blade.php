@@ -55,15 +55,14 @@
                 </div>
 
                 <!-- date of birth input-->
-                <div>
+                <!-- <div>
                     <input id="date_of_birth" type="date" name="date_naissance" placeholder="Date de naissance" />
-                    <!-- <label for="date_of_birth">Date of birth</label> -->
                     @if ($errors->has('date_of_birth'))
                         <div>
                             {{$errors->first('date_of_birth')}}
                         </div>
                     @endif
-                </div>
+                </div> -->
 
                     <!-- Submit Button-->
                     <button id="Login" type="submit" class="bouton">S'enregistrer</button>
@@ -72,6 +71,9 @@
         <section>
             <a href="{{ route('login') }}">J'ai déja un compte</a>
         </section>
+        <div class="img-login">
+            <img src="{{ asset('assets/img/bouteilles.png') }}" alt="bouteille" class="img-accueil1">
+        </div>
     </div>     
 </section>
 

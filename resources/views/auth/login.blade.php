@@ -44,7 +44,12 @@
             <div>
                 <a href="{{ route('register') }}">Créer mon compte</a>
             </div> 
+            
         </div>
+        <div class="img-login">
+                <img src="{{ asset('assets/img/bouteilles.png') }}" alt="bouteille" class="img-accueil1">
+            </div>
 </section>
+
 
 @endsection

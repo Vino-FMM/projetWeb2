@@ -4,7 +4,6 @@
     align-items: center;
     flex: 1;
     gap:30px;
-    min-height: 400px;
 }
 .formulaire_connexion form input[type="text"],
 .formulaire_connexion form input[type="date"],
