@@ -12,8 +12,9 @@
                 <input type="text" id="searchInput" placeholder="Rechercher une bouteille" >
                 <div id="searchResults"></div>
             </div>
-            <!-- <div class="filter-container">
+            <div class="filter-container">
                 <form class="filter">
+                    <div><small class="close">X</small></div>
                     <div class="form-group">
                         <label for="price">Price:</label>
                         <select id="price" name="price">
@@ -52,7 +53,7 @@
                     <button type="submit">appliquer le filtre</button>
                 </form>
                 <a class="toggle-filter" href="#"><img src='https://s2.svgbox.net/materialui.svg?ic=filter_alt'></a>
-            </div> -->
+            </div>
             <div class="container-bouteilles">
         @foreach($bottles as $bottle)
         <div class="carte-bouteille">
@@ -188,12 +189,19 @@ document.addEventListener('DOMContentLoaded', function() {
 const filterContainer = document.querySelector('.filter-container');
 const filter = filterContainer.querySelector('.filter');
 const toggleFilter = filterContainer.querySelector('.toggle-filter');
+const closeButton = filterContainer.querySelector('.close');
 
 toggleFilter.addEventListener('click', function(event) {
     event.preventDefault();
     filter.classList.toggle('show');
-    toggleFilter.classList.toggle('active');
+    toggleFilter.classList.toggle('active');  
+
 });
+closeButton.addEventListener('click', function(event) {
+    filter.classList.remove('show');
+    toggleFilter.classList.remove('active');
+});
+
 
 </script>
 
