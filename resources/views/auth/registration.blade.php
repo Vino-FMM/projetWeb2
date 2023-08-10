@@ -71,9 +71,9 @@
         <section>
             <a href="{{ route('login') }}">J'ai déja un compte</a>
         </section>
-        <div class="img-login">
+        
             <img src="{{ asset('assets/img/bouteilles.png') }}" alt="bouteille" class="img-accueil1">
-        </div>
+       
     </div>     
 </section>
 
