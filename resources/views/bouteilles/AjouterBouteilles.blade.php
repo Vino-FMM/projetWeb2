@@ -15,42 +15,44 @@
             <div class="filter-container">
                 <form class="filter">
                     <div><small class="close">X</small></div>
-                    <div class="form-group">
-                        <label for="price">Price:</label>
-                        <select id="price" name="price">
-                            <option value="">Any</option>
-                            <option value="asc">Low to high</option>
-                            <option value="desc">High to low</option>
-                        </select>
+                    <div>
+                        <div class="form-group">
+                            <label for="price">Price:</label>
+                            <select id="price" name="price">
+                                <option value="">Any</option>
+                                <option value="asc">Low to high</option>
+                                <option value="desc">High to low</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country:</label>
+                            <select id="country" name="country">
+                                <option value="">Any</option>
+                                <option value="france">France</option>
+                                <option value="italy">Italy</option>
+                                <option value="spain">Spain</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="millisime">Millisime:</label>
+                            <select id="millisime" name="millisime">
+                                <option value="">Any</option>
+                                <option value="2010">2010</option>
+                                <option value="2011">2011</option>
+                                <option value="2012">2012</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Type:</label>
+                            <select id="type" name="type">
+                                <option value="">Any</option>
+                                <option value="red">Red</option>
+                                <option value="white">White</option>
+                                <option value="rose">Rosé</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="bouton">appliquer le filtre</button>
                     </div>
-                    <div class="form-group">
-                        <label for="country">Country:</label>
-                        <select id="country" name="country">
-                            <option value="">Any</option>
-                            <option value="france">France</option>
-                            <option value="italy">Italy</option>
-                            <option value="spain">Spain</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="millisime">Millisime:</label>
-                        <select id="millisime" name="millisime">
-                            <option value="">Any</option>
-                            <option value="2010">2010</option>
-                            <option value="2011">2011</option>
-                            <option value="2012">2012</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="type">Type:</label>
-                        <select id="type" name="type">
-                            <option value="">Any</option>
-                            <option value="red">Red</option>
-                            <option value="white">White</option>
-                            <option value="rose">Rosé</option>
-                        </select>
-                    </div>
-                    <button type="submit">appliquer le filtre</button>
                 </form>
                 <a class="toggle-filter" href="#"><img src='https://s2.svgbox.net/materialui.svg?ic=filter_alt'></a>
             </div>
