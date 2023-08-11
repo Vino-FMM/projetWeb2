@@ -7,14 +7,16 @@
             <h4>Liste des bouteilles</h4>
             <small>cellier: {{ $mon_cellier->nom_cellier }}</small>
         </div>
-        <a href="{{ route('Ajouter-bouteille-manuellement', ['cellier_id' => $mon_cellier->id]) }}">Ajouter une bouteille manuellement</a> 
+        <a href="{{ route('Ajouter-bouteille-manuellement', ['cellier_id' => $mon_cellier->id]) }}">Ajouter une bouteille personnalisée</a> 
             <div class="container-recherche">
                 <input type="text" id="searchInput" placeholder="Rechercher une bouteille" >
+                <a class="toggle-filter input-filter-icon" href="#"><img src='https://s2.svgbox.net/materialui.svg?ic=filter_alt'></a>
                 <div id="searchResults"></div>
             </div>
             <div class="filter-container">
                 <form class="filter">
                     <div><small class="close">X</small></div>
+                    <h3>Tri et filtre</h3>
                     <div>
                         <div class="form-group">
                             <label for="price">Price:</label>
@@ -51,11 +53,9 @@
                                 <option value="rose">Rosé</option>
                             </select>
                         </div>
-                        <button type="submit" class="bouton">appliquer le filtre</button>
+                        <button type="submit" class="bouton">Appliquer</button>
                     </div>
                 </form>
-                <a class="toggle-filter" href="#"><img src='https://s2.svgbox.net/materialui.svg?ic=filter_alt'></a>
-            </div>
             <div class="container-bouteilles">
         @foreach($bottles as $bottle)
         <div class="carte-bouteille">
@@ -189,23 +189,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ===== script pour le filtre =====
 const filterContainer = document.querySelector('.filter-container');
-const filter = filterContainer.querySelector('.filter');
-const toggleFilter = filterContainer.querySelector('.toggle-filter');
-const closeButton = filterContainer.querySelector('.close');
+const filter = document.querySelector('.filter');
+const closeButton = document.querySelector('.close');
+const toggleFilter = document.querySelector('a.toggle-filter');
+
 
 toggleFilter.addEventListener('click', function(event) {
     event.preventDefault();
     filter.classList.toggle('show');
     toggleFilter.classList.toggle('active');  
-
 });
 closeButton.addEventListener('click', function(event) {
     filter.classList.remove('show');
     toggleFilter.classList.remove('active');
 });
 
-
 </script>
-
 
 @endsection

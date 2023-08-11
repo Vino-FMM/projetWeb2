@@ -101,6 +101,7 @@ body input {
 }
 
 .container-recherche{
+    position: relative;
     padding: 0 15px;
     margin-bottom: 10px;
 }
@@ -112,7 +113,6 @@ body input {
     border:none;
     min-width: 100%;
     min-height: 50px;
-
     background-image: url('https://s2.svgbox.net/octicons.svg?ic=search&color=000');
     background-repeat: no-repeat;
     background-size: 20px 20px;
@@ -135,7 +135,14 @@ body input {
     margin:0;
 }
 
-
+.input-filter-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+}
 
 
 

@@ -19,11 +19,14 @@
     z-index: 30;
     overflow: hidden;
 }
-.filter > :nth-child(2){
+.filter > :nth-child(3){
     display: flex;
     flex-direction: column;
     gap:10px;
 }
+/* .filter{
+    display:none;
+} */
 .filter.show {
     transform: translateX(0);
     /* text-align: center; */
