@@ -118,9 +118,66 @@ class BouteilleController extends Controller
 
     public function AjouterbouteilleManuellement(Request $request, $cellier_id)
     {
-        // dd($cellier_id);
+    // Lire le contenu du fichier JSON qui contient les pays
+    $jsonFilePath = base_path('public/Json/pays.json');
+    $paysJson = file_get_contents($jsonFilePath);
+    
+    // Convertir le contenu JSON en tableau associatif
+    $paysArray = json_decode($paysJson, true);
         // renvoyer vers la vue addBouteilleManuellement
-        return view('bouteilles.addBouteilleManuellement', compact('cellier_id'));
+        return view('bouteilles.addBouteilleManuellement', compact('cellier_id', 'paysArray'));
+    }
+
+    public function addBouteilleManuellementPost(Request $request)
+    {
+        $request->validate([
+            'file' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'pays' => 'required',
+            'Titre' => 'required|max:30',
+            'prix' => 'required|numeric',
+
+        ]);
+        // dd($request->all());
+        // ajouter une bouteille dans Bouteille cellier
+        $bouteilleCellier = new BouteilleCellier();
+        $bouteilleCellier->user_id = auth()->user()->id;
+        $bouteilleCellier->cellier_id = $request->input('cellier_id');
+        $bouteilleCellier->quantite = $request->input('quantite');
+        $bouteilleCellier->nom_bouteille = $request->input('Titre');
+        $bouteilleCellier->format_bouteille = $request->input('format');
+        $bouteilleCellier->prix_bouteille = $request->input('prix');
+        $bouteilleCellier->pays_bouteille = $request->input('pays');
+        //pour l'image on va prendre celle dans le file
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $filename = $file->getClientOriginalName();
+            $path = $file->store('assets/persoBouteilles');
+            //si on a une image on va la mettre dans le dossier assets/files et on va mettre le chemin dans la base de données
+            $bouteilleCellier->url_img_bouteille = $path;
+            // dd($path);
+        } else {
+            //sinon on va mettre l'image par défaut
+            $bouteilleCellier->url_img_bouteille = "assets/files/no_image.jpg";
+        }
+        
+        $bouteilleCellier->type_bouteille = $request->input('type');
+        $bouteilleCellier->save();
+        
+        $bouteilleCelliers = BouteilleCellier::where(
+            "cellier_id",
+            $bouteilleCellier->cellier_id,
+        )->get();
+    
+        // trouver le cellier avec l'id du cellier sélectionné
+        $cellier = Cellier::findOrFail($bouteilleCellier->cellier_id);
+        // nom du cellier
+        $nomCellier = $cellier->nom_cellier;
+        // retourner vers la vue monCellier
+
+        return view(
+            "cellier.monCellier",
+            compact("bouteilleCelliers", "cellier", "nomCellier"),
+        )->with("success", "Bouteille ajoutée au cellier.");
     }
 
         public function destroy(Request $request,string $id)
@@ -134,8 +191,10 @@ class BouteilleController extends Controller
         $bouteilleCelliers = BouteilleCellier::where('cellier_id', $cellierId)->get();
         // Trouver le cellier avec l'id du cellier sélectionné
         $cellier = Cellier::findOrFail($cellierId);
-        // Rediriger vers la page du cellier avec un message de succès
-        return view('cellier.monCellier', compact('bouteilleCelliers', 'cellier'))->with('success', 'Boutelle supprimée du cellier.');
+        // Nom du cellier
+        $nomCellier = $request->input('nomCellier');
+        // Retourner vers la vue monCellier
+        return view('cellier.monCellier', compact('bouteilleCelliers', 'cellier', 'nomCellier'))->with('success', 'Bouteille supprimée du cellier.');
     }
 
     public function search(Request $request)
