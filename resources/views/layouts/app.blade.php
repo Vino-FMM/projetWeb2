@@ -10,52 +10,7 @@
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </head>
-    <style>
-      .filter-container {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.filter {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 300px;
-    padding: 1rem;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-out;
-    transform: translateX(100%);
-}
-
-.filter.show {
-    transform: translateX(0);
-}
-
-.toggle-filter {
-    display: block;
-    padding: 0.5rem 1rem;
-    /* background-color: #007bff; */
-    color: #fff;
-    text-decoration: none;
-    transition: background-color 0.3s ease-out;
-}
-
-/* .toggle-filter:hover {
-    background-color: #0062cc;
-} */
-
-.toggle-filter.active {
-    background-color: #dc3545;
-}
-
-.toggle-filter.active:hover {
-    background-color: #c82333;
-}  
-    </style>
+    
     <body>
     @php $locale = session('locale') @endphp
         <nav>

@@ -9,7 +9,6 @@
             <h4 id="connexion">Se connecter</h4>
         </div>
         <div class="formulaire-container">
-            
             <div class="formulaire_connexion">
                 <form action="{{route('login.authentication')}}" method="post">
                     @csrf
@@ -43,8 +42,9 @@
             </div>
             <div>
                 <a href="{{ route('register') }}">Créer mon compte</a>
-            </div> 
+            </div>   
         </div>
+        <img src="{{ asset('assets/img/bouteilles.png') }}" alt="bouteille" class="img-accueil1">         
 </section>
 
 @endsection
