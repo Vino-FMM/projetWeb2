@@ -14,7 +14,7 @@
                 <div id="searchResults"></div>
             </div>
             <div class="filter-container">
-                <form class="filter">
+            <form class="filter" action="{{ route('bouteilles.filter', ['cellier_id' => $mon_cellier->id]) }}" method="GET">
                     <div><small class="close">X</small></div>
                     <h3>Tri et filtre</h3>
                     <div>
@@ -30,27 +30,27 @@
                             <label for="country">Country:</label>
                             <select id="country" name="country">
                                 <option value="">Any</option>
-                                <option value="france">France</option>
-                                <option value="italy">Italy</option>
-                                <option value="spain">Spain</option>
+                                @foreach ($filters_elements['countries'] as $country)
+                                    <option value="{{ $country }}">{{ $country }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="millisime">Millisime:</label>
-                            <select id="millisime" name="millisime">
+                            <label for="millesime">Millisime:</label>
+                            <select id="millesime" name="millesime">
                                 <option value="">Any</option>
-                                <option value="2010">2010</option>
-                                <option value="2011">2011</option>
-                                <option value="2012">2012</option>
+                                @foreach ($filters_elements['millesimes'] as $millesime)
+                                    <option value="{{ $millesime }}">{{ $millesime }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="type">Type:</label>
                             <select id="type" name="type">
                                 <option value="">Any</option>
-                                <option value="red">Red</option>
-                                <option value="white">White</option>
-                                <option value="rose">Rosé</option>
+                                @foreach ($filters_elements['types'] as $type)
+                                    <option value="{{ $type }}">{{ $type }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <button type="submit" class="bouton">Appliquer</button>
