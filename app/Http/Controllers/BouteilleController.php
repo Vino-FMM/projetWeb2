@@ -30,7 +30,10 @@ class BouteilleController extends Controller
 
        // Trouver les pays, millésimes, et types distincts
         $countries = Bouteille::distinct()->pluck('pays');
-        $millesimes = Bouteille::distinct()->pluck('millesime');
+        $millesimes = Bouteille::whereBetween('millesime', [1900, 3000])
+            ->distinct()
+            ->orderBy('millesime', 'asc')
+            ->pluck('millesime');
         $types = Bouteille::distinct()->pluck('type');
 
         // Combiner les filtres
@@ -249,26 +252,42 @@ class BouteilleController extends Controller
 // pour le filtre de recherche
 public function filter(Request $request, $cellier_id)
 {
-    // dd($request->all());
+    
     $bottles = Bouteille::query();
-    // $bottles = $bottles->get();
-    if ($request->has('price')) {
-        $sortOrder = $request->price === 'asc' ? 'asc' : 'desc';
-        $bottles->orderBy('prix', $sortOrder);
+    
+    if($request->input('price') !== null){
+        if ($request->has('price')) {
+            if ($request->price === 'asc') {
+                $bottles->orderBy('prix', 'asc');
+            } elseif ($request->price === 'desc') {
+                $bottles->orderBy('prix', 'desc');
+            }
+        }
+    }
+    // dd($request->all());
+    // Apply 'country' filter
+    if($request->input('country') !== null){
+        // dd($request->input('country'));
+        if ($request->has('country') && $request->country !== '') {
+            $bottles->where('pays', $request->country);
+        }
+    }
+ 
+
+    // Apply 'millesime' filter
+    if($request->input('millesime') !== null){
+        if ($request->has('millesime') && $request->millesime !== '') {
+            $bottles->where('millesime', $request->millesime);
+        }
     }
 
-    if ($request->has('country')) {
-        $bottles->where('pays', $request->country);
+    // Apply 'type' filter
+    if($request->input('type') !== null){
+        if ($request->has('type') && $request->type !== '') {
+            $bottles->where('type', $request->type);
+        }
     }
-   
 
-    // if ($request->has('millesime')) {
-    //     $bottles->where('millesime', $request->millesime);
-    // }
-
-    // if ($request->has('type')) {
-    //     $bottles->where('type', $request->type);
-    // }
 
             // trouver les bouteilles du cellier
             $owned_bottles = BouteilleCellier::where('cellier_id', $cellier_id)
@@ -277,11 +296,14 @@ public function filter(Request $request, $cellier_id)
             //trouver mon cellier
             $mon_cellier = Cellier::findorFail($cellier_id);
             // dd($bottles->toSql());
-    $bottles = $bottles->paginate(10);
+            $bottles = $bottles->paginate(10);
 
           // Trouver les pays, millésimes, et types distincts
           $countries = Bouteille::distinct()->pluck('pays');
-          $millesimes = Bouteille::distinct()->pluck('millesime');
+          $millesimes = Bouteille::whereBetween('millesime', [1900, 3000])
+            ->distinct()
+            ->orderBy('millesime', 'asc')
+            ->pluck('millesime');
           $types = Bouteille::distinct()->pluck('type');
   
           // Combiner les filtres
