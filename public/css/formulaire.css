@@ -26,3 +26,6 @@
     margin: 0 auto;
     margin-top: 20px;
 }
+.form_bouteille_personnalisee select{
+    min-height:30px;
+}
