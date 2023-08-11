@@ -18,45 +18,48 @@
                     <div><small class="close">X</small></div>
                     <h3>Tri et filtre</h3>
                     <div>
-                        <div class="form-group">
-                            <label for="price">Price:</label>
-                            <select id="price" name="price">
-                                <option value="">Any</option>
-                                <option value="asc">Low to high</option>
-                                <option value="desc">High to low</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="country">Country:</label>
-                            <select id="country" name="country">
-                                <option value="">Any</option>
-                                @foreach ($filters_elements['countries'] as $country)
-                                    <option value="{{ $country }}">{{ $country }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="millesime">Millisime:</label>
-                            <select id="millesime" name="millesime">
-                                <option value="">Any</option>
-                                @foreach ($filters_elements['millesimes'] as $millesime)
-                                    <option value="{{ $millesime }}">{{ $millesime }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="type">Type:</label>
-                            <select id="type" name="type">
-                                <option value="">Any</option>
-                                @foreach ($filters_elements['types'] as $type)
-                                    <option value="{{ $type }}">{{ $type }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label for="price">Prix :</label>
+                        <select id="price" name="price">
+                            <option value="">Tous</option>
+                            <option value="asc">Croissant</option>
+                            <option value="desc">Décroissant</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Pays :</label>
+                        <select id="country" name="country">
+                            <option value="">Tous</option>
+                            @foreach ($filters_elements['countries'] as $country)
+                                <option value="{{ $country }}">{{ $country }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="millesime">Millésime :</label>
+                        <select id="millesime" name="millesime">
+                            <option value="">Tous</option>
+                            @foreach ($filters_elements['millesimes'] as $millesime)
+                                <option value="{{ $millesime }}">{{ $millesime }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Type :</label>
+                        <select id="type" name="type">
+                            <option value="">Tous</option>
+                            @foreach ($filters_elements['types'] as $type)
+                                <option value="{{ $type }}">{{ $type }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                         <button type="submit" class="bouton">Appliquer</button>
                     </div>
                 </form>
             <div class="container-bouteilles">
+            @if($bottles->isEmpty())
+                <p>Aucune bouteille trouvée.</p>
+            @else
         @foreach($bottles as $bottle)
         <div class="carte-bouteille">
             <div>
@@ -86,6 +89,7 @@
             </div>
         </div>
         @endforeach
+        @endif
 
         {{ $bottles->appends(request()->query())->links('vendor.pagination.custom') }}
     </div>
