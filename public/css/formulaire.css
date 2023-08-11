@@ -4,6 +4,7 @@
     align-items: center;
     flex: 1;
     gap:30px;
+    padding:15px;
 }
 .formulaire_connexion form input[type="text"],
 .formulaire_connexion form input[type="date"],
@@ -15,4 +16,13 @@
 }
 .formulaire-container div a {
     color: rgb(54, 7, 7);
+}
+.form_bouteille_personnalisee{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+.form_bouteille_personnalisee>.bouton{
+    margin: 0 auto;
+    margin-top: 20px;
 }
