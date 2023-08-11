@@ -22,7 +22,9 @@
         @foreach($bouteilleCelliers as $bouteilleCellier)
         <div class="carte-bouteille">
             <div>
+            <!-- $bouteilleCellier->url_img_bouteille -->
                 <img src="{{ $bouteilleCellier->url_img_bouteille }}" alt="{{ $bouteilleCellier->nom_bouteille }}" style="max-width: 100%; height: auto;">
+                <!-- <img src="{{ asset('img/ArDWDq2GHziW8IfbU5f7ntTDwkKdzc9i4J7nY55Y.jpg') }}" alt="{{ $bouteilleCellier->nom_bouteille }}" style="max-width: 100%; height: auto;"> -->
             </div>
             <div class="carte-details">
                 <h4>{{ $bouteilleCellier->nom_bouteille }}</h4> 
@@ -34,6 +36,7 @@
                     <form id="delete-form-{{ $bouteilleCellier->id }}" action="{{ route('bouteilles.destroy', ['id' => $bouteilleCellier->id, 'cellier_id' => $cellier->id]) }}" method="POST" style="display: none;">
                         @csrf
                         @method('DELETE')
+                        <input type="hidden" name="nomCellier" value="{{ $nomCellier }}">
                     </form>
                 </div> 
             </div> 
