@@ -27,8 +27,20 @@ class BouteilleController extends Controller
 
         //faire la pagination par 10
         $bottles = Bouteille::paginate(10);
+
+       // Trouver les pays, millésimes, et types distincts
+        $countries = Bouteille::distinct()->pluck('pays');
+        $millesimes = Bouteille::distinct()->pluck('millesime');
+        $types = Bouteille::distinct()->pluck('type');
+
+        // Combiner les filtres
+        $filters_elements = [
+            'countries' => $countries,
+            'millesimes' => $millesimes,
+            'types' => $types,
+        ];
         // retourner la vue index avec les bouteilles
-        return view('bouteilles.AjouterBouteilles', ['bottles' => $bottles, 'owned_bottles' => $owned_bottles, 'cellier_id' => $cellier_id, 'mon_cellier' => $mon_cellier]);
+        return view('bouteilles.AjouterBouteilles', ['bottles' => $bottles, 'owned_bottles' => $owned_bottles, 'cellier_id' => $cellier_id, 'mon_cellier' => $mon_cellier, 'filters_elements' => $filters_elements]);
     }
     //modifier la quantité de bouteille dans le cellier (vue)
 
@@ -157,7 +169,7 @@ class BouteilleController extends Controller
             // dd($path);
         } else {
             //sinon on va mettre l'image par défaut
-            $bouteilleCellier->url_img_bouteille = "assets/files/no_image.jpg";
+            $bouteilleCellier->url_img_bouteille = "https://media.istockphoto.com/id/694772120/vector/mockup-wine-bottle-vector-design.jpg?s=612x612&w=0&k=20&c=bkIy1HaSE8WtgBVwmC3oTrKDidCRLbtvsAi2Tlg6098=";
         }
         
         $bouteilleCellier->type_bouteille = $request->input('type');
@@ -233,4 +245,53 @@ class BouteilleController extends Controller
     // Return the view with the bottle details and cellier_id
     return view('bouteilles.addBouteilleSearch', ['bouteille' => $bottle, 'cellier_id' => $cellierId]);
 }
+
+// pour le filtre de recherche
+public function filter(Request $request, $cellier_id)
+{
+    // dd($request->all());
+    $bottles = Bouteille::query();
+    // $bottles = $bottles->get();
+    if ($request->has('price')) {
+        $sortOrder = $request->price === 'asc' ? 'asc' : 'desc';
+        $bottles->orderBy('prix', $sortOrder);
+    }
+
+    if ($request->has('country')) {
+        $bottles->where('pays', $request->country);
+    }
+   
+
+    // if ($request->has('millesime')) {
+    //     $bottles->where('millesime', $request->millesime);
+    // }
+
+    // if ($request->has('type')) {
+    //     $bottles->where('type', $request->type);
+    // }
+
+            // trouver les bouteilles du cellier
+            $owned_bottles = BouteilleCellier::where('cellier_id', $cellier_id)
+            ->pluck('code_saq_bouteille')
+            ->toArray();
+            //trouver mon cellier
+            $mon_cellier = Cellier::findorFail($cellier_id);
+            // dd($bottles->toSql());
+    $bottles = $bottles->paginate(10);
+
+          // Trouver les pays, millésimes, et types distincts
+          $countries = Bouteille::distinct()->pluck('pays');
+          $millesimes = Bouteille::distinct()->pluck('millesime');
+          $types = Bouteille::distinct()->pluck('type');
+  
+          // Combiner les filtres
+          $filters_elements = [
+              'countries' => $countries,
+              'millesimes' => $millesimes,
+              'types' => $types,
+          ];
+          // retourner la vue index avec les bouteilles
+          return view('bouteilles.AjouterBouteilles', ['bottles' => $bottles, 'owned_bottles' => $owned_bottles, 'cellier_id' => $cellier_id, 'mon_cellier' => $mon_cellier, 'filters_elements' => $filters_elements]);
+      }
 }
+
