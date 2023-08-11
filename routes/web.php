@@ -79,3 +79,6 @@ Route::get('/bouteilles/search', [BouteilleController::class, 'search'])->name('
 
 
 Route::get('/bouteilles/addBouteilleSearch/{id}', [BouteilleController::class, 'addBouteilleSearch'])->name('bouteilles.addBouteilleSearch');
+
+//trouver les bouteilles par filtre
+Route::get('/bouteilles/filter/{cellier_id}', [BouteilleController::class, 'filter'])->name('bouteilles.filter');
