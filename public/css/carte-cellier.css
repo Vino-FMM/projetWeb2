@@ -4,10 +4,14 @@
 }
 .carte-cellier,.carte-bouteille{
     align-items: center;
-    justify-content: space-around;
+    
     border-top: 1px solid rgb(243, 243, 243);
     padding: 25px;
 }
+.carte-cellier{
+    justify-content: space-around;
+}
+
 .carte-bouteille{
     padding: 15px;
     gap:30px;
