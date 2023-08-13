@@ -8,6 +8,7 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.5);
+    z-index: 4;
 }
 
 .modal-content {
@@ -15,12 +16,13 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 300px; /* Set a max-width for mobile screens */
+    max-width: 300px; 
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Center the modal on the screen */
-    box-sizing: border-box; /* Make padding included in the element's total width and height */
+    transform: translate(-50%, -50%); 
+    box-sizing: border-box;
+    z-index: 4;
 }
 
 .close-button {
@@ -28,7 +30,7 @@
     font-size: 28px;
     font-weight: bold;
     position: absolute;
-    right: 20px; /* Position at the top-right corner of the modal */
+    right: 20px;
     top: 10px;
     border: none;
     background: none;
@@ -45,6 +47,6 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 20px 0; /* Add some vertical margin */
+    margin: 20px 0;
     cursor: pointer;
 }
