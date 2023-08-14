@@ -7,7 +7,7 @@
             <h4>Liste des bouteilles</h4>
             <small>cellier: {{ $mon_cellier->nom_cellier }}</small>
         </div>
-        <a href="{{ route('Ajouter-bouteille-manuellement', ['cellier_id' => $mon_cellier->id]) }}">Ajouter une bouteille personnalisée</a> 
+        <a href="{{ route('Ajouter-bouteille-manuellement', ['cellier_id' => $mon_cellier->id]) }}" id="lien-personnalisee">Ajouter une bouteille personnalisée</a> 
             <div class="container-recherche">
                 <input type="text" id="searchInput" placeholder="Rechercher une bouteille" >
                 <a class="toggle-filter input-filter-icon" href="#"><img src='https://s2.svgbox.net/materialui.svg?ic=filter_alt'></a>

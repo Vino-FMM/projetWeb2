@@ -24,9 +24,7 @@
     flex-direction: column;
     gap:10px;
 }
-/* .filter{
-    display:none;
-} */
+
 .filter.show {
     transform: translateX(0);
     /* text-align: center; */

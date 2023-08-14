@@ -4,10 +4,13 @@
 }
 .carte-cellier,.carte-bouteille{
     align-items: center;
-    justify-content: space-around;
     border-top: 1px solid rgb(243, 243, 243);
     padding: 25px;
 }
+.carte-cellier{
+    justify-content: space-around;
+}
+
 .carte-bouteille{
     padding: 15px;
     gap:30px;
@@ -24,7 +27,7 @@
     height: 45px;
     background-color: rgb(206, 181, 181);
     border-radius: 50%;
-    z-index: -1;
+    z-index: 1;
     bottom: -5%;
 }
 
@@ -32,6 +35,7 @@
     object-fit: cover;
     width: 30px;
     padding: 8px;
+    z-index: 4;
 }
 .carte-bouteille > div:nth-child(1)> img{
     object-fit: cover;
@@ -145,9 +149,9 @@
     width: 40px;
 }
 
-.carte-bouteille.carte-modification {
+/* .carte-bouteille.carte-modification {
     background-color: rgb(244, 245, 245);
-}
+} */
 .carte-bouteille.carte-modification .bouton{
     margin-left: 30px;
 }
