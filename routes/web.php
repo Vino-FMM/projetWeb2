@@ -82,3 +82,8 @@ Route::get('/bouteilles/addBouteilleSearch/{id}', [BouteilleController::class, '
 
 //trouver les bouteilles par filtre
 Route::get('/bouteilles/filter/{cellier_id}', [BouteilleController::class, 'filter'])->name('bouteilles.filter');
+
+//route vers {{ route('notes.liste
+Route::get('/notes/listeNote', [BouteilleController::class, 'listeNote'])->name('notes.listeNote');
+// POST('bouteilles.ajouterNote', ['id_bouteille' => $bouteille->id, 'cellier_id' => $cellier_id]) }}">
+Route::post('/bouteilles/ajouterNote', [BouteilleController::class, 'ajouterNote'])->name('bouteilles.ajouterNote');

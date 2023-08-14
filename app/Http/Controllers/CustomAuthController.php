@@ -40,13 +40,13 @@ class CustomAuthController extends Controller
     public function store(Request $request)
     {
 
-        //  dd($request);
+        //  dd($request->all());
         $request->validate([
             'nom' => 'required',
             'prenom' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:6',
-            'date_naissance' => 'required|date',
+            // 'date_naissance' => 'required|date',
         ]);
 
         $user = new User;
@@ -54,7 +54,7 @@ class CustomAuthController extends Controller
         $user->prenom = $request->input('prenom');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
-        $user->date_naissance = $request->input('date_naissance');
+        // $user->date_naissance = $request->input('date_naissance');
         $user->save();
        return redirect(route('login'))->withSuccess('utilisateur enregistré');
     }
