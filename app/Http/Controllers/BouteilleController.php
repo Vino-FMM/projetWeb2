@@ -198,7 +198,7 @@ class BouteilleController extends Controller
 
         public function destroy(Request $request,string $id)
     {
-        
+        dd('stop');
         // Supprimer la bouteille du cellier de la base de données
         BouteilleCellier::destroy($id);
         // stocker l'id du cellier
@@ -320,7 +320,10 @@ public function filter(Request $request, $cellier_id)
     public function listeNote(Request $request)
     {
         $notes = Note::where('bouteille_cellier_id', $request->input('bouteille_cellier_id'))
-        ->pluck('text');
+        ->select('id', 'text')
+        ->get()
+        ->toArray();
+
         // dd($notes);
         //test dd hidden inputs
         // dd(request()->all());
@@ -333,13 +336,34 @@ public function filter(Request $request, $cellier_id)
     // Route::post('/bouteilles/ajouterNote', [BouteilleController::class, 'ajouterNote'])->name('bouteilles.ajouterNote');
     public function ajouterNote(Request $request)
     {
-        dd($request->all());
-        // $note = new Note();
-        // $note->text = $request->input('text');
-        // $note->bouteille_cellier_id = $request->input('bouteille_cellier_id');
-        // $note->save();
-        // dd($note);
-        return redirect()->route('bouteilles.listeNote', ['bouteille_cellier_id' => $request->input('bouteille_cellier_id'), 'cellier_id' => $request->input('cellier_id')])->with('success', 'Note ajoutée.');
+        // trouver les elements pour la vue
+        $bouteille = BouteilleCellier::findOrFail($request->input('id_bouteille'));
+        $cellier_id = $request->input('cellier_id');
+        $notes = Note::where('bouteille_cellier_id', $request->input('id_bouteille'))
+        ->select('id', 'text')
+        ->get();
+// dd($notes);
+        // ici on ajoute la note
+        $note = new Note();
+        $note->text = $request->input('note');
+        $note->bouteille_cellier_id = $request->input('id_bouteille');
+        $note->save();
+
+       // retour vers la page de la bouteille avec la note ajoutée
+        return view('notes.note', compact('bouteille', 'cellier_id', 'notes'))->withSuccess("Votre note a été ajoutée avec succès.");
+       
+    }
+
+    // supprimer une note
+    // Route::delete('/bouteilles/supprimerNote', [BouteilleController::class, 'destroyNote'])->name('note.destroyNote');
+    public function destroyNote(Request $request)
+    {
+        dd("test");
+        // dd(request()->all());
+        // $note = Note::findOrFail(request()->input('id_note'));
+        // $note->delete();
+        // return back()->withSuccess("Votre note a été supprimée avec succès.");
+       
     }
 }
 

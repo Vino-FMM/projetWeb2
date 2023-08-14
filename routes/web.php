@@ -87,3 +87,5 @@ Route::get('/bouteilles/filter/{cellier_id}', [BouteilleController::class, 'filt
 Route::get('/notes/listeNote', [BouteilleController::class, 'listeNote'])->name('notes.listeNote');
 // POST('bouteilles.ajouterNote', ['id_bouteille' => $bouteille->id, 'cellier_id' => $cellier_id]) }}">
 Route::post('/bouteilles/ajouterNote', [BouteilleController::class, 'ajouterNote'])->name('bouteilles.ajouterNote');
+//supprimer une note 
+Route::delete('/bouteilles/supprimerNote', [BouteilleController::class, 'destroyNote'])->name('note.destroyNote');
