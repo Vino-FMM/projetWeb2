@@ -25,7 +25,7 @@
                 <div id="navbarSupportedContent">
                     <ul>
                         <li><a href="{{ route('home') }}">Accueil</a></li>
-                        <li><a href="#!">À propos</a></li>
+                        <!-- <li><a href="#!">À propos</a></li> -->
                         @if (auth()->check())
                         <li><a href="{{ route('logout') }}">Se déconnecter</a></li>
                         @else

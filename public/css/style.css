@@ -141,10 +141,12 @@ body input {
 
 .input-filter-icon {
     position: absolute;
-    right: 10px;
-    top: 50%;
+    right: 20px;
+    top: 25px;
     transform: translateY(-50%);
-    background: none;
+    background-color: rgb(250, 250, 250);
+    padding: 8px 10px;
+    border-radius: 50%;
     border: none;
 }
 

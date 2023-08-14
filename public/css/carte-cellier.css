@@ -35,7 +35,7 @@
     object-fit: cover;
     width: 30px;
     padding: 8px;
-    z-index: 2;
+    z-index: 4;
 }
 .carte-bouteille > div:nth-child(1)> img{
     object-fit: cover;
@@ -149,9 +149,9 @@
     width: 40px;
 }
 
-.carte-bouteille.carte-modification {
+/* .carte-bouteille.carte-modification {
     background-color: rgb(244, 245, 245);
-}
+} */
 .carte-bouteille.carte-modification .bouton{
     margin-left: 30px;
 }
