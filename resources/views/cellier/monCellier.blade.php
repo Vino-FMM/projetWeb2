@@ -39,6 +39,9 @@
                         <input type="hidden" name="nomCellier" value="{{ $nomCellier }}">
                     </form>
                 </div> 
+                <div>
+                <a href="{{ route('notes.listeNote', ['cellier_id' => $cellier->id, 'bouteille_cellier_id' => $bouteilleCellier->id]) }}"  class="bouton-outline">Voir Note</a>
+                </div>
             </div> 
             
           

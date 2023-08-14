@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cellier;
 use App\Models\Bouteille;
 use App\Models\BouteilleCellier;
+use App\Models\Note;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -315,5 +316,30 @@ public function filter(Request $request, $cellier_id)
           // retourner la vue index avec les bouteilles
           return view('bouteilles.AjouterBouteilles', ['bottles' => $bottles, 'owned_bottles' => $owned_bottles, 'cellier_id' => $cellier_id, 'mon_cellier' => $mon_cellier, 'filters_elements' => $filters_elements]);
       }
+    //   ajouterNote
+    public function listeNote(Request $request)
+    {
+        $notes = Note::where('bouteille_cellier_id', $request->input('bouteille_cellier_id'))
+        ->pluck('text');
+        // dd($notes);
+        //test dd hidden inputs
+        // dd(request()->all());
+        $bouteille = BouteilleCellier::findOrFail($request->input('bouteille_cellier_id'));
+        // dd($bouteille);
+        $cellier_id = $request->input('cellier_id');
+        return view('notes.note', compact('bouteille', 'cellier_id', 'notes'));
+    }
+
+    // Route::post('/bouteilles/ajouterNote', [BouteilleController::class, 'ajouterNote'])->name('bouteilles.ajouterNote');
+    public function ajouterNote(Request $request)
+    {
+        dd($request->all());
+        // $note = new Note();
+        // $note->text = $request->input('text');
+        // $note->bouteille_cellier_id = $request->input('bouteille_cellier_id');
+        // $note->save();
+        // dd($note);
+        return redirect()->route('bouteilles.listeNote', ['bouteille_cellier_id' => $request->input('bouteille_cellier_id'), 'cellier_id' => $request->input('cellier_id')])->with('success', 'Note ajoutée.');
+    }
 }
 
