@@ -36,6 +36,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <input type="hidden" name="note" value="{{ $note['text']  }}">
+                                        <input type="hidden" name="id_note" value="{{ $note['id'] }}">
                                         <a href="#" data-cellier-id="{{ $note['id'] }}" data-cellier="{{ $cellier_id }}" class="bouton-outline">Supprimer</a>
                                     </form>
                                 </div>
@@ -78,27 +79,34 @@
     let deleteModal = document.getElementById("deleteModal");
     let closeBtn = document.getElementById("closeBtn");
     let confirmBtn = document.getElementById("confirmBtn");
+    let selectedNoteId = null;
 
     document.querySelectorAll("[data-cellier-id]").forEach((btn) => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
-            let deleteFormId = "delete-form-" + btn.getAttribute("data-cellier-id");
-            confirmBtn.onclick = function () {
-                console.log(deleteFormId);
-                document.getElementById(deleteFormId).submit();
-            };
+            selectedNoteId = btn.getAttribute("data-cellier-id");
             deleteModal.style.display = "block";
-            console.log(deleteFormId);
         });
+    });
+
+    confirmBtn.addEventListener("click", () => {
+        if (selectedNoteId) {
+            let deleteForm = document.getElementById("delete-form-" + selectedNoteId);
+            if (deleteForm) {
+                deleteForm.submit();
+            }
+        }
     });
 
     closeBtn.addEventListener("click", () => {
         deleteModal.style.display = "none";
+        selectedNoteId = null; // Reset the selected note ID
     });
 
     window.onclick = (event) => {
         if (event.target == deleteModal) {
             deleteModal.style.display = "none";
+            selectedNoteId = null; // Reset the selected note ID
         }
     };
 </script>

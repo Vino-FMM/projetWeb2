@@ -37,6 +37,7 @@
                         @csrf
                         @method('DELETE')
                         <input type="hidden" name="nomCellier" value="{{ $nomCellier }}">
+                        <input type="hidden" name="id_bouteille" value="{{ $bouteilleCellier->id }}">
                     </form>
                 </div> 
                 <div>
