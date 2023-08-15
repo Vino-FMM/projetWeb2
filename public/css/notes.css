@@ -1,0 +1,37 @@
+.notes_input {
+    width: 90%;
+    min-height:30px ;
+    box-sizing: border-box;
+    padding: 5px;
+}
+.no-notes {
+    color: rgb(94, 91, 91);
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.container_notes {
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:15px;
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(245, 245, 245);
+    max-width:90%;
+    border-radius: 10px;
+}
+.one_note{
+    display: flex;
+    justify-content: space-between;
+    gap:10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgb(244, 244, 244);
+}
+
+
+
+
+
