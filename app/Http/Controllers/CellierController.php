@@ -53,10 +53,12 @@ class CellierController extends Controller
         // Validation des données du formulaire
         $request->validate(
             [
-                "nom_cellier" => "required",
+                "nom_cellier" => "required|max:10|min:1",
             ],
             [
-                "nom_cellier.required" => "Le champ nom_cellier est requis.",
+                "nom_cellier.required" => "Veuillez entrer un nom de cellier.",
+                "nom_cellier.max" => "Le nom du cellier ne doit pas dépasser 10 caractères.",
+                "nom_cellier.min" => "Le nom du cellier doit contenir au moins 1 caractère.",
             ],
         );
 
