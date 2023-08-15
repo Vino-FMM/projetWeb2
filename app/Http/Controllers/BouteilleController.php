@@ -198,7 +198,9 @@ class BouteilleController extends Controller
 
         public function destroy(Request $request,string $id)
     {
-        dd('stop');
+        
+        // Supprimer les notes de la bouteille du cellier en utilisant input->"id_bouteille"
+        Note::where('bouteille_cellier_id', $request->input('id_bouteille'))->delete();
         // Supprimer la bouteille du cellier de la base de données
         BouteilleCellier::destroy($id);
         // stocker l'id du cellier
