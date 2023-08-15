@@ -15,9 +15,9 @@
                 <div>
                     <input id="nom" type="text" name="nom" placeholder="Nom" value="{{old('nom')}}" />
                     <!-- <label for="name">Last name</label> -->
-                    @if ($errors->has('name'))
+                    @if ($errors->has('nom'))
                         <div>
-                            {{$errors->first('name')}}
+                            {{$errors->first('nom')}}
                         </div>
                     @endif
                 </div>
@@ -25,9 +25,9 @@
                 <div>
                     <input id="prenom" type="text" name="prenom" placeholder="Prénom" value="{{old('prenom')}}" />
                     <!-- <label for="prenom">First name</label> -->
-                    @if ($errors->has('name'))
+                    @if ($errors->has('prenom'))
                         <div>
-                            {{$errors->first('name')}}
+                            {{$errors->first('prenom')}}
                         </div>
                     @endif
                 </div>

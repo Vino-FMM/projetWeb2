@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cellier;
 use App\Models\Bouteille;
 use App\Models\BouteilleCellier;
+use App\Models\Note;
 use Illuminate\Http\Request;
 
 class CellierController extends Controller
@@ -52,10 +53,12 @@ class CellierController extends Controller
         // Validation des données du formulaire
         $request->validate(
             [
-                "nom_cellier" => "required",
+                "nom_cellier" => "required|max:10|min:1",
             ],
             [
-                "nom_cellier.required" => "Le champ nom_cellier est requis.",
+                "nom_cellier.required" => "Veuillez entrer un nom de cellier.",
+                "nom_cellier.max" => "Le nom du cellier ne doit pas dépasser 10 caractères.",
+                "nom_cellier.min" => "Le nom du cellier doit contenir au moins 1 caractère.",
             ],
         );
 
@@ -117,8 +120,17 @@ class CellierController extends Controller
     /**
      * suppression du cellier sélectionné
      */
-    public function destroy(string $id)
-    {
+    public function destroy(Request $request, string $id)
+    {   //get all the id's bottles in the cellar
+        $bouteilleCelliers = BouteilleCellier::where(
+            "cellier_id",
+            $id,
+        )->get();
+        // ici on supprime les notes de la bouteille
+        foreach ($bouteilleCelliers as $bouteilleCellier) {
+            // dd($bouteilleCellier->id);
+            Note::where("bouteille_cellier_id", $bouteilleCellier->id)->delete();
+        }
         // Supprimer les bouteilles du cellier de la base de données
         BouteilleCellier::where("cellier_id", $id)->delete();
         // Supprimer le cellier de la base de données

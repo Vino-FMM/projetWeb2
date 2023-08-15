@@ -74,7 +74,7 @@
                 <small> prix: {{ $bottle->prix }} $</small>
                 <small>code SAQ: {{ $bottle->code_saq }}</small>
                 <div>
-                    <form method="POST" action="{{ route('bouteilles.addBouteille', ['id' => $bottle->id]) }}" onsubmit="return checkCellierId()">
+                    <form id="hi" method="POST" action="{{ route('bouteilles.addBouteille', ['id' => $bottle->id]) }}" onsubmit="return checkCellierId()">
                         @csrf
                         <input type="hidden" name="cellier_id" value="{{ $cellier_id }}">
                         <div class='container-incrementation'>
@@ -171,7 +171,7 @@ button.addEventListener('click', function() {
     console.log(selectedOption);
     modal.remove();
     //then submit the form
-    document.querySelector('form').submit();
+    document.getElementById('hi').submit();
 });
 
 modal.appendChild(select);

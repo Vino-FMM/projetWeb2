@@ -41,8 +41,10 @@ class BouteilleController extends Controller
         $bottles = Bouteille::paginate(10);
 
        // Trouver les pays, millésimes, et types distincts
-        $countries = Bouteille::distinct()->pluck('pays');
-        $millesimes = Bouteille::whereBetween('millesime', [1900, 3000])
+       $countries = Bouteille::distinct()
+       ->orderBy('pays', 'asc')
+       ->pluck('pays');
+        $millesimes = Bouteille::whereBetween('millesime', [1950, 3000])
             ->distinct()
             ->orderBy('millesime', 'asc')
             ->pluck('millesime');
@@ -162,7 +164,11 @@ class BouteilleController extends Controller
             'pays' => 'required',
             'Titre' => 'required|max:30',
             'prix' => 'required|numeric',
-
+        ], [
+            'Titre.required' => 'Veuillez entrer un titre de bouteille.',
+            'Titre.max' => 'Le champ Titre ne doit pas dépasser 30 caractères.',
+            'prix.required' => 'Le champ Prix est obligatoire.',
+            'prix.numeric' => 'Le champ Prix doit être un nombre.',
         ]);
         // dd($request->all());
         // ajouter une bouteille dans Bouteille cellier
@@ -300,8 +306,10 @@ public function filter(Request $request, $cellier_id)
             $bottles = $bottles->paginate(10);
 
           // Trouver les pays, millésimes, et types distincts
-          $countries = Bouteille::distinct()->pluck('pays');
-          $millesimes = Bouteille::whereBetween('millesime', [1900, 3000])
+          $countries = Bouteille::distinct()
+            ->orderBy('pays', 'asc')
+            ->pluck('pays');
+          $millesimes = Bouteille::whereBetween('millesime', [1950, 3000])
             ->distinct()
             ->orderBy('millesime', 'asc')
             ->pluck('millesime');
