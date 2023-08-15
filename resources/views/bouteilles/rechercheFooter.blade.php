@@ -7,14 +7,16 @@
             <h4>Veuillez sélectionner un cellier</h4>
         </div> 
        
-        <form action="{{route('bouteilles.rechercheFooterBouteille')}}" method="POST">
-                @csrf
+        <form action="{{ route('bouteilles.rechercheFooterBouteillePost') }}" method="POST">
+            @csrf
             <select name="cellier_id" id="cellier_id">
                 @foreach ($celliers as $cellier)
-                    <option value="{{$cellier->id}}">{{$cellier->nom_cellier}}</option>
+                    <option value="{{ $cellier->id }}">{{ $cellier->nom_cellier }}</option>
                 @endforeach
             </select>
             <button type="submit">Sélectionner</button>
+            <input type="hidden" name="cellier_id" value="{{ $cellier->id }}">
+        </form>
         
     </main>
 
