@@ -324,7 +324,15 @@ public function filter(Request $request, $cellier_id)
           // retourner la vue index avec les bouteilles
           return view('bouteilles.AjouterBouteilles', ['bottles' => $bottles, 'owned_bottles' => $owned_bottles, 'cellier_id' => $cellier_id, 'mon_cellier' => $mon_cellier, 'filters_elements' => $filters_elements]);
       }
-    //   ajouterNote
+    // rechercheFooterBouteille
+
+    public function rechercheFooterBouteille()
+    {
+        // trouver tous les celliers de l'utilisateur
+        $celliers = Cellier::where('user_id', auth()->user()->id)->get();
+        // dd($celliers);
+        return view('bouteilles.rechercheFooter', compact('celliers'));
+    }
 
 
    
