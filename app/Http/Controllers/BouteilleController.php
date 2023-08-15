@@ -15,10 +15,6 @@ class BouteilleController extends Controller
     //afficher la liste des bouteilles dans la base de données
     public function index($cellier_id)
     {
-       
-        // $user_id = auth()->user()->id;
-        // dd($user_id);
-        // dd($cellier_id);
         //faire un fetch de toutes les bouteilles
         $bottles = Bouteille::all();
         // trouver les bouteilles du cellier
@@ -59,7 +55,43 @@ class BouteilleController extends Controller
         // retourner la vue index avec les bouteilles
         return view('bouteilles.AjouterBouteilles', ['bottles' => $bottles, 'owned_bottles' => $owned_bottles, 'cellier_id' => $cellier_id, 'mon_cellier' => $mon_cellier, 'filters_elements' => $filters_elements]);
     }
-    //modifier la quantité de bouteille dans le cellier (vue)
+    // index pour la recherche
+
+
+    public function indexRecherche(Request $request)
+    {
+        //faire un fetch de toutes les bouteilles
+        $bottles = Bouteille::all();
+        // trouver les bouteilles du cellier
+
+            $owned_bottles = BouteilleCellier::where('cellier_id', $request->input('cellier_id'))
+                ->pluck('code_saq_bouteille')
+                ->toArray();
+            //trouver mon cellier
+            $mon_cellier = Cellier::findOrFail($request->input('cellier_id'));
+           
+        $bottles = Bouteille::paginate(10);
+
+       // Trouver les pays, millésimes, et types distincts
+       $countries = Bouteille::distinct()
+       ->orderBy('pays', 'asc')
+       ->pluck('pays');
+        $millesimes = Bouteille::whereBetween('millesime', [1950, 3000])
+            ->distinct()
+            ->orderBy('millesime', 'asc')
+            ->pluck('millesime');
+        $types = Bouteille::distinct()->pluck('type');
+
+        // Combiner les filtres
+        $filters_elements = [
+            'countries' => $countries,
+            'millesimes' => $millesimes,
+            'types' => $types,
+        ];
+        // retourner la vue index avec les bouteilles
+        return view('bouteilles.AjouterBouteilles', ['bottles' => $bottles, 'owned_bottles' => $owned_bottles, 'cellier_id' => $request->input('cellier_id'), 'mon_cellier' => $mon_cellier, 'filters_elements' => $filters_elements]);
+    }
+
 
     public function modifierBouteille(Request $request, $id)
     {
