@@ -98,6 +98,11 @@ body input {
     margin-top: 20px;
     color: rgb(47, 121, 82);
 }
+.alert-validation{
+    color: rgb(205, 60, 60);
+    font-size: small;
+    padding-bottom: 5px;
+}
 #connexion{
     margin: 0 auto;
 }

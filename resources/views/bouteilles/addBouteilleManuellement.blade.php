@@ -14,7 +14,7 @@
                 <div>
                     <input id="Titre" type="text" name="Titre" placeholder="titre" value="{{old('titre')}}" />
                     @if ($errors->has('Titre'))
-                        <div>
+                        <div class="alert-validation">
                             {{$errors->first('Titre')}}
                         </div>
                     @endif
@@ -22,7 +22,7 @@
                 <div>
                     <input id="prix" type="text" name="prix" placeholder="prix" value="{{old('prix')}}" />
                     @if ($errors->has('prix'))
-                        <div>
+                        <div class="alert-validation">
                             {{$errors->first('prix')}}
                         </div>
                     @endif

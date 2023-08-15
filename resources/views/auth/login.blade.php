@@ -17,7 +17,7 @@
                         <input id="email" type="email" name="email" placeholder="courriel" value="{{old('email')}}" />
                         <!-- <label for="email">Email address</label> -->
                         @if ($errors->has('email'))
-                            <div>
+                            <div class="alert-validation">
                                 {{$errors->first('email')}}
                             </div>
                         @endif
@@ -28,7 +28,7 @@
                         <input id="password" type="password" name="password" placeholder="mot de passe" />
                         <!-- <label for="password">Password</label> -->
                         @if ($errors->has('password'))
-                            <div>
+                            <div class="alert-validation">
                                 {{$errors->first('password')}}
                             </div>
                         @endif
