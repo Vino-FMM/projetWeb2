@@ -41,8 +41,10 @@ class BouteilleController extends Controller
         $bottles = Bouteille::paginate(10);
 
        // Trouver les pays, millésimes, et types distincts
-        $countries = Bouteille::distinct()->pluck('pays');
-        $millesimes = Bouteille::whereBetween('millesime', [1900, 3000])
+       $countries = Bouteille::distinct()
+       ->orderBy('pays', 'asc')
+       ->pluck('pays');
+        $millesimes = Bouteille::whereBetween('millesime', [1950, 3000])
             ->distinct()
             ->orderBy('millesime', 'asc')
             ->pluck('millesime');
@@ -304,8 +306,10 @@ public function filter(Request $request, $cellier_id)
             $bottles = $bottles->paginate(10);
 
           // Trouver les pays, millésimes, et types distincts
-          $countries = Bouteille::distinct()->pluck('pays');
-          $millesimes = Bouteille::whereBetween('millesime', [1900, 3000])
+          $countries = Bouteille::distinct()
+            ->orderBy('pays', 'asc')
+            ->pluck('pays');
+          $millesimes = Bouteille::whereBetween('millesime', [1950, 3000])
             ->distinct()
             ->orderBy('millesime', 'asc')
             ->pluck('millesime');
