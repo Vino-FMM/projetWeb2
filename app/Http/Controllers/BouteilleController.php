@@ -215,17 +215,9 @@ class BouteilleController extends Controller
 
     public function search(Request $request)
     {
-        // dd('test');
         $query = $request->input('query');
-        // $query = $request->input('query');
-
-    // Log::info('Search Query: ' . $query);
-
         $bottles = Bouteille::where('nom', 'LIKE', "%$query%")
-            // ->orWhere('type', 'LIKE', "%$query%")
-            // ->orWhere('format', 'LIKE', "%$query%")
-            // ->orWhere('pays', 'LIKE', "%$query%")
-            // ->orWhere('code_saq', 'LIKE', "%$query%")
+
             ->get();
 
         return response()->json($bottles);
@@ -235,9 +227,7 @@ class BouteilleController extends Controller
 {
     // dd($request->input('cellier_id'));
     $bottle = Bouteille::findOrFail($id);
-    // dd($bottle);
     $cellier_id = $request->input('cellier_id');
-    // dd($bottle, $cellier_id);
     // Retrieve the bottle with the given ID from the database
     $bottle = Bouteille::findOrFail($id);
 
@@ -265,10 +255,9 @@ public function filter(Request $request, $cellier_id)
             }
         }
     }
-    // dd($request->all());
     // Apply 'country' filter
     if($request->input('country') !== null){
-        // dd($request->input('country'));
+
         if ($request->has('country') && $request->country !== '') {
             $bottles->where('pays', $request->country);
         }
@@ -288,8 +277,6 @@ public function filter(Request $request, $cellier_id)
             $bottles->where('type', $request->type);
         }
     }
-
-
             // trouver les bouteilles du cellier
             $owned_bottles = BouteilleCellier::where('cellier_id', $cellier_id)
             ->pluck('code_saq_bouteille')
@@ -323,12 +310,7 @@ public function filter(Request $request, $cellier_id)
         ->select('id', 'text')
         ->get()
         ->toArray();
-
-        // dd($notes);
-        //test dd hidden inputs
-        // dd(request()->all());
         $bouteille = BouteilleCellier::findOrFail($request->input('bouteille_cellier_id'));
-        // dd($bouteille);
         $cellier_id = $request->input('cellier_id');
         return view('notes.note', compact('bouteille', 'cellier_id', 'notes'));
     }
@@ -349,9 +331,12 @@ public function filter(Request $request, $cellier_id)
         $note->bouteille_cellier_id = $request->input('id_bouteille');
         $note->save();
 
-       // retour vers la page de la bouteille avec la note ajoutée
-        return view('notes.note', compact('bouteille', 'cellier_id', 'notes'))->withSuccess("Votre note a été ajoutée avec succès.");
-       
+// Redirigez vers la méthode qui affiche la liste des notes
+    return redirect()->action(
+    [BouteilleController::class, 'listeNote'],
+    ['bouteille_cellier_id' => $bouteille->id, 'cellier_id' => $cellier_id]
+    )->withSuccess("Votre note a été ajoutée avec succès.");
+
     }
 
     // supprimer une note

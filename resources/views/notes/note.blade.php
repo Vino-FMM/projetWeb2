@@ -4,7 +4,7 @@
 @section('content')
     <main>
         <div class="header">
-            <h4>Note</h4> 
+            <h4>Notes</h4> 
         </div> 
         <div class="container-bouteilles">
                 <div class="carte-bouteille carte-modification">
@@ -14,26 +14,24 @@
                     
                     <div class="carte-details">
                         <h4>{{ $bouteille->nom_bouteille }}</h4>
-                        <!-- <small>{{ $bouteille->type }} | {{ $bouteille->format }} | {{ $bouteille->pays }}</small>
-                        <small>{{ $bouteille->prix }} $</small> -->
-    
-                        <small>Vouz n'avez laissé aucune note pour cette bouteille</small>
-                  
-                        
+
                         <form method="POST" action="{{ route('bouteilles.ajouterNote', ['id_bouteille' => $bouteille->id, 'cellier_id' => $cellier_id]) }}">
                                 @csrf
-                                <input type="text" name="note" placeholder="Ajouter une note">
+                                <input type="text" name="note" placeholder="Ajouter une note" class="notes_input">
                                 <input type="hidden" name="cellier_id" value="{{ $cellier_id }}">
                                 <button type="submit" class="bouton ajout-bouteille">Ajouter</button>
                         </form>
                         </div>
                     </div>
                     @if(!empty($notes))
-                        <div style="margin-top: 1rem;padding: 1rem;background-color: #f8f9fa;border: 1px solid #dee2e6;border-radius: .25rem;">
-                            <small style="font-weight: bold;">Notes:</small>
+                        <div class="container_notes">
+                            <p>Notes:</p>
                             @foreach($notes as $note)
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <p style="margin: .5rem 0;">{{ $note['text'] }}</p>
+                                <div class="one_note">
+                                    <div>
+                                        <p>{{ $note['text'] }}</p>
+                                    </div>
+                                    
                                     <form method="POST" action="{{ route('note.destroyNote', ['id_bouteille' => $bouteille->id, 'cellier_id' => $cellier_id]) }}" id="delete-form-{{ $note['id'] }}">
                                         @csrf
                                         @method('DELETE')
@@ -44,7 +42,9 @@
                             @endforeach
                         </div>
                     @else
-                        <small>Vouz n'avez laissé aucune note pour cette bouteille</small>
+                        <div class="no-notes">
+                            <small>Vouz n'avez laissé aucune note pour cette bouteille</small>
+                        </div>
                     @endif
                 </div>
         </div>
