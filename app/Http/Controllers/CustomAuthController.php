@@ -46,7 +46,6 @@ class CustomAuthController extends Controller
             'prenom' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:6',
-            // 'date_naissance' => 'required|date',
         ]);
 
         $user = new User;

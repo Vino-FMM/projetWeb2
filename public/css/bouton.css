@@ -23,6 +23,7 @@
 .bouton-click{
     color: rgb(92, 92, 92);
     font-size: 12px;
+    text-decoration: underline;
 }
 .bouton-outline{
     color:black;

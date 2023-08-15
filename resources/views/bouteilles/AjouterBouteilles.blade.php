@@ -7,7 +7,7 @@
             <h4>Liste des bouteilles</h4>
             <small>cellier: {{ $mon_cellier->nom_cellier }}</small>
         </div>
-        <a href="{{ route('Ajouter-bouteille-manuellement', ['cellier_id' => $mon_cellier->id]) }}" id="lien-personnalisee">Ajouter une bouteille personnalisée</a> 
+        <a href="{{ route('Ajouter-bouteille-manuellement', ['cellier_id' => $mon_cellier->id]) }}" id="lien-personnalisee">Ajouter une bouteille personnalisée<img src="https://s2.svgbox.net/hero-outline.svg?ic=cursor-click&color=000" width="22" height="22"></a> 
             <div class="container-recherche">
                 <input type="text" id="searchInput" placeholder="Rechercher une bouteille" >
                 <a class="toggle-filter input-filter-icon" href="#"><img src='https://s2.svgbox.net/materialui.svg?ic=filter_alt'></a>
@@ -58,7 +58,7 @@
                 </form>
             <div class="container-bouteilles">
             @if($bottles->isEmpty())
-                <p>Aucune bouteille trouvée.</p>
+                <p class="message">Aucune bouteille trouvée !</p>
             @else
         @foreach($bottles as $bottle)
         <div class="carte-bouteille">
