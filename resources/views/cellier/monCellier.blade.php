@@ -4,9 +4,8 @@
 @section('content')
 
 <main>
-    <div class="header"> 
-        <h4>Ajouter des bouteilles</h4>   
-        <small>nom cellier: {{ $nomCellier}}</small>
+    <div class="header">   
+        <small>cellier: {{ $nomCellier}}</small>
     </div> 
     @if(session('success'))
         <div class="alert-success">
@@ -43,9 +42,7 @@
                 <div>
                 <a href="{{ route('notes.listeNote', ['cellier_id' => $cellier->id, 'bouteille_cellier_id' => $bouteilleCellier->id]) }}"  class="bouton-outline">Voir Note</a>
                 </div>
-            </div> 
-            
-          
+            </div>      
     </div>
     @endforeach
     @else
