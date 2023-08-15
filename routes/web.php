@@ -66,30 +66,36 @@ Route::middleware(['auth'])->group(function () {
     Route::get('modifierQte/{bouteille_id}', [BouteilleController::class, 'modifierBouteille'])->name('modifier-Qte');
     Route::post('modifierQte/{bouteille_id}', [BouteilleController::class, 'modifierQteBouteille'])->name('modifier-Qte');
 
-});
 
-// pour ce connecter
-Route::get('/login', [CustomAuthController::class, 'index'])->name('login');
-Route::post('/login', [CustomAuthController::class, 'authentication'])->name('login.authentication');
-// pour s'enregistrer
-Route::get('/register', [CustomAuthController::class, 'create'])->name('register');
-Route::post('/register', [CustomAuthController::class, 'store'])->name('register.store');
+    Route::get('/bouteilles/search', [BouteilleController::class, 'search'])->name('bouteilles.search');
 
 
-// pour faire un fetch des bouteille de la SAQ
-Route::get('/import', 'App\Http\Controllers\SAQController@import');
-// Route::get('/bouteilles/search', 'BouteilleController@search')->name('bouteilles.search');
-Route::get('/bouteilles/search', [BouteilleController::class, 'search'])->name('bouteilles.search');
-
-
-Route::get('/bouteilles/addBouteilleSearch/{id}', [BouteilleController::class, 'addBouteilleSearch'])->name('bouteilles.addBouteilleSearch');
+    Route::get('/bouteilles/addBouteilleSearch/{id}', [BouteilleController::class, 'addBouteilleSearch'])->name('bouteilles.addBouteilleSearch');
 
 //trouver les bouteilles par filtre
-Route::get('/bouteilles/filter/{cellier_id}', [BouteilleController::class, 'filter'])->name('bouteilles.filter');
+    Route::get('/bouteilles/filter/{cellier_id}', [BouteilleController::class, 'filter'])->name('bouteilles.filter');
 
 //route vers {{ route('notes.liste
-Route::get('/notes/listeNote', [NoteBouteilleController::class, 'listeNote'])->name('notes.listeNote');
+    Route::get('/notes/listeNote', [NoteBouteilleController::class, 'listeNote'])->name('notes.listeNote');
 // POST('bouteilles.ajouterNote', ['id_bouteille' => $bouteille->id, 'cellier_id' => $cellier_id]) }}">
-Route::post('/bouteilles/ajouterNote', [NoteBouteilleController::class, 'ajouterNote'])->name('bouteilles.ajouterNote');
+    Route::post('/bouteilles/ajouterNote', [NoteBouteilleController::class, 'ajouterNote'])->name('bouteilles.ajouterNote');
 //supprimer une note 
-Route::delete('/bouteilles/supprimerNote', [NoteBouteilleController::class, 'destroyNote'])->name('note.destroyNote');
+    Route::delete('/bouteilles/supprimerNote', [NoteBouteilleController::class, 'destroyNote'])->name('note.destroyNote');
+
+//route qui mene vers rechercheFooterBouteille 
+    Route::get('/bouteilles/rechercheFooterBouteille', [BouteilleController::class, 'rechercheFooterBouteille'])->name('bouteilles.rechercheFooterBouteille');
+//route qui mene vers  <form action="{{ route('bouteilles.rechercheFooterBouteillePost', ['cellier_id' => $cellier->id]) }}" 
+    Route::post('/bouteilles/rechercheFooterBouteillePost', [BouteilleController::class, 'indexRecherche'])->name('bouteilles.rechercheFooterBouteillePost');
+});
+
+    // pour ce connecter
+    Route::get('/login', [CustomAuthController::class, 'index'])->name('login');
+    Route::post('/login', [CustomAuthController::class, 'authentication'])->name('login.authentication');
+    // pour s'enregistrer
+    Route::get('/register', [CustomAuthController::class, 'create'])->name('register');
+    Route::post('/register', [CustomAuthController::class, 'store'])->name('register.store');
+
+
+    // pour faire un fetch des bouteille de la SAQ
+    Route::get('/import', 'App\Http\Controllers\SAQController@import');
+    // Route::get('/bouteilles/search', 'BouteilleController@search')->name('bouteilles.search');

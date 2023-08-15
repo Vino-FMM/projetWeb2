@@ -71,7 +71,7 @@
         <span>Ajout cellier</span>
     </div>
     <div>
-        <a href="{{ route('Ajouter-bouteilles', ['cellier_id' => 0]) }}"><img src="https://s2.svgbox.net/octicons.svg?ic=search&color=000" width="22" height="22"></a>
+        <a href="{{route('bouteilles.rechercheFooterBouteille')}}"><img src="https://s2.svgbox.net/octicons.svg?ic=search&color=000" width="22" height="22"></a>
         <span>Recherche</span>
     </div>
 </footer>
