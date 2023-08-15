@@ -96,6 +96,7 @@ body input {
 }
 .alert-success {
     margin-top: 20px;
+    color: rgb(47, 121, 82);
 }
 #connexion{
     margin: 0 auto;

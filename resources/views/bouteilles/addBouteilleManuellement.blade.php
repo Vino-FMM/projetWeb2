@@ -12,7 +12,7 @@
                 @csrf
                 <input type="hidden" name="cellier_id" value="{{ $cellier_id }}">
                 <div>
-                    <input id="Titre" type="text" name="Titre" placeholder="Titre" value="{{old('titre')}}" />
+                    <input id="Titre" type="text" name="Titre" placeholder="titre" value="{{old('titre')}}" />
                     @if ($errors->has('Titre'))
                         <div>
                             {{$errors->first('Titre')}}
@@ -57,10 +57,6 @@
                     <input id="quantity-input" type="number" name="quantite" value="1" min="1" max="99" class="quantite">
                     <button type="button" onclick="incrementQuantity(this.parentElement)">+</button>
                 </div>
-                <!-- <div class="form-group">
-                    <label for="file">Image:</label><br><br>
-                    <input type="file" name="file" id="file" class="form-control-file">
-                </div> -->
                 <button type="submit" class="bouton">Ajouter</button>
             </form>
         </div>
