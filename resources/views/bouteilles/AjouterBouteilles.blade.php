@@ -74,7 +74,7 @@
                 <small> prix: {{ $bottle->prix }} $</small>
                 <small>code SAQ: {{ $bottle->code_saq }}</small>
                 <div>
-                    <form method="POST" action="{{ route('bouteilles.addBouteille', ['id' => $bottle->id]) }}">
+                    <form method="POST" action="{{ route('bouteilles.addBouteille', ['id' => $bottle->id]) }}" onsubmit="return checkCellierId()">
                         @csrf
                         <input type="hidden" name="cellier_id" value="{{ $cellier_id }}">
                         <div class='container-incrementation'>
@@ -94,6 +94,7 @@
         {{ $bottles->appends(request()->query())->links('vendor.pagination.custom') }}
     </div>
     </main>
+    
 
     <footer>
         <div>
@@ -112,6 +113,81 @@
 
 
 <script>
+
+
+function checkCellierId() {
+        if ("{{ $mon_cellier->id }}" == "0") {
+            // Show modal with select element
+            var modal = document.createElement('div');
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            modal.style.display = 'flex';
+            modal.style.justifyContent = 'center';
+            modal.style.alignItems = 'center';
+            modal.style.zIndex = '9999';
+
+            var select = document.createElement('select');
+            select.style.padding = '1rem';
+            select.style.fontSize = '1.2rem';
+            select.style.borderRadius = '0.5rem';
+            select.style.border = 'none';
+            select.style.backgroundColor = '#fff';
+
+            var option1 = document.createElement('option');
+            option1.value = '1';
+            option1.text = 'Option 1';
+
+            var option2 = document.createElement('option');
+            option2.value = '2';
+            option2.text = 'Option 2';
+
+            var option3 = document.createElement('option');
+            option3.value = '3';
+            option3.text = 'Option 3';
+
+            select.add(option1);
+            select.add(option2);
+            select.add(option3);
+
+            var button = document.createElement('button');
+            button.textContent = 'OK';
+            button.style.padding = '1rem';
+            button.style.fontSize = '1.2rem';
+            button.style.borderRadius = '0.5rem';
+            button.style.border = 'none';
+            button.style.backgroundColor = '#fff';
+            button.style.marginLeft = '1rem';
+
+            var optionSelected = false; // Add variable to keep track of whether an option has been selected
+
+button.addEventListener('click', function() {
+    var selectedOption = select.options[select.selectedIndex].value;
+    document.querySelector('input[name="cellier_id"]').value = selectedOption;
+    optionSelected = true; // Set variable to true when an option is selected
+    console.log(selectedOption);
+    modal.remove();
+    //then submit the form
+    document.querySelector('form').submit();
+});
+
+modal.appendChild(select);
+modal.appendChild(button);
+document.body.appendChild(modal);
+
+return optionSelected; // Return value of variable after button event listener has been executed
+}
+
+        return true;
+    }
+
+
+    // ====== script pour l'incrémentation et la décrémentation ======
+
+
     function decrementQuantity(parent) {
         const input = parent.querySelector('input');
         const currentValue = Number(input.value);
