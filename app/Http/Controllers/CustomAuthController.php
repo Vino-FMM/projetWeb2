@@ -42,11 +42,25 @@ class CustomAuthController extends Controller
 
         //  dd($request->all());
         $request->validate([
-            'nom' => 'required',
-            'prenom' => 'required',
+            'nom' => 'required|min:2|max:20|alpha',
+            'prenom' => 'required|min:2|max:20|alpha',
             'email' => 'required|email',
             'password' => 'required|min:6',
-        ]);
+        ],
+        [
+            'nom.required' => 'Veuillez saisir votre nom',
+            'nom.min' => 'Votre nom doit contenir au moins 2 caractères',
+            'nom.max' => 'Votre nom ne doit pas dépasser 20 caractères',
+            'nom.alpha' => 'Votre nom ne doit contenir que des lettres',
+            'prenom.required' => 'Veuillez saisir votre prenom',
+            'prenom.min' => 'Votre prenom doit contenir au moins 2 caractères',
+            'prenom.max' => 'Votre prenom ne doit pas dépasser 20 caractères',
+            'prenom.alpha' => 'Votre prenom ne doit contenir que des lettres',
+            'email.required' => 'Veuillez saisir votre adresse email',
+            'password.required' => 'Veuillez saisir votre mot de passe',
+            'password.min' => 'Votre mot de passe doit contenir au moins 6 caractères',
+        ]
+    );
 
         $user = new User;
         $user->nom = $request->input('nom');
@@ -62,8 +76,13 @@ class CustomAuthController extends Controller
     {
         $request->validate([
             'email' => 'required|email|exists:users',
-            'password' => 'required|min:6|max:20'
-        ]);
+            'password' => 'required'
+        ], [
+            
+            'email.required' => 'Veuillez saisir votre adresse email',
+            'password.required' => 'Veuillez saisir votre mot de passe',
+            ]
+        );
     
         $credentials = $request->only('email', 'password');
         // dd($credentials);
@@ -72,7 +91,7 @@ class CustomAuthController extends Controller
         if (!Auth::validate($credentials)) {
             return redirect('login')
                 ->withErrors([
-                    'email' => 'Invalid credentials'
+                    'email' => 'ladresse email ou le mot de passe est incorrect'
                 ])
                 ->withInput();
         }
