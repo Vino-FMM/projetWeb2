@@ -35,11 +35,11 @@
                                 @csrf
                                 <input type="hidden" name="cellier_id" value="{{ $cellier_id }}">
                                 <div class='container-incrementation'>
-    <label for="quantite"><small>Qté: </small></label>
-    <button type="button" onclick="decrementQuantity(this.parentElement)">-</button>
-    <input id="quantity-input" type="number" name="quantite" value="1" min="1" max="99" class="quantite">
-    <button type="button" onclick="incrementQuantity(this.parentElement)">+</button>
-</div>
+                                    <label for="quantite"><small>Qté: </small></label>
+                                    <button type="button" onclick="decrementQuantity(this.parentElement)">-</button>
+                                    <input id="quantity-input" type="number" name="quantite" value="1" min="1" max="99" class="quantite">
+                                    <button type="button" onclick="incrementQuantity(this.parentElement)">+</button>
+                                </div>
 
                                 <button type="submit" class="bouton ajout-bouteille">Ajouter</button>
                             </form>

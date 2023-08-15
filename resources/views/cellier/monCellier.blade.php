@@ -4,9 +4,8 @@
 @section('content')
 
 <main>
-    <div class="header"> 
-        <h4>Ajouter des bouteilles</h4>   
-        <small>nom cellier: {{ $nomCellier}}</small>
+    <div class="header">   
+        <small>cellier: {{ $nomCellier}}</small>
     </div> 
     @if(session('success'))
         <div class="alert-success">

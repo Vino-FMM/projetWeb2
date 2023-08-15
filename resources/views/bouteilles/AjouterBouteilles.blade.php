@@ -58,7 +58,7 @@
                 </form>
             <div class="container-bouteilles">
             @if($bottles->isEmpty())
-                <p>Aucune bouteille trouvée.</p>
+                <p class="message">Aucune bouteille trouvée !</p>
             @else
         @foreach($bottles as $bottle)
         <div class="carte-bouteille">
