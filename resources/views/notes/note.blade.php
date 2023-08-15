@@ -5,6 +5,7 @@
     <main>
         <div class="header">
             <h4>Notes</h4> 
+            <a href="#" class="back">retour</a>
         </div> 
         <div class="container-bouteilles">
                 <div class="carte-bouteille carte-modification">
