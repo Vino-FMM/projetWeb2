@@ -5,6 +5,7 @@ use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\CellierController;
 use App\Http\Controllers\SAQController;
 use App\Http\Controllers\BouteilleController;
+use App\Http\Controllers\NoteBouteilleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +53,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/bouteilles/addBouteille/{id}', [BouteilleController::class, 'addBouteille'])->name('bouteilles.addBouteille');
 
     //pour supprimer une bouteille dans un cellier
-    Route::delete('bouteilles/{id}', [BouteilleController::class, 'destroy'])->name('bouteilles.destroy');
+    // jai du mettre cette condition car sinon il ne trouvait pas la route pour supprimer une bouteille
+    if (strpos(url()->current(), 'supprimerNote') === false) {
+        Route::delete('bouteilles/{id}', [BouteilleController::class, 'destroy'])->name('bouteilles.destroy');
+    }
 
 
     // pour voir les bouteilles d'un cellier
@@ -84,8 +88,8 @@ Route::get('/bouteilles/addBouteilleSearch/{id}', [BouteilleController::class, '
 Route::get('/bouteilles/filter/{cellier_id}', [BouteilleController::class, 'filter'])->name('bouteilles.filter');
 
 //route vers {{ route('notes.liste
-Route::get('/notes/listeNote', [BouteilleController::class, 'listeNote'])->name('notes.listeNote');
+Route::get('/notes/listeNote', [NoteBouteilleController::class, 'listeNote'])->name('notes.listeNote');
 // POST('bouteilles.ajouterNote', ['id_bouteille' => $bouteille->id, 'cellier_id' => $cellier_id]) }}">
-Route::post('/bouteilles/ajouterNote', [BouteilleController::class, 'ajouterNote'])->name('bouteilles.ajouterNote');
+Route::post('/bouteilles/ajouterNote', [NoteBouteilleController::class, 'ajouterNote'])->name('bouteilles.ajouterNote');
 //supprimer une note 
-Route::delete('/bouteilles/supprimerNote', [BouteilleController::class, 'destroyNote'])->name('note.destroyNote');
+Route::delete('/bouteilles/supprimerNote', [NoteBouteilleController::class, 'destroyNote'])->name('note.destroyNote');
