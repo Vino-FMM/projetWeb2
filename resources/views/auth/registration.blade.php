@@ -16,7 +16,7 @@
                     <input id="nom" type="text" name="nom" placeholder="Nom" value="{{old('nom')}}" />
                     <!-- <label for="name">Last name</label> -->
                     @if ($errors->has('nom'))
-                        <div>
+                        <div class="alert-validation">
                             {{$errors->first('nom')}}
                         </div>
                     @endif
@@ -26,7 +26,7 @@
                     <input id="prenom" type="text" name="prenom" placeholder="Prénom" value="{{old('prenom')}}" />
                     <!-- <label for="prenom">First name</label> -->
                     @if ($errors->has('prenom'))
-                        <div>
+                        <div class="alert-validation">
                             {{$errors->first('prenom')}}
                         </div>
                     @endif
@@ -37,7 +37,7 @@
                     <input id="email" type="email" name="email" placeholder="nom@exemple.com" value="{{old('email')}}" />
                     <!-- <label for="email">Email address</label> -->
                     @if ($errors->has('email'))
-                        <div>
+                        <div class="alert-validation">
                             {{$errors->first('email')}}
                         </div>
                     @endif
@@ -48,7 +48,7 @@
                     <input id="password" name="password" type="password" placeholder="Mot de passe"  />
                     <!-- <label for="password">Password</label> -->
                     @if ($errors->has('password'))
-                        <div>
+                        <div class="alert-validation">
                             {{$errors->first('password')}}
                         </div>
                     @endif
