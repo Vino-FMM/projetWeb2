@@ -15,15 +15,26 @@ class BouteilleController extends Controller
     //afficher la liste des bouteilles dans la base de données
     public function index($cellier_id)
     {
-        
+       
+        // $user_id = auth()->user()->id;
+        // dd($user_id);
+        // dd($cellier_id);
         //faire un fetch de toutes les bouteilles
         $bottles = Bouteille::all();
         // trouver les bouteilles du cellier
-        $owned_bottles = BouteilleCellier::where('cellier_id', $cellier_id)
-        ->pluck('code_saq_bouteille')
-        ->toArray();
-        //trouver mon cellier
-        $mon_cellier = Cellier::findorFail($cellier_id);
+        if ($cellier_id == 0) {
+            $mon_cellier = Cellier::findOrFail(1);
+            $mon_cellier->id = 0;
+            $mon_cellier->nom_cellier = "aucun cellier";
+            $owned_bottles = [];
+        } else {
+            $owned_bottles = BouteilleCellier::where('cellier_id', $cellier_id)
+                ->pluck('code_saq_bouteille')
+                ->toArray();
+            //trouver mon cellier
+            $mon_cellier = Cellier::findOrFail($cellier_id);
+            // dd($mon_cellier);
+        }
 
 
         //faire la pagination par 10
