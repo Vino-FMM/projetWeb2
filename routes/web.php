@@ -93,3 +93,6 @@ Route::get('/notes/listeNote', [NoteBouteilleController::class, 'listeNote'])->n
 Route::post('/bouteilles/ajouterNote', [NoteBouteilleController::class, 'ajouterNote'])->name('bouteilles.ajouterNote');
 //supprimer une note 
 Route::delete('/bouteilles/supprimerNote', [NoteBouteilleController::class, 'destroyNote'])->name('note.destroyNote');
+
+//route qui mene vers rechercheFooterBouteille 
+Route::get('/bouteilles/rechercheFooterBouteille', [BouteilleController::class, 'rechercheFooterBouteille'])->name('bouteilles.rechercheFooterBouteille');
