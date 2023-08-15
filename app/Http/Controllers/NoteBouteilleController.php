@@ -33,6 +33,17 @@ class NoteBouteilleController extends Controller
     // Route::post('/bouteilles/ajouterNote', [BouteilleController::class, 'ajouterNote'])->name('bouteilles.ajouterNote');
     public function ajouterNote(Request $request)
     {
+        // dd($request->all());
+        //validation
+        $request->validate([
+            'note' => 'required|min:2|max:40',
+        ],
+        [
+            'note.required' => 'Le champ note est requis',
+            'note.min' => 'Le champ note doit avoir au moins 2 caractères',
+            'note.max' => 'Le champ note doit avoir au plus 40 caractères',
+        ]
+    );
         // trouver les elements pour la vue
         $bouteille = BouteilleCellier::findOrFail($request->input('id_bouteille'));
         $cellier_id = $request->input('cellier_id');
