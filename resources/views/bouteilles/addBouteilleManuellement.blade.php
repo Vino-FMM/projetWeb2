@@ -3,7 +3,7 @@
 @section('titleHeader', 'Ajouter Bouteille Manuellement')
 @section('content')
 <main>
-    <div class="header">
+<div class="header">
         <h3 id="connexion">Ajouter une bouteille personnalisée</h3>
     </div>
     <div class="formulaire-container">

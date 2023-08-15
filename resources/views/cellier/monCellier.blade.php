@@ -42,9 +42,7 @@
                 <div>
                 <a href="{{ route('notes.listeNote', ['cellier_id' => $cellier->id, 'bouteille_cellier_id' => $bouteilleCellier->id]) }}"  class="bouton-outline">Voir Note</a>
                 </div>
-            </div> 
-            
-          
+            </div>      
     </div>
     @endforeach
     @else
