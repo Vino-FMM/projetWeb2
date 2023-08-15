@@ -53,12 +53,15 @@ class CellierController extends Controller
         // Validation des données du formulaire
         $request->validate(
             [
-                "nom_cellier" => "required|max:10|min:1",
+                "nom_cellier" => "required|max:10|min:1|unique:celliers,nom_cellier,NULL,id,user_id," . auth()->user()->id,
+
             ],
             [
                 "nom_cellier.required" => "Veuillez entrer un nom de cellier.",
                 "nom_cellier.max" => "Le nom du cellier ne doit pas dépasser 10 caractères.",
                 "nom_cellier.min" => "Le nom du cellier doit contenir au moins 1 caractère.",
+                "nom_cellier.unique" => "Ce nom de cellier existe déjà.",
+
             ],
         );
 
@@ -101,12 +104,18 @@ class CellierController extends Controller
         // validation des données du formulaire
         $request->validate(
             [
-                "nom_cellier" => "required",
+                "nom_cellier" => "required|max:10|min:1|unique:celliers,nom_cellier," . $cellier->id . ",id,user_id," . auth()->user()->id,
+
             ],
             [
                 "nom_cellier.required" => "Le champ nom_cellier est requis.",
+                "nom_cellier.max" => "Le nom du cellier ne doit pas dépasser 10 caractères.",
+                "nom_cellier.min" => "Le nom du cellier doit contenir au moins 1 caractère.",
+                "nom_cellier.unique" => "Ce nom de cellier existe déjà.",
+
             ],
         );
+        
 
         // mettre à jour le cellier dans la base de données
         $cellier->nom_cellier = $request->input("nom_cellier");

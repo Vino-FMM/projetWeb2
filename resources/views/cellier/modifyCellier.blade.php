@@ -16,7 +16,7 @@
                         <input id="nom_cellier" type="text" name="nom_cellier" placeholder="Nom Cellier" value="{{ $cellier->nom_cellier }}" />
                         <!-- <label for="nom_cellier">Nom Cellier</label> -->
                         @if ($errors->has('nom_cellier'))
-                            <div>
+                            <div class="alert-validation">
                                 {{ $errors->first('nom_cellier') }}
                             </div>
                         @endif

@@ -12,10 +12,10 @@
             <form action="{{route('cellier.store')}}" method="post" >
                 @csrf
                     <div>
-                        <input id="nom_cellier" type="text" name="nom_cellier" placeholder="Nom du cellier" value="{{old('nom_cellier')}}" />
+                        <input id="nom_cellier" type="text" name="nom_cellier" placeholder="Nom du cellier" value="{{old('nom_cellier')}}"/>
                         <!-- <label for="nom_cellier">nom_cellier</label> -->
                         @if ($errors->has('nom_cellier'))
-                            <div>
+                            <div class="alert-validation">
                                 {{$errors->first('nom_cellier')}}
                             </div>
                         @endif

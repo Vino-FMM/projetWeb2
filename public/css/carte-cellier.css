@@ -146,14 +146,8 @@
     border: none;
     text-align: center;
     padding: 5px;
-    width: 40px;
+    width: 60px;
 }
 
-/* .carte-bouteille.carte-modification {
-    background-color: rgb(244, 245, 245);
-} */
-.carte-bouteille.carte-modification .bouton{
-    margin-left: 30px;
-}
 
 
