@@ -7,16 +7,17 @@
             <h4>Veuillez sélectionner un cellier</h4>
         </div> 
        
-        <form action="{{ route('bouteilles.rechercheFooterBouteillePost') }}" method="POST">
+        <form id="select-form" action="{{ route('bouteilles.rechercheFooterBouteillePost') }}" method="POST">
             @csrf
             <select name="cellier_id" id="cellier_id">
+                <option value="">Sélectionner un cellier</option>
                 @foreach ($celliers as $cellier)
-                    <option value="{{ $cellier->id }}">{{ $cellier->nom_cellier }}</option>
+                    <option value="{{ $cellier->id }}">{{ $cellier->id }}</option>
                 @endforeach
             </select>
             <button type="submit">Sélectionner</button>
-            <input type="hidden" name="cellier_id" value="{{ $cellier->id }}">
         </form>
+
         
     </main>
 
@@ -35,5 +36,26 @@
     </div>
 
 </footer>
+<div id="modal" class="modal">
+        <div class="modal-content">
+            <h4>Veuillez sélectionner un cellier.</h4>
+            <button id="modal-close" type="button">Fermer</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('select-form').addEventListener('submit', function(event) {
+            var select = document.getElementById('cellier_id');
+            if (!select.value) {
+                event.preventDefault();
+                var modal = document.getElementById('modal');
+                var modalClose = document.getElementById('modal-close');
+                modal.style.display = 'block';
+                modalClose.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                });
+            }
+        });
+    </script>
 @endsection
 
