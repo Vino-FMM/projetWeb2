@@ -60,7 +60,7 @@ class BouteilleController extends Controller
 
     public function indexRecherche(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         //faire un fetch de toutes les bouteilles
         $bottles = Bouteille::all();
         // trouver les bouteilles du cellier
