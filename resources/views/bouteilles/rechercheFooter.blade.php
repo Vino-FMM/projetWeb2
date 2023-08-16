@@ -12,7 +12,7 @@
             <select name="cellier_id" id="cellier_id">
                 <option value="">Sélectionner un cellier</option>
                 @foreach ($celliers as $cellier)
-                    <option value="{{ $cellier->id }}">{{ $cellier->id }}</option>
+                    <option value="{{ $cellier->id }}">{{ $cellier->nom_cellier }}</option>
                 @endforeach
             </select>
             <button type="submit">Sélectionner</button>
