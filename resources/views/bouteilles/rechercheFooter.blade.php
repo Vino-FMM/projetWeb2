@@ -7,7 +7,7 @@
             <h4>Veuillez sélectionner un cellier</h4>
         </div> 
        
-        <form id="select-form" action="{{ route('bouteilles.rechercheFooterBouteillePost') }}" method="POST">
+        <form class="recherche-nav" id="select-form" action="{{ route('bouteilles.rechercheFooterBouteillePost') }}" method="POST">
             @csrf
             <select name="cellier_id" id="cellier_id">
                 <option value="">Sélectionner un cellier</option>

@@ -173,7 +173,25 @@ body input {
 #searchResults>p{
     margin-top: 10px;
 }
-
+.recherche-nav{
+    display: flex;
+    justify-content: center;
+    gap:20px;
+    min-width: 100px;
+    min-height: 25px;
+}
+.recherche-nav>select,.recherche-nav>button{
+    box-sizing: border-box;
+    padding:10px;
+}
+.recherche-nav>button{
+    background-color: rgb(245, 245, 245);
+    border: none;
+    border-radius: 5px;
+}
+.recherche-nav>select option{
+    background-color: white;
+}
 
 
 
